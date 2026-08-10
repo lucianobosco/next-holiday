@@ -1,0 +1,667 @@
+{
+  "Aste Nagusia (Semana Grande) | Bilbao": {
+    "description": "La Aste Nagusia o Semana Grande es la gran fiesta de Bilbao: nueve días de agosto con conciertos, fuegos y verbenas en torno a la figura de Marijaia. Nació en 1978 por iniciativa popular.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Aste_Nagusia"
+  },
+  "Asunción de la Virgen": {
+    "description": "Conmemora la creencia católica de que la Virgen María fue llevada en cuerpo y alma al cielo al final de su vida terrenal. Es una de las grandes fiestas marianas y uno de los festivos nacionales más arraigados en España.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Asunci%C3%B3n_de_Mar%C3%ADa"
+  },
+  "Año Nuevo": {
+    "description": "Celebra el primer día del año en el calendario gregoriano. Es una jornada de buenos deseos y propósitos para el nuevo ciclo, y uno de los festivos más universales y arraigados en España.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/A%C3%B1o_Nuevo"
+  },
+  "Bando de la Huerta (Fiestas de Primavera) | Murcia": {
+    "description": "Día grande de las Fiestas de Primavera de Murcia, celebrado el martes tras la Semana Santa. Es una gran exaltación de las tradiciones huertanas, con desfiles de carrozas, trajes típicos y gastronomía que ensalzan la identidad de la huerta murciana.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Bando_de_la_Huerta"
+  },
+  "Cincomarzada | Zaragoza": {
+    "description": "Conmemora el 5 de marzo de 1838, cuando los zaragozanos rechazaron el asalto de las tropas carlistas del general Cabañero durante la Primera Guerra Carlista. Por su valor, la ciudad recibió el título de 'Siempre Heroica'; hoy se celebra con una jornada campestre.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Cincomarzada"
+  },
+  "Corpus Christi | Cáceres": {
+    "description": "El Corpus Christi celebra la presencia de Cristo en la Eucaristía con una procesión solemne por las calles. Es uno de los dos festivos locales de Cáceres.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Corpus_Christi"
+  },
+  "Corpus Christi | Granada": {
+    "description": "El Corpus es la gran fiesta de Granada, declarada de Interés Turístico Internacional. La celebración católica de la Eucaristía da paso a una semana de feria, con la procesión del Santísimo y la figura popular de la Tarasca abriendo los festejos.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Corpus_Christi_(Granada)"
+  },
+  "Corpus Christi | Sevilla": {
+    "description": "Celebra la presencia de Cristo en la Eucaristía. En Sevilla es una de sus jornadas más solemnes, con la procesión de la custodia por calles alfombradas de juncia y romero y el baile de los Seises en la catedral.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Corpus_Christi"
+  },
+  "Corpus Christi": {
+    "description": "Festividad católica que exalta la presencia de Cristo en la Eucaristía, con procesiones del Santísimo Sacramento por calles engalanadas. En Castilla-La Mancha, especialmente en Toledo, es una de sus celebraciones más espectaculares.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Corpus_Christi_(festividad)"
+  },
+  "Dia de la Comunitat Valenciana": {
+    "description": "Conmemora la entrada del rey Jaime I en Valencia el 9 de octubre de 1238, que culminó la conquista cristiana y el nacimiento del Reino de Valencia. Es la gran fiesta de la identidad valenciana.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/D%C3%ADa_de_la_Comunidad_Valenciana"
+  },
+  "Dia de les Illes Balears": {
+    "description": "Conmemora la entrada en vigor del Estatuto de Autonomía de las Islas Baleares el 1 de marzo de 1983. Celebra la identidad propia y el autogobierno del archipiélago.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/D%C3%ADa_de_las_Islas_Baleares"
+  },
+  "Diada Nacional de Catalunya": {
+    "description": "Recuerda la caída de Barcelona el 11 de septiembre de 1714, al final de la Guerra de Sucesión, cuando la ciudad perdió sus instituciones y libertades propias. Es la principal jornada de afirmación nacional catalana.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Diada_Nacional_de_Catalu%C3%B1a"
+  },
+  "Día das Letras Galegas": {
+    "description": "Homenaje anual a la lengua y la literatura gallegas, dedicado cada año a un autor relevante en gallego. Se instauró en 1963 en el aniversario de la publicación de los 'Cantares gallegos' de Rosalía de Castro.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/D%C3%ADa_de_las_Letras_Gallegas"
+  },
+  "Día de Andalucía": {
+    "description": "Conmemora el referéndum del 28 de febrero de 1980 por el que Andalucía accedió a la autonomía plena por la vía rápida, la única comunidad que lo logró así. Celebra la identidad y el autogobierno andaluz.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/D%C3%ADa_de_Andaluc%C3%ADa"
+  },
+  "Día de Asturias": {
+    "description": "Fiesta oficial del Principado, coincide con la festividad de la Virgen de Covadonga, patrona de Asturias y símbolo del inicio de la Reconquista. Es la gran jornada de la identidad asturiana.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/D%C3%ADa_de_Asturias"
+  },
+  "Día de Canarias": {
+    "description": "Conmemora la primera sesión del Parlamento de Canarias el 30 de mayo de 1983, tras aprobarse su Estatuto de Autonomía. Celebra la identidad y la cultura del archipiélago canario.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/D%C3%ADa_de_Canarias"
+  },
+  "Día de Castilla y León": {
+    "description": "Conmemora la batalla de Villalar de 1521, en la que las tropas reales derrotaron a los comuneros castellanos que se habían alzado contra Carlos I. Es el día de la identidad de Castilla y León.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/D%C3%ADa_de_Castilla_y_Le%C3%B3n"
+  },
+  "Día de Extremadura": {
+    "description": "Celebra la identidad extremeña en el día de la Virgen de Guadalupe, patrona de la región. Conmemora la cultura y autonomía de Extremadura como pueblo.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/D%C3%ADa_de_Extremadura"
+  },
+  "Día de La Rioja": {
+    "description": "Conmemora la aprobación del Estatuto de Autonomía de La Rioja el 9 de junio de 1982, que reconoció a la región como comunidad propia. Celebra su identidad y autogobierno.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/D%C3%ADa_de_La_Rioja"
+  },
+  "Día de Melilla | Melilla": {
+    "description": "Conmemora la incorporación de Melilla a la Corona de Castilla el 17 de septiembre de 1497, cuando las tropas del duque de Medina Sidonia tomaron la ciudad. Es la principal efeméride cívica de la ciudad autónoma.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Melilla"
+  },
+  "Epifanía del Señor": {
+    "description": "Conmemora la adoración del Niño Jesús por los Reyes Magos de Oriente, que según la tradición cristiana le llevaron oro, incienso y mirra. En España es la gran fiesta de la ilusión infantil, con cabalgatas y entrega de regalos.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Epifan%C3%ADa"
+  },
+  "Día de la Constitución Española": {
+    "description": "Celebra la aprobación en referéndum de la Constitución española el 6 de diciembre de 1978, que consolidó la democracia tras la dictadura franquista. Es una de las fechas cívicas más importantes del país.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/D%C3%ADa_de_la_Constituci%C3%B3n_(Espa%C3%B1a)"
+  },
+  "Día de la Cruz | Santa Cruz de Tenerife": {
+    "description": "Conmemora la fundación de Santa Cruz de Tenerife el 3 de mayo de 1494, cuando se plantó una cruz en la playa de Añaza. Es la fiesta grande de la ciudad, con cruces engalanadas de flores por todos sus rincones.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/D%C3%ADa_de_la_Cruz"
+  },
+  "Día de la Región Castilla-La Mancha": {
+    "description": "Conmemora la entrada en vigor del Estatuto de Autonomía de Castilla-La Mancha el 31 de mayo de 1982. Celebra la identidad y el autogobierno de la región.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/D%C3%ADa_de_Castilla-La_Mancha"
+  },
+  "Día de la Región de Murcia": {
+    "description": "Conmemora la entrada en vigor del Estatuto de Autonomía de la Región de Murcia el 9 de junio de 1982. Celebra la identidad y el autogobierno de la comunidad murciana.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/D%C3%ADa_de_la_Regi%C3%B3n_de_Murcia"
+  },
+  "Día de la Romería | Murcia": {
+    "description": "Celebra la romería de la Virgen de la Fuensanta, patrona de Murcia y su huerta, cuya imagen baja desde su santuario para visitar la ciudad. Es una de las procesiones más multitudinarias y queridas de la región.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Virgen_de_la_Fuensanta"
+  },
+  "Día de la Toma | Granada": {
+    "description": "Conmemora la entrada de los Reyes Católicos en Granada el 2 de enero de 1492, que puso fin al reino nazarí y al dominio musulmán en la península. Es la principal efeméride cívica de la ciudad, con el tradicional volteo del Pendón Real.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Toma_de_Granada"
+  },
+  "Día de las Instituciones de Cantabria": {
+    "description": "Conmemora la aprobación de las Ordenanzas de Cantabria el 28 de julio de 1778 en Puente San Miguel, que dieron forma a la Junta General de Cantabria, germen del autogobierno y origen de la actual comunidad autónoma.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/D%C3%ADa_de_las_Instituciones_de_Cantabria"
+  },
+  "Todos los Santos": {
+    "description": "Festividad católica que honra a todos los santos, conocidos y anónimos. En España es tradición visitar los cementerios y recordar a los difuntos con flores en sus tumbas.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/D%C3%ADa_de_Todos_los_Santos"
+  },
+  "Eid al-Fitr (Fin del Ramadán) | Ceuta": {
+    "description": "Celebra el fin del Ramadán, el mes de ayuno del islam, con oraciones y comidas en familia. Ceuta, con una notable población musulmana, fue de las primeras ciudades de España en declararla fiesta oficial.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Eid_al-Fitr"
+  },
+  "El Curpillos | Burgos": {
+    "description": "El Curpillos conmemora la victoria cristiana en la batalla de Las Navas de Tolosa (1212), con una romería al monasterio de Las Huelgas el viernes siguiente al Corpus.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Curpillos"
+  },
+  "Festa Major (Sant Anastasi) | Lleida": {
+    "description": "Honra a Sant Anastasi, patrón de Lleida desde 1627, soldado romano que según la tradición fue martirizado el 11 de mayo. Es el día central de la Festa Major de primavera, con cultura popular catalana, castellers y conciertos.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Anastasio_de_L%C3%A9rida"
+  },
+  "Festa Major (Sant Miquel) | Lleida": {
+    "description": "Celebra a Sant Miquel (San Miguel Arcángel) el 29 de septiembre, día central de la Festa Major de otoño de Lleida. Reúne actos de cultura popular, conciertos y celebraciones tradicionales catalanas.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Arc%C3%A1ngel_Miguel"
+  },
+  "Festividad de la Bien Aparecida": {
+    "description": "Honra a la Virgen de la Bien Aparecida, patrona de Cantabria desde 1905, cuya talla apareció según la tradición en 1605 en una ermita de Marrón. Es la gran fiesta religiosa y popular de la región.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Nuestra_Se%C3%B1ora_la_Bien_Aparecida"
+  },
+  "Fiesta Nacional de España": {
+    "description": "Conmemora la llegada de Cristóbal Colón a América el 12 de octubre de 1492. Es el día nacional de España, marcado por el desfile militar y la coincidencia con la festividad de la Virgen del Pilar.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Fiesta_Nacional_de_Espa%C3%B1a"
+  },
+  "Fiesta de la Comunidad de Madrid": {
+    "description": "Conmemora el levantamiento del pueblo de Madrid contra las tropas napoleónicas el 2 de mayo de 1808, inicio de la Guerra de la Independencia. Es el día de la comunidad madrileña.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/D%C3%ADa_de_la_Comunidad_de_Madrid"
+  },
+  "Día del Trabajador": {
+    "description": "Jornada reivindicativa de los derechos de los trabajadores, en recuerdo de los obreros de Chicago de 1886 que lucharon por la jornada de ocho horas. Es el Día Internacional de los Trabajadores y festivo en casi todo el mundo.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/D%C3%ADa_Internacional_de_los_Trabajadores"
+  },
+  "Fiesta local (Las Candelas) | Palencia": {
+    "description": "Festividad de la Candelaria o Las Candelas, en honor a la Virgen de la Calle, patrona de Palencia. Conmemora la presentación de Jesús en el templo y es una de las fiestas más populares de la ciudad.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Virgen_de_la_Calle_(Palencia)"
+  },
+  "Fiesta local (Magdalena) | Castellón de la Plana": {
+    "description": "Fiesta fundacional de Castellón que conmemora el traslado de la población desde el cerro de la Magdalena al llano hacia 1252, origen de la ciudad actual. Se celebra con la Romería de les Canyes y las gaiatas, monumentos de luz que evocan a aquellos primeros pobladores.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Fiestas_de_la_Magdalena"
+  },
+  "Fiestas Colombinas | Huelva": {
+    "description": "La gran fiesta de Huelva, de Interés Turístico Nacional, que conmemora la partida de las carabelas de Colón rumbo a América el 3 de agosto de 1492 desde el cercano puerto de Palos. El día grande arranca con un acto institucional y la ciudad se vuelca con su feria.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Fiestas_Colombinas"
+  },
+  "Fogueres de Sant Joan | Alicante": {
+    "description": "Las Hogueras de San Juan son la gran fiesta de Alicante, en torno al solsticio de verano. Se levantan y queman monumentos de cartón (\"cremà\") en honor a San Juan Bautista, entre música, pólvora y verbenas.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Hogueras_de_San_Juan"
+  },
+  "Fundación de la Ciudad (San Juan) | Las Palmas de Gran Canaria": {
+    "description": "Conmemora la fundación de la ciudad el 24 de junio de 1478, cuando el capitán Juan Rejón estableció el Real de Las Palmas, coincidiendo con la festividad de San Juan Bautista. Es el aniversario fundacional y fiesta grande de la capital grancanaria.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Las_Palmas_de_Gran_Canaria"
+  },
+  "Inmaculada Concepción": {
+    "description": "Conmemora el dogma católico de que la Virgen María fue concebida sin pecado original. Es una fiesta mariana muy arraigada en España, país que tiene a la Inmaculada como patrona.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Inmaculada_Concepci%C3%B3n"
+  },
+  "Jueves La Saca (Fiestas de San Juan) | Soria": {
+    "description": "El Jueves de la Saca abre las Fiestas de San Juan de Soria, cuando se «sacan» los toros desde el monte Valonsadero hacia la ciudad. Son Fiesta de Interés Turístico Nacional.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Fiestas_de_San_Juan_(Soria)"
+  },
+  "Jueves Santo": {
+    "description": "Recuerda la Última Cena de Jesús con sus apóstoles y la institución de la Eucaristía. Es uno de los días grandes de la Semana Santa, con procesiones, y festivo en buena parte de España.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Jueves_Santo"
+  },
+  "La Hiniesta | Zamora": {
+    "description": "Romería del lunes de Pentecostés en la que la Virgen de la Concha, patrona de Zamora, peregrina hasta el cercano pueblo de La Hiniesta para 'visitar a su prima'. Con más de siete siglos de historia, es una de las romerías más antiguas de España.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Romer%C3%ADa_de_la_Hiniesta"
+  },
+  "La Mercè | Barcelona": {
+    "description": "Fiesta mayor de Barcelona en honor a la Mare de Déu de la Mercè, patrona de la ciudad. Llena las calles de castells, gigantes, correfocs y conciertos en la mayor celebración del calendario barcelonés.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Fiestas_de_la_Merc%C3%A8"
+  },
+  "Lunes de Carnaval | Cádiz": {
+    "description": "Festivo local que prolonga el célebre Carnaval de Cádiz, una de las grandes fiestas gaditanas declarada de Interés Turístico Internacional. La ciudad llena sus calles de chirigotas, comparsas y disfraces en jornadas de sátira y música popular.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Carnaval_de_C%C3%A1diz"
+  },
+  "Lunes de Pascua Granada (Segona Pasqua) | Barcelona": {
+    "description": "También llamada Segona Pasqua o Pascua de Pentecostés, conmemora la venida del Espíritu Santo sobre los apóstoles. Cae el lunes tras Pentecostés y es festivo local tradicional en Barcelona y su entorno.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Lunes_de_Pentecost%C3%A9s"
+  },
+  "Lunes de Pascua": {
+    "description": "Prolonga la celebración de la resurrección de Jesucristo el día siguiente al Domingo de Resurrección. Es jornada de tradiciones primaverales y festivo en varias comunidades del este y norte de España.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Lunes_de_Pascua"
+  },
+  "Lunes de la Vaquilla del Ángel | Teruel": {
+    "description": "Jornada central de las Fiestas del Ángel, patrón de Teruel, con encierros y vaquillas por las calles. Honra al Santo Ángel Custodio y rememora la fundación legendaria de la ciudad ligada al Torico, su símbolo más querido.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/La_Vaquilla_del_%C3%81ngel"
+  },
+  "Martes de Campo | Oviedo": {
+    "description": "Fiesta tradicional de Oviedo en el martes de Pentecostés, organizada por la Cofradía de La Balesquida desde el siglo XIII. Es una jornada de romería y comida campestre en torno al bollu preñáu y la sidra.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Martes_de_Campo"
+  },
+  "Martes de Carnaval (Entroido) | A Coruña": {
+    "description": "Cierra el Entroido, el carnaval gallego, antes del Miércoles de Ceniza. Es jornada de disfraces, comparsas y celebración popular en las calles de A Coruña.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Entroido"
+  },
+  "Martes de Carnaval (Entroido) | Lugo": {
+    "description": "Jornada grande del Entroido (Carnaval) gallego en Lugo, una de las fiestas más arraigadas de Galicia. El Martes de Carnaval cierra los días de disfraces y comparsas antes del Miércoles de Ceniza.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Entroido"
+  },
+  "Martes de Carnaval (Entroido) | Ourense": {
+    "description": "Martes grande del Entroido, el carnaval gallego, una de las fiestas más arraigadas de Ourense. Marca el cierre de los días de máscaras, comparsas y excesos antes del inicio de la Cuaresma.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Entroido"
+  },
+  "Martes de Carnaval | Badajoz": {
+    "description": "Día central y de cierre del Carnaval de Badajoz, uno de los más célebres de España, con comparsas, murgas y desfiles que llenan la ciudad antes del Miércoles de Ceniza.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Carnaval_de_Badajoz"
+  },
+  "Martes de Carnaval | Las Palmas de Gran Canaria": {
+    "description": "Jornada central del Carnaval de Las Palmas de Gran Canaria, una de las grandes fiestas canarias previas a la Cuaresma. El Martes de Carnaval culmina los días de disfraces, murgas y comparsas antes del entierro de la sardina.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Carnaval_de_Las_Palmas_de_Gran_Canaria"
+  },
+  "Martes de Carnaval | Santa Cruz de Tenerife": {
+    "description": "Martes grande del Carnaval de Santa Cruz de Tenerife, uno de los más famosos del mundo. Es la jornada culminante de desfiles, comparsas, murgas y disfraces antes del cierre carnavalesco.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Carnaval_de_Santa_Cruz_de_Tenerife"
+  },
+  "Miércoles de Ceniza | Pontevedra": {
+    "description": "Marca el inicio de la Cuaresma cristiana y el fin del Entroido (carnaval). En Pontevedra se conserva como festivo local, cerrando los días de fiesta carnavalesca con el simbólico paso a la penitencia.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Mi%C3%A9rcoles_de_Ceniza"
+  },
+  "Miércoles de Feria | Sevilla": {
+    "description": "Jornada central de la Feria de Abril, festivo local en Sevilla. La feria nació en 1847 como mercado ganadero y hoy es la gran fiesta social de la ciudad, con casetas, trajes de flamenca, caballos y sevillanas.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Feria_de_Abril"
+  },
+  "Navidad": {
+    "description": "Celebra el nacimiento de Jesucristo en Belén. Es la gran fiesta familiar cristiana, en torno a la cual giran las comidas, los regalos y las tradiciones del invierno en España.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Navidad"
+  },
+  "Nuestra Señora de San Lorenzo (Patrona) | Valladolid": {
+    "description": "Honra a la Virgen de San Lorenzo, patrona de Valladolid, cuya imagen gótica preside la ciudad desde la Edad Media. Coincide con la Natividad de la Virgen y abre las celebraciones patronales vallisoletanas.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Virgen_de_San_Lorenzo"
+  },
+  "Nuestra Señora de la Almudena | Madrid": {
+    "description": "Honra a la Virgen de la Almudena, patrona de Madrid, cuya imagen según la tradición se halló oculta en la muralla (almudayna) de la ciudad tras la Reconquista. El 9 de noviembre se celebra con ofrenda floral y misa en su catedral.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Virgen_de_la_Almudena"
+  },
+  "Nuestra Señora de la Cinta (Patrona) | Huelva": {
+    "description": "Honra a la Virgen de la Cinta, patrona de Huelva, venerada en su santuario del Conquero. Su devoción se liga a Cristóbal Colón, que peregrinó allí a su regreso de América para cumplir una promesa hecha durante una tormenta.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Santuario_de_Nuestra_Se%C3%B1ora_de_la_Cinta"
+  },
+  "Nuestra Señora de la Victoria (Patrona) | Melilla": {
+    "description": "Honra a Nuestra Señora de la Victoria, patrona de Melilla desde la conquista de la ciudad en 1497, advocación mariana ligada a su origen militar y a la protección de la plaza.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Virgen_de_la_Victoria_(Melilla)"
+  },
+  "Nuestra Señora de la Victoria (Patrona) | Málaga": {
+    "description": "Honra a la Virgen de la Victoria, patrona de Málaga, advocación vinculada a la conquista de la ciudad en 1487 y a la ayuda atribuida a la Virgen durante el asedio. Es la patrona oficial de la capital y de su diócesis.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Virgen_de_la_Victoria_(M%C3%A1laga)"
+  },
+  "Nuestra Señora del Rosario (Patrona) | Cádiz": {
+    "description": "Honra a la patrona de Cádiz, vinculada a la victoria de la batalla de Lepanto (1571) y proclamada protectora de la ciudad tras el terremoto de 1755. Es una de las fiestas más arraigadas, con ofrenda floral y solemne procesión por el casco antiguo.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Nuestra_Se%C3%B1ora_del_Rosario"
+  },
+  "Nuestra Señora del Rosario | A Coruña": {
+    "description": "Honra a la Virgen del Rosario, patrona de A Coruña. Es la fiesta religiosa principal de la ciudad, con procesión y actos en su honor.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Virgen_del_Rosario"
+  },
+  "Octava de la Virgen del Prado | Ciudad Real": {
+    "description": "Cierra la Feria y Fiestas en honor a la Virgen del Prado, patrona de Ciudad Real. La jornada de la Octava culmina los festejos patronales con una solemne procesión y un castillo de fuegos artificiales.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Virgen_del_Prado_(Ciudad_Real)"
+  },
+  "Romería de San Antonio | Ceuta": {
+    "description": "Romería popular en honor a San Antonio de Padua, una de las fiestas más tradicionales y multitudinarias de Ceuta, con recorrido festivo, casetas y devoción al santo franciscano protector.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Antonio_de_Padua"
+  },
+  "San Antolín | Palencia": {
+    "description": "Día de San Antolín, patrón de Palencia, jornada central de las fiestas mayores de la ciudad. Es tradición acudir a beber agua de la cripta de la catedral para alcanzar el favor del santo.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Antonino_de_Apamea"
+  },
+  "San Benitiño (San Benito) | Pontevedra": {
+    "description": "Romería de San Benito de Lérez, patrón de Pontevedra, en su monasterio. Miles de devotos acuden a este santo considerado milagroso, en una fiesta declarada de Interés Turístico Nacional famosa por su festa do mexillón.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Romer%C3%ADa_de_San_Beniti%C3%B1o_de_L%C3%A9rez"
+  },
+  "San Bernabé | Logroño": {
+    "description": "Conmemora la victoria de Logroño el 11 de junio de 1521 en el sitio de las tropas francesas y navarras de André de Foix. La ciudad juró entonces el voto a San Bernabé, su patrón, y aún reparte pez, pan y vino en su recuerdo.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Fiestas_de_San_Bernab%C3%A9_(Logro%C3%B1o)"
+  },
+  "San Froilán | León": {
+    "description": "Celebra a San Froilán, obispo del siglo IX y patrón de León. Sus fiestas, en torno al 5 de octubre, son la principal cita festiva del otoño leonés, con la multitudinaria romería del Foro u Oferta y los carros engalanados.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Froil%C3%A1n_de_Le%C3%B3n"
+  },
+  "San Froilán | Lugo": {
+    "description": "Celebra a San Froilán, obispo nacido en Lugo en el siglo IX y patrón de la ciudad. Sus fiestas, en torno al 5 de octubre, son las más multitudinarias de Lugo, famosas por los puestos de pulpo de la zona de la feria.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Froil%C3%A1n_de_Le%C3%B3n"
+  },
+  "San Frutos (Patrón) | Segovia": {
+    "description": "Festividad de San Frutos, patrón de Segovia, eremita del siglo VII que repartió sus bienes entre los pobres para retirarse a la soledad junto al río Duratón. Su fiesta se celebra con una romería a su ermita.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Frutos_de_Segovia"
+  },
+  "San Ignacio de Loyola | Bilbao": {
+    "description": "Honra a San Ignacio de Loyola, fundador de la Compañía de Jesús y patrón de Vizcaya, nacido en Guipúzcoa. Es festivo en Bilbao en recuerdo del santo vasco.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Ignacio_de_Loyola"
+  },
+  "San Ildefonso | Toledo": {
+    "description": "San Ildefonso, patrón de Toledo, fue un arzobispo visigodo del siglo VII célebre por su defensa de la Virgen María. Es uno de los dos festivos locales de la ciudad.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Ildefonso_de_Toledo"
+  },
+  "San Isidro Labrador | Madrid": {
+    "description": "Honra a San Isidro Labrador, patrón de Madrid, agricultor del siglo XII al que la tradición atribuye numerosos milagros. El 15 de mayo los madrileños celebran la fiesta castiza por excelencia, con chulapos, chotis y romería en la pradera.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Isidro_Labrador"
+  },
+  "San Jorge (Día de Aragón)": {
+    "description": "Celebra a San Jorge, patrón de Aragón, en el aniversario de la histórica batalla de Alcoraz. Coincide con el Día de Aragón, jornada de exaltación de la identidad aragonesa.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/D%C3%ADa_de_Arag%C3%B3n"
+  },
+  "San Jorge | Cáceres": {
+    "description": "San Jorge, patrón de Cáceres, conmemora la reconquista cristiana de la ciudad en 1229. Se celebra con recreaciones medievales y la quema del Diablo en la Plaza Mayor.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/San_Jorge"
+  },
+  "San Juan de Sahagún (Patrón) | Salamanca": {
+    "description": "Festividad de San Juan de Sahagún, patrón de Salamanca. Conmemora a este fraile agustino del siglo XV que pacificó los enfrentamientos entre los bandos nobiliarios de la ciudad y al que se atribuyen varios milagros.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Juan_de_Sahag%C3%BAn"
+  },
+  "San Juan | Albacete": {
+    "description": "Celebra a San Juan Bautista, patrón de Albacete, en torno al solsticio de verano. Es jornada de hogueras y fiesta popular en la ciudad.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/San_Juan_Bautista"
+  },
+  "San Juan | Almería": {
+    "description": "Celebra a San Juan Bautista coincidiendo con la noche del solsticio de verano, con hogueras y baños nocturnos en la playa. Es una de las noches más populares de Almería.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Noche_de_San_Juan"
+  },
+  "San Juan | Badajoz": {
+    "description": "Celebra a San Juan, coincidiendo con la Feria de San Juan, las fiestas grandes de Badajoz en torno al solsticio de verano.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/San_Juan_Bautista"
+  },
+  "San Juan | León": {
+    "description": "Honra a San Juan Bautista en torno al 24 de junio, dando nombre a las fiestas de San Juan y San Pedro, las grandes celebraciones del verano leonés con conciertos, ferias y la tradicional fiesta del agua.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Juan_el_Bautista"
+  },
+  "San Lorenzo | Huesca": {
+    "description": "Honra a San Lorenzo, mártir oscense del siglo III patrón de la ciudad, en torno al 10 de agosto. Es la fiesta grande de Huesca, con sus vistosas comparsas vestidas de blanco y verde y multitudinarias verbenas populares.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Fiestas_de_San_Lorenzo_(Huesca)"
+  },
+  "San Martiño (Patrón) | Ourense": {
+    "description": "Festividad de San Martín de Tours, patrón de la ciudad de Ourense. Conmemora al santo célebre por compartir su capa con un pobre, y es la fiesta patronal de la capital orensana.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Mart%C3%ADn_de_Tours"
+  },
+  "San Mateo | Cuenca": {
+    "description": "Fiestas mayores de Cuenca, declaradas de Interés Turístico Nacional, que rememoran la reconquista de la ciudad por Alfonso VIII el día de San Mateo de 1177. Destacan los encierros y las peñas que llenan de ambiente el casco antiguo.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Fiestas_de_San_Mateo_(Cuenca)"
+  },
+  "San Mateo | Logroño": {
+    "description": "Aunque honra a San Mateo (21 de septiembre), es ante todo la fiesta de la vendimia riojana. Las Fiestas de San Mateo celebran la recogida de la uva, con el tradicional pisado y la ofrenda del primer mosto a la Virgen de Valvanera.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Fiestas_de_San_Mateo_(Logro%C3%B1o)"
+  },
+  "San Mateo | Oviedo": {
+    "description": "Festividad de San Mateo, que da nombre a las grandes fiestas de Oviedo. Coincide con la jornada central de las celebraciones patronales de la ciudad, llenas de actos populares y multitudinarios.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Fiestas_de_San_Mateo_(Oviedo)"
+  },
+  "San Pedro Regalado (Patrón) | Valladolid": {
+    "description": "Conmemora a San Pedro Regalado, franciscano vallisoletano del siglo XV y patrón de la ciudad, conocido por su vida austera y reformadora. Es también patrón de los toreros, vinculando su fiesta a la tradición taurina.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Pedro_Regalado"
+  },
+  "San Pedro y San Pablo | Burgos": {
+    "description": "San Pedro y San Pablo da nombre a las fiestas mayores de Burgos, los «Sampedros», que a finales de junio llenan la ciudad de peñas, música y casetas.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Fiestas_de_San_Pedro_y_San_Pablo"
+  },
+  "San Pedro | Castellón de la Plana": {
+    "description": "Festivo local dedicado a San Pedro Apóstol, una de las devociones más extendidas del calendario. La festividad honra a uno de los principales discípulos de Jesús, considerado primer papa de la Iglesia.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Pedro_(ap%C3%B3stol)"
+  },
+  "San Pedro | Segovia": {
+    "description": "Festividad de San Pedro y San Pablo, que da nombre a las fiestas patronales de Segovia. Conmemora a los dos grandes apóstoles de la Iglesia en una de las celebraciones populares más señaladas de la ciudad.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/San_Pedro_y_San_Pablo"
+  },
+  "San Pedro | Zamora": {
+    "description": "Festividad de San Pedro Apóstol, fecha en torno a la cual Zamora celebra sus fiestas patronales de San Pedro con verbenas y actos populares. El apóstol Pedro es venerado como cabeza de la Iglesia y figura central del santoral.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Fiestas_de_San_Pedro_(Zamora)"
+  },
+  "San Rafael (Custodio de la ciudad) | Córdoba": {
+    "description": "Honra al arcángel San Rafael, custodio y protector de Córdoba según la tradición local, ligada a las apariciones que prometieron velar por la ciudad. Es una de las grandes citas religiosas cordobesas, con sus característicos triunfos y procesión.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/San_Rafael_(C%C3%B3rdoba)"
+  },
+  "San Saturio (Patrón) | Soria": {
+    "description": "San Saturio es el patrón de Soria, un ermitaño del siglo VI que vivió retirado en una cueva sobre el río Duero, donde hoy se alza su ermita, meta de romería.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Saturio_de_Soria"
+  },
+  "San Saturnino (Patrón) | Pamplona": {
+    "description": "Honra a San Saturnino (San Cernin), patrón de Pamplona y primer evangelizador de la ciudad en el siglo III, a quien la tradición atribuye el bautismo de los pamploneses junto al célebre Pozo de San Cernin.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Saturnino_de_Tolosa"
+  },
+  "San Sebastián (Tamborrada) | San Sebastián": {
+    "description": "Día del patrón de San Sebastián, celebrado con la Tamborrada: 24 horas de tambores y barriles tocados por miles de donostiarras vestidos de soldados y cocineros. Es la gran fiesta de la ciudad y Patrimonio Cultural Inmaterial.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Tamborrada_de_San_Sebasti%C3%A1n"
+  },
+  "San Segundo | Ávila": {
+    "description": "Honra a San Segundo, considerado el primer obispo de Ávila y evangelizador de la ciudad en el siglo I. Es el patrón de Ávila y su fiesta religiosa más señalada.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Segundo_de_%C3%81vila"
+  },
+  "San Valero | Zaragoza": {
+    "description": "Honra a San Valero, obispo de Zaragoza en el siglo IV y patrón de la ciudad. La tradición lo asocia al cierzo y al popular dicho 'San Valero, rosconero y ventolero', con el reparto del roscón en su día.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Valero_de_Zaragoza"
+  },
+  "San Vicente Ferrer (Lunes de San Vicente) | Valencia": {
+    "description": "Honra a San Vicente Ferrer, dominico valenciano del siglo XIV, célebre predicador y patrón de la Comunitat Valenciana. Se celebra el lunes siguiente a la Pascua con los tradicionales 'altares' y representaciones de sus milagros.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Vicente_Ferrer"
+  },
+  "San Vicente Mártir | Valencia": {
+    "description": "Conmemora a San Vicente Mártir, patrón de la ciudad de Valencia, diácono martirizado en el año 304 durante las persecuciones romanas. Es una de las figuras religiosas más antiguas y veneradas de la ciudad.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Vicente_de_Zaragoza"
+  },
+  "San Vicente | Huesca": {
+    "description": "Festivo local en honor a San Vicente Mártir, copatrón de Huesca junto a San Lorenzo. Recuerda al diácono oscense martirizado en el año 304 durante las persecuciones romanas; la fiesta se vive con la tradicional hoguera de la víspera.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Vicente_de_Huesca"
+  },
+  "Sant Esteve": {
+    "description": "Sant Esteve, el día después de Navidad, recuerda al primer mártir cristiano. En Cataluña es festivo tradicional para reunir a la familia y prolongar las celebraciones navideñas con la típica comida de \"els canelons\".",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/San_Esteban"
+  },
+  "Sant Jaume | Girona": {
+    "description": "Festivo local dedicado a Sant Jaume (Santiago Apóstol), advocación de gran tradición en Cataluña que muchas localidades celebran como fiesta mayor en pleno verano. Honra a uno de los doce apóstoles de Jesús.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Santiago_el_Mayor"
+  },
+  "Sant Joan | Palma": {
+    "description": "Celebra la víspera y festividad de San Juan, en torno al solsticio de verano. Es una de las noches mágicas del calendario mallorquín, marcada por las hogueras, el fuego y las tradiciones de bienvenida al verano.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Noche_de_San_Juan"
+  },
+  "Sant Joan": {
+    "description": "La verbena de Sant Joan, en la noche del 23 al 24 de junio, celebra el solsticio de verano con hogueras, petardos y fuegos artificiales. Es festivo en Cataluña y la Comunidad Valenciana.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Noche_de_San_Juan"
+  },
+  "Sant Magí | Tarragona": {
+    "description": "Sant Magí, copatrón de Tarragona, protagoniza una de sus dos grandes fiestas, con la «baixada de l'aigua» desde las fuentes de la Brufaganya y desfiles de gigantes y castells.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/San_Mag%C3%ADn"
+  },
+  "Sant Narcís | Girona": {
+    "description": "Fiesta mayor de Girona en honor a su patrón, Sant Narcís, en torno a las populares Fires. La leyenda cuenta que, al profanar los franceses su tumba en 1285, salieron miles de moscas que defendieron la ciudad, convirtiendo a la mosca en símbolo gironés.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Narciso_de_Gerona"
+  },
+  "Sant Sebastià | Palma": {
+    "description": "Festividad de San Sebastián, patrón de Palma desde una epidemia de peste del siglo XVI. Es la gran fiesta invernal de la ciudad, con hogueras, conciertos y barbacoas populares en las plazas.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Fiestas_de_Sant_Sebasti%C3%A0"
+  },
+  "Santa Catalina (Patrona) | Jaén": {
+    "description": "Celebra a Santa Catalina de Alejandría, copatrona de Jaén, cuya advocación se vincula a la conquista cristiana de la ciudad por Fernando III en el siglo XIII. Da nombre al cerro y castillo que dominan la capital.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Catalina_de_Alejandr%C3%ADa"
+  },
+  "Santa Faz | Alicante": {
+    "description": "Día de la romería a la reliquia de la Santa Faz, el lienzo con el rostro de Cristo que se venera en el monasterio cercano. Recuerda el Milagro de la Lágrima de 1489 y es la segunda romería más multitudinaria de España.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Romer%C3%ADa_de_Santa_Faz"
+  },
+  "Santa Tecla | Tarragona": {
+    "description": "Santa Tecla, patrona de Tarragona, da nombre a su fiesta mayor (de Interés Turístico Internacional), célebre por los castells, el séquito de gigantes y bestiario y los fuegos.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Fiestas_de_Santa_Tecla"
+  },
+  "Santa Teresa de Jesús | Ávila": {
+    "description": "Celebra a Santa Teresa de Jesús, mística, reformadora del Carmelo y figura más universal de Ávila, su ciudad natal. Es jornada grande de devoción y fiesta en la capital abulense.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Teresa_de_Jes%C3%BAs"
+  },
+  "Santiago Apóstol | Santander": {
+    "description": "Festividad de Santiago el Mayor, apóstol y patrón de España, celebrado como fiesta local en Santander. Conmemora al discípulo de Jesús cuya tumba en Compostela convirtió a Galicia en meta de peregrinación.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Santiago_el_Mayor"
+  },
+  "Santiago Apóstol": {
+    "description": "Celebra a Santiago el Mayor, apóstol de Jesús y patrón de España, cuyo sepulcro en Santiago de Compostela convirtió a Galicia en meta de peregrinación del Camino. En Galicia es además su Día Nacional.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Santiago_el_Mayor"
+  },
+  "Sermón de las Tortillas | Teruel": {
+    "description": "Fiesta turolense del martes de Pascua, de origen medieval, en la que la ciudad entera se va al campo a comer la tradicional tortilla. Se vincula a la antigua renovación anual de los cargos del concejo, que se celebraba con una comida campestre.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Serm%C3%B3n_de_las_Tortillas"
+  },
+  "Toma de Málaga por los Reyes Católicos | Málaga": {
+    "description": "Conmemora la entrada de los Reyes Católicos en Málaga el 19 de agosto de 1487, que puso fin al dominio musulmán de la ciudad. Es una de las principales fiestas cívicas de la capital malagueña.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Toma_de_M%C3%A1laga"
+  },
+  "Velá de la Fuensanta | Córdoba": {
+    "description": "Festivo de la Velá de la Fuensanta, que honra a la Virgen de la Fuensanta, copatrona de Córdoba. La fiesta, viva desde el siglo XVIII, llena el entorno del santuario de romería, música y las típicas campanas de cerámica.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Virgen_de_la_Fuensanta_(C%C3%B3rdoba)"
+  },
+  "Viernes Santo": {
+    "description": "Recuerda la pasión, crucifixión y muerte de Jesucristo. Es uno de los días más solemnes de la Semana Santa cristiana, con procesiones por toda España, y festivo en todo el país.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Viernes_Santo"
+  },
+  "Viernes de Ferias | Guadalajara": {
+    "description": "Segundo festivo local de Guadalajara, que cae en el viernes central de las Ferias y Fiestas en honor a la Virgen de la Antigua. Es uno de los días grandes de la semana festiva, con encierros y celebraciones por el casco histórico.",
+    "image": null,
+    "pageUrl": null
+  },
+  "Virgen Blanca (Patrona) | Vitoria-Gasteiz": {
+    "description": "Honra a la Virgen Blanca, patrona de Vitoria-Gasteiz, y da inicio a sus fiestas con la célebre bajada del Celedón. Marca el comienzo de la Semana Grande, la principal celebración popular de la ciudad.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Fiestas_de_la_Virgen_Blanca"
+  },
+  "Virgen de Alarcos | Ciudad Real": {
+    "description": "Festivo local con la popular Romería de Alarcos, en la que miles de personas acompañan a la Virgen de Alarcos hasta su ermita, a las afueras de Ciudad Real. Se celebra el lunes de Pentecostés, motivo por el que su fecha varía cada año.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Santa_Mar%C3%ADa_de_Alarcos"
+  },
+  "Virgen de Los Llanos | Albacete": {
+    "description": "Honra a la Virgen de los Llanos, patrona de Albacete, en la Natividad de la Virgen. Su festividad da inicio a la famosa Feria de Albacete, declarada de Interés Turístico Internacional.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Virgen_de_los_Llanos"
+  },
+  "Virgen de la Antigua (Patrona) | Guadalajara": {
+    "description": "Festivo local en honor a la Virgen de la Antigua, patrona de Guadalajara, que da inicio a las grandes Ferias y Fiestas de la ciudad. Combina actos religiosos con encierros y celebraciones populares.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Virgen_de_la_Antigua"
+  },
+  "Virgen de la Capilla | Jaén": {
+    "description": "Conmemora el llamado Descenso de la Virgen, la creencia de que la Virgen María bajó a Jaén en la noche del 10 al 11 de junio de 1430 para alentar a la ciudad. La Virgen de la Capilla es la patrona y este es el día grande de los jiennenses.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Virgen_de_la_Capilla"
+  },
+  "Virgen de la Luz | Cuenca": {
+    "description": "Festivo local en honor a la Virgen de la Luz, patrona y alcaldesa honoraria de Cuenca. Su procesión recorre toda la ciudad, uniendo el casco antiguo y la parte moderna en una de las jornadas más sentidas del año.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Virgen_de_la_Luz_(Cuenca)"
+  },
+  "Virgen de la Vega (Patrona) | Salamanca": {
+    "description": "Festividad de Nuestra Señora de la Vega, patrona de Salamanca, cuya talla románica se venera en la catedral. Coincide con las ferias y fiestas mayores de la ciudad en septiembre.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Virgen_de_la_Vega_(Salamanca)"
+  },
+  "Virgen del Mar | Almería": {
+    "description": "Honra a la Virgen del Mar, patrona de Almería, cuya imagen apareció según la tradición en la playa en 1502. Es la fiesta religiosa principal de la ciudad, con procesión hasta el mar.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Virgen_del_Mar_(Almer%C3%ADa)"
+  },
+  "Virgen del Mar | Santander": {
+    "description": "Festividad de la Virgen del Mar, patrona de Santander, venerada en su santuario sobre un islote del litoral. Una devoción de más de 700 años que se celebra con procesiones terrestre y marítima y ofrenda floral al mar.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Fiesta_de_la_Virgen_del_Mar_(Santander)"
+  },
+  "Virgen del Sagrario | Toledo": {
+    "description": "El Patrocinio de la Virgen del Sagrario honra a la patrona de Toledo, cuya venerada imagen preside la catedral. Es el segundo festivo local de la ciudad.",
+    "image": null,
+    "pageUrl": "https://es.wikipedia.org/wiki/Virgen_del_Sagrario"
+  }
+}

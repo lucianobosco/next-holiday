@@ -1,0 +1,708 @@
+[
+  {
+    "date": "2026-01-01",
+    "localName": "Año Nuevo",
+    "name": "New Year's Day",
+    "counties": null,
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2026-01-06",
+    "localName": "Epifanía del Señor",
+    "name": "Epiphany",
+    "counties": null,
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2026-02-28",
+    "localName": "Día de Andalucía",
+    "name": "Day of Andalucía",
+    "counties": [
+      "ES-AN"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2026-03-01",
+    "localName": "Dia de les Illes Balears",
+    "name": "Day of the Balearic Islands",
+    "counties": [
+      "ES-IB"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2026-04-02",
+    "localName": "Jueves Santo",
+    "name": "Maundy Thursday",
+    "counties": [
+      "ES-AN",
+      "ES-AR",
+      "ES-CL",
+      "ES-CM",
+      "ES-CN",
+      "ES-EX",
+      "ES-GA",
+      "ES-IB",
+      "ES-RI",
+      "ES-MD",
+      "ES-MC",
+      "ES-NC",
+      "ES-AS",
+      "ES-PV",
+      "ES-CB"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2026-04-03",
+    "localName": "Viernes Santo",
+    "name": "Good Friday",
+    "counties": null,
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2026-04-06",
+    "localName": "Lunes de Pascua",
+    "name": "Easter Monday",
+    "counties": [
+      "ES-CT",
+      "ES-IB",
+      "ES-RI",
+      "ES-NC",
+      "ES-PV",
+      "ES-VC"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2026-04-23",
+    "localName": "Día de Castilla y León",
+    "name": "Castile and León Day",
+    "counties": [
+      "ES-CL"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2026-04-23",
+    "localName": "San Jorge (Día de Aragón)",
+    "name": "Day of Aragón",
+    "counties": [
+      "ES-AR"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2026-05-01",
+    "localName": "Día del Trabajador",
+    "name": "Labour Day",
+    "counties": null,
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2026-05-02",
+    "localName": "Fiesta de la Comunidad de Madrid",
+    "name": "Day of Madrid",
+    "counties": [
+      "ES-MD"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2026-05-17",
+    "localName": "Día das Letras Galegas",
+    "name": "Galician Literature Day",
+    "counties": [
+      "ES-GA"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2026-05-30",
+    "localName": "Día de Canarias",
+    "name": "Day of the Canary Islands",
+    "counties": [
+      "ES-CN"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2026-05-31",
+    "localName": "Día de la Región Castilla-La Mancha",
+    "name": "Day of Castilla-La Mancha",
+    "counties": [
+      "ES-CM"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2026-06-04",
+    "localName": "Corpus Christi",
+    "name": "Corpus Christi",
+    "counties": [
+      "ES-CM"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2026-06-09",
+    "localName": "Día de La Rioja",
+    "name": "Day of La Rioja",
+    "counties": [
+      "ES-RI"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2026-06-09",
+    "localName": "Día de la Región de Murcia",
+    "name": "Day of Murcia",
+    "counties": [
+      "ES-MC"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2026-06-24",
+    "localName": "Sant Joan",
+    "name": "St. John's Day",
+    "counties": [
+      "ES-CT",
+      "ES-VC"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2026-07-25",
+    "localName": "Santiago Apóstol",
+    "name": "Santiago Apóstol",
+    "counties": [
+      "ES-GA",
+      "ES-PV"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2026-07-28",
+    "localName": "Día de las Instituciones de Cantabria",
+    "name": "Day of the Cantabrian Institutions",
+    "counties": [
+      "ES-CB"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2026-08-15",
+    "localName": "Asunción de la Virgen",
+    "name": "Assumption",
+    "counties": null,
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2026-09-08",
+    "localName": "Día de Asturias",
+    "name": "Day of Asturias",
+    "counties": [
+      "ES-AS"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2026-09-08",
+    "localName": "Día de Extremadura",
+    "name": "Day of Extremadura",
+    "counties": [
+      "ES-EX"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2026-09-11",
+    "localName": "Diada Nacional de Catalunya",
+    "name": "National Day of Catalonia",
+    "counties": [
+      "ES-CT"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2026-09-15",
+    "localName": "Festividad de la Bien Aparecida",
+    "name": "Feast of Our Lady of Bien Aparecida",
+    "counties": [
+      "ES-CB"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2026-10-09",
+    "localName": "Dia de la Comunitat Valenciana",
+    "name": "Day of the Valencian Community",
+    "counties": [
+      "ES-VC"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2026-10-12",
+    "localName": "Fiesta Nacional de España",
+    "name": "National Day of Spain",
+    "counties": null,
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2026-11-01",
+    "localName": "Todos los Santos",
+    "name": "All Saints Day",
+    "counties": null,
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2026-12-06",
+    "localName": "Día de la Constitución Española",
+    "name": "Constitution Day",
+    "counties": null,
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2026-12-08",
+    "localName": "Inmaculada Concepción",
+    "name": "Immaculate Conception",
+    "counties": null,
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2026-12-25",
+    "localName": "Navidad",
+    "name": "Christmas Day",
+    "counties": null,
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2026-12-26",
+    "localName": "Feast of Saint Stephen",
+    "name": "St. Stephen's Day",
+    "counties": [
+      "ES-CT"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2027-01-01",
+    "localName": "Año Nuevo",
+    "name": "New Year's Day",
+    "counties": null,
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2027-01-06",
+    "localName": "Epifanía del Señor",
+    "name": "Epiphany",
+    "counties": null,
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2027-02-28",
+    "localName": "Día de Andalucía",
+    "name": "Day of Andalucía",
+    "counties": [
+      "ES-AN"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2027-03-01",
+    "localName": "Dia de les Illes Balears",
+    "name": "Day of the Balearic Islands",
+    "counties": [
+      "ES-IB"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2027-03-25",
+    "localName": "Jueves Santo",
+    "name": "Maundy Thursday",
+    "counties": [
+      "ES-AN",
+      "ES-AR",
+      "ES-CL",
+      "ES-CM",
+      "ES-CN",
+      "ES-EX",
+      "ES-GA",
+      "ES-IB",
+      "ES-RI",
+      "ES-MD",
+      "ES-MC",
+      "ES-NC",
+      "ES-AS",
+      "ES-PV",
+      "ES-CB"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2027-03-26",
+    "localName": "Viernes Santo",
+    "name": "Good Friday",
+    "counties": null,
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2027-03-29",
+    "localName": "Lunes de Pascua",
+    "name": "Easter Monday",
+    "counties": [
+      "ES-CT",
+      "ES-IB",
+      "ES-RI",
+      "ES-NC",
+      "ES-PV",
+      "ES-VC"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2027-04-23",
+    "localName": "Día de Castilla y León",
+    "name": "Castile and León Day",
+    "counties": [
+      "ES-CL"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2027-04-23",
+    "localName": "San Jorge (Día de Aragón)",
+    "name": "Day of Aragón",
+    "counties": [
+      "ES-AR"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2027-05-01",
+    "localName": "Día del Trabajador",
+    "name": "Labour Day",
+    "counties": null,
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2027-05-02",
+    "localName": "Fiesta de la Comunidad de Madrid",
+    "name": "Day of Madrid",
+    "counties": [
+      "ES-MD"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2027-05-17",
+    "localName": "Día das Letras Galegas",
+    "name": "Galician Literature Day",
+    "counties": [
+      "ES-GA"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2027-05-27",
+    "localName": "Corpus Christi",
+    "name": "Corpus Christi",
+    "counties": [
+      "ES-CM"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2027-05-30",
+    "localName": "Día de Canarias",
+    "name": "Day of the Canary Islands",
+    "counties": [
+      "ES-CN"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2027-05-31",
+    "localName": "Día de la Región Castilla-La Mancha",
+    "name": "Day of Castilla-La Mancha",
+    "counties": [
+      "ES-CM"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2027-06-09",
+    "localName": "Día de La Rioja",
+    "name": "Day of La Rioja",
+    "counties": [
+      "ES-RI"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2027-06-09",
+    "localName": "Día de la Región de Murcia",
+    "name": "Day of Murcia",
+    "counties": [
+      "ES-MC"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2027-06-24",
+    "localName": "Sant Joan",
+    "name": "St. John's Day",
+    "counties": [
+      "ES-CT",
+      "ES-VC"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2027-07-25",
+    "localName": "Santiago Apóstol",
+    "name": "Santiago Apóstol",
+    "counties": [
+      "ES-GA",
+      "ES-PV"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2027-07-28",
+    "localName": "Día de las Instituciones de Cantabria",
+    "name": "Day of the Cantabrian Institutions",
+    "counties": [
+      "ES-CB"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2027-08-15",
+    "localName": "Asunción de la Virgen",
+    "name": "Assumption",
+    "counties": null,
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2027-09-08",
+    "localName": "Día de Asturias",
+    "name": "Day of Asturias",
+    "counties": [
+      "ES-AS"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2027-09-08",
+    "localName": "Día de Extremadura",
+    "name": "Day of Extremadura",
+    "counties": [
+      "ES-EX"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2027-09-11",
+    "localName": "Diada Nacional de Catalunya",
+    "name": "National Day of Catalonia",
+    "counties": [
+      "ES-CT"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2027-09-15",
+    "localName": "Festividad de la Bien Aparecida",
+    "name": "Feast of Our Lady of Bien Aparecida",
+    "counties": [
+      "ES-CB"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2027-10-09",
+    "localName": "Dia de la Comunitat Valenciana",
+    "name": "Day of the Valencian Community",
+    "counties": [
+      "ES-VC"
+    ],
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2027-10-12",
+    "localName": "Fiesta Nacional de España",
+    "name": "National Day of Spain",
+    "counties": null,
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2027-11-01",
+    "localName": "Todos los Santos",
+    "name": "All Saints Day",
+    "counties": null,
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2027-12-06",
+    "localName": "Día de la Constitución Española",
+    "name": "Constitution Day",
+    "counties": null,
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2027-12-08",
+    "localName": "Inmaculada Concepción",
+    "name": "Immaculate Conception",
+    "counties": null,
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2027-12-25",
+    "localName": "Navidad",
+    "name": "Christmas Day",
+    "counties": null,
+    "types": [
+      "Public"
+    ]
+  },
+  {
+    "date": "2027-12-26",
+    "localName": "Feast of Saint Stephen",
+    "name": "St. Stephen's Day",
+    "counties": [
+      "ES-CT"
+    ],
+    "types": [
+      "Public"
+    ]
+  }
+]

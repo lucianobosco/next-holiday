@@ -1,0 +1,32 @@
+---
+import { ALL_HOLIDAYS } from "../lib/utils/allHolidays";
+import { getHolidayInfo } from "../lib/utils/holidayInfo";
+interface Props {
+  cityName: string;
+}
+const { cityName } = Astro.props;
+const localFiestas = ALL_HOLIDAYS.filter((h) => h.locality === cityName);
+---
+
+{
+  localFiestas.length > 0 && (
+    <section class="mt-12">
+      <h2 class="mb-4 font-display text-xl font-semibold text-ink">
+        Fiestas locales de {cityName}
+      </h2>
+      <div class="grid gap-3 sm:grid-cols-2">
+        {localFiestas.map((h) => {
+          const info = getHolidayInfo(h);
+          return (
+            <div class="rounded-xl border border-line bg-paper-card p-5">
+              <h3 class="font-display text-lg font-medium text-ink">{h.localName}</h3>
+              {info?.description && (
+                <p class="mt-1.5 text-sm leading-relaxed text-ink-soft">{info.description}</p>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  )
+}

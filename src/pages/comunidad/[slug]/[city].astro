@@ -1,0 +1,121 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import Masthead from "../../../components/Masthead.astro";
+import Hero from "../../../components/Hero.astro";
+import HeroFooterInfo from "../../../components/HeroFooterInfo.astro";
+import HolidayListStatic from "../../../components/HolidayListStatic.astro";
+import HolidayDetails from "../../../components/HolidayDetails.astro";
+import LocalFiestas from "../../../components/LocalFiestas.astro";
+import Filter from "../../../components/Filter.tsx";
+import Calendar from "../../../components/Calendar.tsx";
+import GetYourGuideCity from "../../../components/GetYourGuideCity.tsx";
+import GetYourGuideWidget from "../../../components/GetYourGuideWidget.tsx";
+import AdSlot from "../../../components/AdSlot.astro";
+import PuentesTeaser from "../../../components/PuentesTeaser.astro";
+import Explore from "../../../components/Explore.astro";
+import EmbedSnippet from "../../../components/EmbedSnippet.astro";
+import SiteFooter from "../../../components/SiteFooter.astro";
+import { ALL_HOLIDAYS } from "../../../lib/utils/allHolidays";
+import {
+  getUpcomingHolidays,
+  filterByScope,
+  holidayKey,
+  isNational,
+  isLocal,
+  formatDate,
+  cap,
+  todayInMadrid,
+} from "../../../lib/utils/holidays";
+import { CITY_PREFIX } from "../../../lib/utils/localHolidays";
+import { communitySlug, getCityBySlug, cityPath } from "../../../lib/utils/slug";
+import { getCommunityName } from "../../../lib/utils/communities";
+import { gygLocationId } from "../../../lib/utils/gygLocations";
+import { cityJsonLd } from "../../../lib/seo";
+
+// Rendered on demand: the next holiday, from the date of the request.
+export const prerender = false;
+
+const { slug, city: citySlugParam } = Astro.params;
+const city = getCityBySlug(citySlugParam!);
+// A 404 when the city does not exist, or does exist but not in the community the URL
+// claims -- otherwise /comunidad/madrid/pontevedra would happily render Pontevedra.
+if (!city || communitySlug(city.communityCode) !== slug) return Astro.rewrite("/404");
+const today = todayInMadrid();
+const year = Number(today.slice(0, 4));
+const sel = CITY_PREFIX + city.name;
+const upcoming = getUpcomingHolidays(ALL_HOLIDAYS, sel, today);
+if (!upcoming.length) return Astro.rewrite("/404");
+const scoped = filterByScope(ALL_HOLIDAYS, sel);
+const hero = upcoming[0];
+const nextKey = holidayKey(upcoming[0]);
+const activeKey = holidayKey(hero);
+const heroBadge = isLocal(hero)
+  ? `Festivo local · ${hero.locality}`
+  : isNational(hero)
+    ? "Festivo nacional"
+    : (hero.counties ?? []).map(getCommunityName).join(", ");
+---
+
+<Layout
+  title={`Festivos en ${city.name} ${year} — Locales, autonómicos y nacionales`}
+  description={`Días festivos en ${city.name}: fiestas locales del municipio, festivos autonómicos y nacionales, con fechas y qué se celebra.`}
+  jsonLd={cityJsonLd(city.name, city.communityCode, cityPath(city.name), hero)}
+>
+  <Masthead
+    eyebrow="Festivos por ciudad"
+    subheading={`Fiestas locales, autonómicas y nacionales en ${city.name}, con cuenta atrás al próximo`}
+    >Festivos en {city.name}</Masthead
+  >
+
+  <div class="mt-6 animate-fade-up"><Filter value={sel} client:idle /></div>
+
+  <div class="mt-6 animate-fade-up">
+    <Hero
+      targetDate={hero.date}
+      eyebrow={hero.date === today ? "Hoy es festivo" : "Próximo festivo"}
+      title={hero.localName}
+      dateLine={cap(formatDate(hero.date))}
+      badge={heroBadge}
+    >
+      <HeroFooterInfo holiday={hero} />
+    </Hero>
+  </div>
+
+  <div class="mt-8 grid items-start gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+    <div class="min-w-0 animate-fade-up">
+      <h2 class="sr-only">Próximos festivos</h2><HolidayListStatic
+        holidays={upcoming}
+        today={today}
+        nextKey={nextKey}
+        activeKey={activeKey}
+      />
+    </div>
+    <div class="min-w-0 animate-fade-up lg:sticky lg:top-20 lg:self-start">
+      <h2 class="sr-only">Calendario</h2>
+      <Calendar
+        festivos={scoped}
+        activeDate={hero.date}
+        activeKey={activeKey}
+        today={today}
+        client:visible
+      />
+      <GetYourGuideCity locationId={gygLocationId(sel)} />
+      <AdSlot label="Publicidad" />
+    </div>
+  </div>
+
+  <GetYourGuideWidget cityName={city.name} />
+
+  <HolidayDetails
+    holiday={hero}
+    comoSeViveHeading={`Cómo se vive ${hero.localName} en ${city.name}`}
+    practicalHeading={`Qué tener en cuenta en ${city.name}`}
+  />
+
+  <LocalFiestas cityName={city.name} />
+
+  <PuentesTeaser today={today} />
+  <Explore activeCommunity={city.communityCode} year={year} />
+  <EmbedSnippet />
+  <SiteFooter year={year} />
+</Layout>

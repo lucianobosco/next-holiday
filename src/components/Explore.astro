@@ -1,0 +1,49 @@
+---
+import { COMMUNITIES } from "../lib/utils/communities";
+import { CAPITAL_CITIES } from "../lib/utils/localHolidays";
+import { communitySlug, cityPath } from "../lib/utils/slug";
+
+interface Props {
+  activeCommunity?: string;
+  isPuentes?: boolean;
+  year: number;
+}
+const { activeCommunity, isPuentes, year } = Astro.props;
+---
+
+<nav class="mt-16" aria-label="Explorar festivos por lugar">
+  <a
+    href={isPuentes ? "/" : "/puentes"}
+    class="mb-10 inline-flex items-center gap-2 rounded border border-terracotta/40 bg-terracotta-soft px-4 py-2 text-sm font-semibold text-terracotta-deep transition hover:brightness-95"
+  >
+    {isPuentes ? "Ver el próximo festivo →" : `Puentes ${year} en España →`}
+  </a>
+
+  <h2 class="font-display text-xl font-semibold text-ink">Festivos por comunidad</h2>
+  <div class="mt-4 flex flex-wrap gap-2">
+    {
+      COMMUNITIES.map((c) => (
+        <a
+          href={`/comunidad/${communitySlug(c.code)}`}
+          class={`rounded border px-3.5 py-1.5 text-sm font-medium transition hover:border-terracotta/40 hover:text-terracotta ${c.code === activeCommunity ? "border-terracotta/50 bg-terracotta-soft text-terracotta-deep" : "border-line bg-paper-card text-ink"}`}
+        >
+          {c.name}
+        </a>
+      ))
+    }
+  </div>
+
+  <h2 class="mt-10 font-display text-xl font-semibold text-ink">Festivos por ciudad</h2>
+  <div class="mt-4 columns-2 gap-x-6 sm:columns-3 lg:columns-4">
+    {
+      CAPITAL_CITIES.map((c) => (
+        <a
+          href={cityPath(c.name)}
+          class="block py-1 text-sm text-ink-soft transition hover:text-terracotta"
+        >
+          {c.name}
+        </a>
+      ))
+    }
+  </div>
+</nav>

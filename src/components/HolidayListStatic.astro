@@ -1,0 +1,51 @@
+---
+import HolidayCard from "./HolidayCard.astro";
+import type { Holiday } from "../lib/types/holiday";
+interface Props {
+  holidays: Holiday[];
+  today: string;
+  nextKey?: string | null;
+  activeKey?: string | null;
+  limit?: number;
+}
+const { holidays, today, nextKey, activeKey, limit = 7 } = Astro.props;
+const visible = holidays.slice(0, limit);
+const rest = holidays.slice(limit);
+---
+
+<ul class="flex flex-col gap-2.5">
+  {visible.map((h) => <HolidayCard h={h} today={today} nextKey={nextKey} activeKey={activeKey} />)}
+</ul>
+{
+  rest.length > 0 && (
+    <details class="group mt-2.5">
+      <summary class="cursor-pointer list-none rounded-xl border border-line bg-paper-card px-4 py-3 text-center text-sm font-semibold text-terracotta shadow-sm transition hover:border-terracotta/40 hover:shadow-md">
+        <span class="group-open:hidden">
+          Ver {rest.length} festivo{rest.length === 1 ? "" : "s"} más
+        </span>
+        <span class="hidden group-open:inline">Ver menos</span>
+      </summary>
+      <ul class="mt-2.5 flex flex-col gap-2.5">
+        {rest.map((h) => (
+          <HolidayCard h={h} today={today} nextKey={nextKey} activeKey={activeKey} />
+        ))}
+      </ul>
+    </details>
+  )
+}
+<script>
+  function updDays() {
+    document.querySelectorAll("[data-festdate]").forEach((el) => {
+      const ds = el.getAttribute("data-festdate");
+      if (!ds) return;
+      const t = new Date(ds + "T00:00:00").getTime();
+      const d = Math.max(0, Math.floor((t - Date.now()) / 86400000));
+      const n = el.querySelector("[data-days-num]");
+      const u = el.querySelector("[data-days-unit]");
+      if (n) n.textContent = d === 0 ? "hoy" : String(d);
+      if (u) u.textContent = d === 0 ? "" : d === 1 ? "día" : "días";
+    });
+  }
+  updDays();
+  document.addEventListener("astro:page-load", updDays);
+</script>

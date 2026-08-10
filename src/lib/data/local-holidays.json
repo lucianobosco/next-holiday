@@ -1,0 +1,810 @@
+[
+  {
+    "date": "2026-02-17",
+    "localName": "Martes de Carnaval (Entroido)",
+    "locality": "A Coruña",
+    "province": "A Coruña",
+    "communityCode": "ES-GA",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-10-07",
+    "localName": "Nuestra Señora del Rosario",
+    "locality": "A Coruña",
+    "province": "A Coruña",
+    "communityCode": "ES-GA",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-06-24",
+    "localName": "San Juan",
+    "locality": "Albacete",
+    "province": "Albacete",
+    "communityCode": "ES-CM",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-09-08",
+    "localName": "Virgen de Los Llanos",
+    "locality": "Albacete",
+    "province": "Albacete",
+    "communityCode": "ES-CM",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-04-16",
+    "localName": "Santa Faz",
+    "locality": "Alicante",
+    "province": "Alicante",
+    "communityCode": "ES-VC",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-06-23",
+    "localName": "Fogueres de Sant Joan",
+    "locality": "Alicante",
+    "province": "Alicante",
+    "communityCode": "ES-VC",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-06-24",
+    "localName": "San Juan",
+    "locality": "Almería",
+    "province": "Almería",
+    "communityCode": "ES-AN",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-08-29",
+    "localName": "Virgen del Mar",
+    "locality": "Almería",
+    "province": "Almería",
+    "communityCode": "ES-AN",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-05-02",
+    "localName": "San Segundo",
+    "locality": "Ávila",
+    "province": "Ávila",
+    "communityCode": "ES-CL",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-10-15",
+    "localName": "Santa Teresa de Jesús",
+    "locality": "Ávila",
+    "province": "Ávila",
+    "communityCode": "ES-CL",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-02-17",
+    "localName": "Martes de Carnaval",
+    "locality": "Badajoz",
+    "province": "Badajoz",
+    "communityCode": "ES-EX",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-06-24",
+    "localName": "San Juan",
+    "locality": "Badajoz",
+    "province": "Badajoz",
+    "communityCode": "ES-EX",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-05-25",
+    "localName": "Lunes de Pascua Granada (Segona Pasqua)",
+    "locality": "Barcelona",
+    "province": "Barcelona",
+    "communityCode": "ES-CT",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-09-24",
+    "localName": "La Mercè",
+    "locality": "Barcelona",
+    "province": "Barcelona",
+    "communityCode": "ES-CT",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-07-31",
+    "localName": "San Ignacio de Loyola",
+    "locality": "Bilbao",
+    "province": "Bizkaia",
+    "communityCode": "ES-PV",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-08-28",
+    "localName": "Aste Nagusia (Semana Grande)",
+    "locality": "Bilbao",
+    "province": "Bizkaia",
+    "communityCode": "ES-PV",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-06-12",
+    "localName": "El Curpillos",
+    "locality": "Burgos",
+    "province": "Burgos",
+    "communityCode": "ES-CL",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-06-29",
+    "localName": "San Pedro y San Pablo",
+    "locality": "Burgos",
+    "province": "Burgos",
+    "communityCode": "ES-CL",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-04-23",
+    "localName": "San Jorge",
+    "locality": "Cáceres",
+    "province": "Cáceres",
+    "communityCode": "ES-EX",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-05-29",
+    "localName": "Corpus Christi",
+    "locality": "Cáceres",
+    "province": "Cáceres",
+    "communityCode": "ES-EX",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-02-16",
+    "localName": "Lunes de Carnaval",
+    "locality": "Cádiz",
+    "province": "Cádiz",
+    "communityCode": "ES-AN",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-10-07",
+    "localName": "Nuestra Señora del Rosario (Patrona)",
+    "locality": "Cádiz",
+    "province": "Cádiz",
+    "communityCode": "ES-AN",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-03-09",
+    "localName": "Fiesta local (Magdalena)",
+    "locality": "Castellón de la Plana",
+    "province": "Castellón",
+    "communityCode": "ES-VC",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-06-29",
+    "localName": "San Pedro",
+    "locality": "Castellón de la Plana",
+    "province": "Castellón",
+    "communityCode": "ES-VC",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-05-25",
+    "localName": "Virgen de Alarcos",
+    "locality": "Ciudad Real",
+    "province": "Ciudad Real",
+    "communityCode": "ES-CM",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-08-22",
+    "localName": "Octava de la Virgen del Prado",
+    "locality": "Ciudad Real",
+    "province": "Ciudad Real",
+    "communityCode": "ES-CM",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-09-08",
+    "localName": "Velá de la Fuensanta",
+    "locality": "Córdoba",
+    "province": "Córdoba",
+    "communityCode": "ES-AN",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-10-24",
+    "localName": "San Rafael (Custodio de la ciudad)",
+    "locality": "Córdoba",
+    "province": "Córdoba",
+    "communityCode": "ES-AN",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-06-01",
+    "localName": "Virgen de la Luz",
+    "locality": "Cuenca",
+    "province": "Cuenca",
+    "communityCode": "ES-CM",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-09-21",
+    "localName": "San Mateo",
+    "locality": "Cuenca",
+    "province": "Cuenca",
+    "communityCode": "ES-CM",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-07-25",
+    "localName": "Sant Jaume",
+    "locality": "Girona",
+    "province": "Girona",
+    "communityCode": "ES-CT",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-10-29",
+    "localName": "Sant Narcís",
+    "locality": "Girona",
+    "province": "Girona",
+    "communityCode": "ES-CT",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-01-02",
+    "localName": "Día de la Toma",
+    "locality": "Granada",
+    "province": "Granada",
+    "communityCode": "ES-AN",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-06-04",
+    "localName": "Corpus Christi",
+    "locality": "Granada",
+    "province": "Granada",
+    "communityCode": "ES-AN",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-09-08",
+    "localName": "Virgen de la Antigua (Patrona)",
+    "locality": "Guadalajara",
+    "province": "Guadalajara",
+    "communityCode": "ES-CM",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-09-18",
+    "localName": "Viernes de Ferias",
+    "locality": "Guadalajara",
+    "province": "Guadalajara",
+    "communityCode": "ES-CM",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-08-03",
+    "localName": "Fiestas Colombinas",
+    "locality": "Huelva",
+    "province": "Huelva",
+    "communityCode": "ES-AN",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-09-08",
+    "localName": "Nuestra Señora de la Cinta (Patrona)",
+    "locality": "Huelva",
+    "province": "Huelva",
+    "communityCode": "ES-AN",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-01-22",
+    "localName": "San Vicente",
+    "locality": "Huesca",
+    "province": "Huesca",
+    "communityCode": "ES-AR",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-08-10",
+    "localName": "San Lorenzo",
+    "locality": "Huesca",
+    "province": "Huesca",
+    "communityCode": "ES-AR",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-06-11",
+    "localName": "Virgen de la Capilla",
+    "locality": "Jaén",
+    "province": "Jaén",
+    "communityCode": "ES-AN",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-11-25",
+    "localName": "Santa Catalina (Patrona)",
+    "locality": "Jaén",
+    "province": "Jaén",
+    "communityCode": "ES-AN",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-02-17",
+    "localName": "Martes de Carnaval",
+    "locality": "Las Palmas de Gran Canaria",
+    "province": "Las Palmas",
+    "communityCode": "ES-CN",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-06-24",
+    "localName": "Fundación de la Ciudad (San Juan)",
+    "locality": "Las Palmas de Gran Canaria",
+    "province": "Las Palmas",
+    "communityCode": "ES-CN",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-06-24",
+    "localName": "San Juan",
+    "locality": "León",
+    "province": "León",
+    "communityCode": "ES-CL",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-10-05",
+    "localName": "San Froilán",
+    "locality": "León",
+    "province": "León",
+    "communityCode": "ES-CL",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-05-11",
+    "localName": "Festa Major (Sant Anastasi)",
+    "locality": "Lleida",
+    "province": "Lleida",
+    "communityCode": "ES-CT",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-09-29",
+    "localName": "Festa Major (Sant Miquel)",
+    "locality": "Lleida",
+    "province": "Lleida",
+    "communityCode": "ES-CT",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-06-11",
+    "localName": "San Bernabé",
+    "locality": "Logroño",
+    "province": "La Rioja",
+    "communityCode": "ES-RI",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-09-21",
+    "localName": "San Mateo",
+    "locality": "Logroño",
+    "province": "La Rioja",
+    "communityCode": "ES-RI",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-02-17",
+    "localName": "Martes de Carnaval (Entroido)",
+    "locality": "Lugo",
+    "province": "Lugo",
+    "communityCode": "ES-GA",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-10-05",
+    "localName": "San Froilán",
+    "locality": "Lugo",
+    "province": "Lugo",
+    "communityCode": "ES-GA",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-05-15",
+    "localName": "San Isidro Labrador",
+    "locality": "Madrid",
+    "province": "Madrid",
+    "communityCode": "ES-MD",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-11-09",
+    "localName": "Nuestra Señora de la Almudena",
+    "locality": "Madrid",
+    "province": "Madrid",
+    "communityCode": "ES-MD",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-08-19",
+    "localName": "Toma de Málaga por los Reyes Católicos",
+    "locality": "Málaga",
+    "province": "Málaga",
+    "communityCode": "ES-AN",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-09-08",
+    "localName": "Nuestra Señora de la Victoria (Patrona)",
+    "locality": "Málaga",
+    "province": "Málaga",
+    "communityCode": "ES-AN",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-04-07",
+    "localName": "Bando de la Huerta (Fiestas de Primavera)",
+    "locality": "Murcia",
+    "province": "Murcia",
+    "communityCode": "ES-MC",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-09-15",
+    "localName": "Día de la Romería",
+    "locality": "Murcia",
+    "province": "Murcia",
+    "communityCode": "ES-MC",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-02-17",
+    "localName": "Martes de Carnaval (Entroido)",
+    "locality": "Ourense",
+    "province": "Ourense",
+    "communityCode": "ES-GA",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-11-11",
+    "localName": "San Martiño (Patrón)",
+    "locality": "Ourense",
+    "province": "Ourense",
+    "communityCode": "ES-GA",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-05-26",
+    "localName": "Martes de Campo",
+    "locality": "Oviedo",
+    "province": "Asturias",
+    "communityCode": "ES-AS",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-09-21",
+    "localName": "San Mateo",
+    "locality": "Oviedo",
+    "province": "Asturias",
+    "communityCode": "ES-AS",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-02-02",
+    "localName": "Fiesta local (Las Candelas)",
+    "locality": "Palencia",
+    "province": "Palencia",
+    "communityCode": "ES-CL",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-09-02",
+    "localName": "San Antolín",
+    "locality": "Palencia",
+    "province": "Palencia",
+    "communityCode": "ES-CL",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-01-20",
+    "localName": "Sant Sebastià",
+    "locality": "Palma",
+    "province": "Illes Balears",
+    "communityCode": "ES-IB",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-06-24",
+    "localName": "Sant Joan",
+    "locality": "Palma",
+    "province": "Illes Balears",
+    "communityCode": "ES-IB",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-02-18",
+    "localName": "Miércoles de Ceniza",
+    "locality": "Pontevedra",
+    "province": "Pontevedra",
+    "communityCode": "ES-GA",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-07-11",
+    "localName": "San Benitiño (San Benito)",
+    "locality": "Pontevedra",
+    "province": "Pontevedra",
+    "communityCode": "ES-GA",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-06-12",
+    "localName": "San Juan de Sahagún (Patrón)",
+    "locality": "Salamanca",
+    "province": "Salamanca",
+    "communityCode": "ES-CL",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-09-08",
+    "localName": "Virgen de la Vega (Patrona)",
+    "locality": "Salamanca",
+    "province": "Salamanca",
+    "communityCode": "ES-CL",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-01-20",
+    "localName": "San Sebastián (Tamborrada)",
+    "locality": "San Sebastián",
+    "province": "Gipuzkoa",
+    "communityCode": "ES-PV",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-02-17",
+    "localName": "Martes de Carnaval",
+    "locality": "Santa Cruz de Tenerife",
+    "province": "Santa Cruz de Tenerife",
+    "communityCode": "ES-CN",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-05-04",
+    "localName": "Día de la Cruz",
+    "locality": "Santa Cruz de Tenerife",
+    "province": "Santa Cruz de Tenerife",
+    "communityCode": "ES-CN",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-05-25",
+    "localName": "Virgen del Mar",
+    "locality": "Santander",
+    "province": "Cantabria",
+    "communityCode": "ES-CB",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-07-25",
+    "localName": "Santiago Apóstol",
+    "locality": "Santander",
+    "province": "Cantabria",
+    "communityCode": "ES-CB",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-06-29",
+    "localName": "San Pedro",
+    "locality": "Segovia",
+    "province": "Segovia",
+    "communityCode": "ES-CL",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-10-26",
+    "localName": "San Frutos (Patrón)",
+    "locality": "Segovia",
+    "province": "Segovia",
+    "communityCode": "ES-CL",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-04-22",
+    "localName": "Miércoles de Feria",
+    "locality": "Sevilla",
+    "province": "Sevilla",
+    "communityCode": "ES-AN",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-06-04",
+    "localName": "Corpus Christi",
+    "locality": "Sevilla",
+    "province": "Sevilla",
+    "communityCode": "ES-AN",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-06-25",
+    "localName": "Jueves La Saca (Fiestas de San Juan)",
+    "locality": "Soria",
+    "province": "Soria",
+    "communityCode": "ES-CL",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-10-02",
+    "localName": "San Saturio (Patrón)",
+    "locality": "Soria",
+    "province": "Soria",
+    "communityCode": "ES-CL",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-08-19",
+    "localName": "Sant Magí",
+    "locality": "Tarragona",
+    "province": "Tarragona",
+    "communityCode": "ES-CT",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-09-23",
+    "localName": "Santa Tecla",
+    "locality": "Tarragona",
+    "province": "Tarragona",
+    "communityCode": "ES-CT",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-04-07",
+    "localName": "Sermón de las Tortillas",
+    "locality": "Teruel",
+    "province": "Teruel",
+    "communityCode": "ES-AR",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-07-13",
+    "localName": "Lunes de la Vaquilla del Ángel",
+    "locality": "Teruel",
+    "province": "Teruel",
+    "communityCode": "ES-AR",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-01-23",
+    "localName": "San Ildefonso",
+    "locality": "Toledo",
+    "province": "Toledo",
+    "communityCode": "ES-CM",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-11-26",
+    "localName": "Virgen del Sagrario",
+    "locality": "Toledo",
+    "province": "Toledo",
+    "communityCode": "ES-CM",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-01-22",
+    "localName": "San Vicente Mártir",
+    "locality": "Valencia",
+    "province": "Valencia",
+    "communityCode": "ES-VC",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-04-13",
+    "localName": "San Vicente Ferrer (Lunes de San Vicente)",
+    "locality": "Valencia",
+    "province": "Valencia",
+    "communityCode": "ES-VC",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-05-13",
+    "localName": "San Pedro Regalado (Patrón)",
+    "locality": "Valladolid",
+    "province": "Valladolid",
+    "communityCode": "ES-CL",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-09-08",
+    "localName": "Nuestra Señora de San Lorenzo (Patrona)",
+    "locality": "Valladolid",
+    "province": "Valladolid",
+    "communityCode": "ES-CL",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-08-05",
+    "localName": "Virgen Blanca (Patrona)",
+    "locality": "Vitoria-Gasteiz",
+    "province": "Álava",
+    "communityCode": "ES-PV",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-05-25",
+    "localName": "La Hiniesta",
+    "locality": "Zamora",
+    "province": "Zamora",
+    "communityCode": "ES-CL",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-06-29",
+    "localName": "San Pedro",
+    "locality": "Zamora",
+    "province": "Zamora",
+    "communityCode": "ES-CL",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-01-29",
+    "localName": "San Valero",
+    "locality": "Zaragoza",
+    "province": "Zaragoza",
+    "communityCode": "ES-AR",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-03-05",
+    "localName": "Cincomarzada",
+    "locality": "Zaragoza",
+    "province": "Zaragoza",
+    "communityCode": "ES-AR",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-03-20",
+    "localName": "Eid al-Fitr (Fin del Ramadán)",
+    "locality": "Ceuta",
+    "province": "Ceuta",
+    "communityCode": "ES-CE",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-06-13",
+    "localName": "Romería de San Antonio",
+    "locality": "Ceuta",
+    "province": "Ceuta",
+    "communityCode": "ES-CE",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-09-08",
+    "localName": "Nuestra Señora de la Victoria (Patrona)",
+    "locality": "Melilla",
+    "province": "Melilla",
+    "communityCode": "ES-ML",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-09-17",
+    "localName": "Día de Melilla",
+    "locality": "Melilla",
+    "province": "Melilla",
+    "communityCode": "ES-ML",
+    "confidence": "high"
+  },
+  {
+    "date": "2026-11-30",
+    "localName": "San Saturnino (Patrón)",
+    "locality": "Pamplona",
+    "province": "Navarra",
+    "communityCode": "ES-NC",
+    "confidence": "high"
+  }
+]

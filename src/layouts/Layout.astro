@@ -1,0 +1,145 @@
+---
+import "../styles/global.css";
+import { ClientRouter } from "astro:transitions";
+import SiteHeader from "../components/SiteHeader.astro";
+import CookieConsentBanner from "../components/CookieConsentBanner.tsx";
+import Feedback from "../components/Feedback.tsx";
+interface Props {
+  title: string;
+  description?: string;
+  canonical?: string;
+  jsonLd?: object;
+}
+const { title, description = "", canonical, jsonLd } = Astro.props;
+// With SSR both shapes answer 200, with and without the trailing slash. The canonical is
+// normalised to the one with it -- the shape the sitemap emits -- so that search engines
+// are not handed the same page twice.
+const path = Astro.url.pathname;
+const canonicalPath = path.endsWith("/") ? path : `${path}/`;
+const canonicalUrl = canonical ?? new URL(canonicalPath, Astro.site).href;
+const ogImage = new URL("/og-image.png", Astro.site).href;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4e9d2" />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content="El Próximo Festivo" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content="El Próximo Festivo" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    {description && <meta name="twitter:description" content={description} />}
+    <meta name="twitter:image" content={ogImage} />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="alternate" type="application/rss+xml" title="El Próximo Festivo" href="/rss.xml" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="dns-prefetch" href="https://widget.getyourguide.com" />
+    <link rel="dns-prefetch" href="https://cdn.getyourguide.com" />
+    <link rel="dns-prefetch" href="https://static.cloudflareinsights.com" />
+    <link
+      rel="preload"
+      href="/fonts/hanken-grotesk.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="preload" href="/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin />
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+    <ClientRouter />
+    <slot name="head" />
+    <script
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "e0fd40795b854657a77102acc4216fdf"}'></script>
+  </head>
+  <body>
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-terracotta focus:px-4 focus:py-2 focus:font-semibold focus:text-cream"
+      >Saltar al contenido</a
+    >
+    <SiteHeader />
+    <main id="main" class="mx-auto max-w-6xl px-5 py-10 sm:px-8 sm:py-14">
+      <slot />
+    </main>
+    <CookieConsentBanner client:idle />
+    <Feedback client:idle />
+    <script>
+      // After a View Transitions navigation, move focus to the H1, which is what announces
+      // the new page to a screen reader.
+      document.addEventListener("astro:after-swap", () => {
+        const h1 = document.getElementById("page-heading");
+        if (h1) (h1 as HTMLElement).focus();
+      });
+
+      // GetYourGuide's partner script scans the DOM once on load, mounts an iframe into
+      // every div[data-gyg-widget], and keeps global state (window.GYG, _GYG, gygPAStatus)
+      // tied to that <body>. View Transitions replace the <body> on every navigation, so
+      // that state goes stale and the new divs never get mounted after the first click --
+      // neither re-injecting the script nor GYG.refresh() is enough, because the old state
+      // is still there. So the state is torn down completely and the script re-injected,
+      // which gives it a clean scan of the <body> that is actually on screen. Calls within
+      // the same tick are coalesced through a microtask. The divs are static HTML -- the
+      // components never hydrate -- so that Preact's reconciliation cannot wipe the iframe.
+      const w = window as unknown as {
+        __reloadGyg?: () => void;
+        __gygScheduled?: boolean;
+        GYG?: unknown;
+        _GYG?: unknown;
+        gygPAStatus?: unknown;
+      };
+      w.__reloadGyg = () => {
+        if (w.__gygScheduled) return;
+        if (!document.querySelector("[data-gyg-widget]")) return;
+        w.__gygScheduled = true;
+        queueMicrotask(() => {
+          w.__gygScheduled = false;
+          if (!document.querySelector("[data-gyg-widget]")) return;
+          document.getElementById("gyg-widget-script")?.remove();
+          delete w.GYG;
+          delete w._GYG;
+          delete w.gygPAStatus;
+          const s = document.createElement("script");
+          s.id = "gyg-widget-script";
+          s.async = true;
+          s.src = "https://widget.getyourguide.com/dist/pa.umd.production.min.js";
+          s.setAttribute("data-gyg-partner-id", "PNCUJCI");
+          document.head.appendChild(s);
+        });
+      };
+      // Deferred on purpose: the widgets live below the fold, and loading third-party JS on
+      // first paint costs TBT and LCP. An IntersectionObserver waits until a widget comes
+      // near the viewport and only then is the script injected. Re-armed on every
+      // navigation, through astro:page-load.
+      const observeGyg = () => {
+        const widgets = document.querySelectorAll("[data-gyg-widget]");
+        if (!widgets.length) return;
+        const io = new IntersectionObserver(
+          (entries, obs) => {
+            if (entries.some((e) => e.isIntersecting)) {
+              obs.disconnect();
+              w.__reloadGyg?.();
+            }
+          },
+          { rootMargin: "400px" },
+        );
+        widgets.forEach((el) => io.observe(el));
+      };
+      document.addEventListener("astro:page-load", observeGyg);
+    </script>
+  </body>
+</html>

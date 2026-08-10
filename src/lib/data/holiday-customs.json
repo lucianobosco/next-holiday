@@ -1,0 +1,724 @@
+{
+  "Aste Nagusia (Semana Grande) | Bilbao": [
+    "Nueve días de fiesta en torno a Marijaia, la figura sonriente que preside las celebraciones.",
+    "Las txosnas (casetas) de las comparsas animan el Arenal con música, pintxos y ambiente hasta la madrugada.",
+    "Cada noche, un concurso internacional de fuegos artificiales ilumina la ría."
+  ],
+  "Asunción de la Virgen": [
+    "Cae en pleno agosto, así que coincide con las fiestas patronales y verbenas de numerosos pueblos.",
+    "Son días de romerías, ferias, baños y reencuentros familiares en los lugares de veraneo."
+  ],
+  "Año Nuevo": [
+    "Tras las doce campanadas y las uvas de Nochevieja, el día 1 es de descanso y sobremesas largas en familia.",
+    "El 31 muchas ciudades corren la San Silvestre, y el 1 hay quien estrena el año con el primer baño en la playa.",
+    "Se arranca el año con buenos propósitos y, en algunas casas, lentejas o ropa interior roja para atraer la suerte."
+  ],
+  "Bando de la Huerta (Fiestas de Primavera) | Murcia": [
+    "Murcianos y visitantes lucen el traje huertano, con zaragüelles, refajos y pañuelos.",
+    "Desfilan carrozas y peñas por las calles entre charangas, música y mucho ambiente.",
+    "Se comparten productos de la huerta y platos como michirones, pasteles de carne y zarangollo.",
+    "Las barracas repartidas por la ciudad sirven comida y bebida hasta bien entrada la noche."
+  ],
+  "Cincomarzada | Zaragoza": [
+    "Las familias salen al campo, sobre todo al parque del Tío Jorge, a pasar el día.",
+    "Se organiza una comida popular al aire libre con bocadillos, longaniza y vino.",
+    "Hay puestos, actividades para los niños y un ambiente a la vez reivindicativo y festivo.",
+    "Vecinos y asociaciones comparten mesa y mantel en una jornada campestre muy concurrida."
+  ],
+  "Corpus Christi | Cáceres": [
+    "Sale la procesión solemne del Santísimo por las calles del casco antiguo.",
+    "Los vecinos engalanan los balcones a su paso y acompañan el cortejo.",
+    "Es una jornada de recogimiento religioso que convive con el ambiente festivo de la ciudad."
+  ],
+  "Corpus Christi | Granada": [
+    "La figura popular de la Tarasca abre los festejos, luciendo su vestido de moda.",
+    "La procesión del Santísimo recorre calles engalanadas con toldos y altares.",
+    "El recinto ferial se llena de casetas con baile, música y buen ambiente.",
+    "Se disfrutan platos típicos y la ciudad vive una semana entera de feria."
+  ],
+  "Corpus Christi | Sevilla": [
+    "Las calles del centro se alfombran de juncia y romero y se visten con altares y reposteros.",
+    "Los Seises, niños vestidos de época, bailan ante el altar mayor de la Catedral.",
+    "La Custodia de Arfe procesiona al amanecer por un casco antiguo engalanado."
+  ],
+  "Corpus Christi": [
+    "La procesión del Santísimo recorre calles cubiertas de toldos y, en algunos lugares, alfombras de flores.",
+    "En muchas localidades se levantan altares y se engalanan los balcones.",
+    "Es una jornada de gran solemnidad religiosa acompañada de tradiciones populares locales.",
+    "En Toledo destaca el cuidado despliegue ornamental por todo el casco histórico."
+  ],
+  "Dia de la Comunitat Valenciana": [
+    "Es tradición regalar la Mocadorà, un pañuelo de seda con dulces de mazapán.",
+    "Entre esos dulces típicos están la piuleta y el tronador, de formas muy características.",
+    "Hay actos institucionales y la entrada solemne con la Senyera por las calles.",
+    "La jornada se anima con música, conciertos y ambiente festivo por toda la comunidad."
+  ],
+  "Dia de les Illes Balears": [
+    "Cada isla programa actos institucionales, conciertos al aire libre y actividades culturales abiertas a todo el público.",
+    "Los bailes tradicionales y las agrupaciones folclóricas animan plazas y paseos a lo largo del día.",
+    "Muchas familias aprovechan la jornada para salir al campo o a la playa y compartir comida."
+  ],
+  "Diada Nacional de Catalunya": [
+    "La mañana se llena de ofrendas florales ante monumentos y de actos institucionales por toda Cataluña.",
+    "Se izan banderas y suenan canciones tradicionales en calles y plazas del país.",
+    "Por la tarde son habituales las concentraciones y manifestaciones, especialmente concurridas en Barcelona.",
+    "Entidades culturales y castellers acompañan la jornada con actuaciones en muchas localidades."
+  ],
+  "Día das Letras Galegas": [
+    "Bibliotecas, colegios y centros culturales organizan lecturas, recitales y charlas en lengua gallega.",
+    "La jornada rinde homenaje al autor o autora elegido cada año, con conferencias y exposiciones.",
+    "Es un día de libros, música tradicional y actividades para acercar la cultura gallega a todos."
+  ],
+  "Día de Andalucía": [
+    "El 28 de febrero los colegios celebran el día con el desayuno andaluz: pan con aceite de oliva y azúcar.",
+    "Ondean banderas verdiblancas y suena el himno de Andalucía en actos institucionales y escolares."
+  ],
+  "Día de Asturias": [
+    "Covadonga se llena de visitantes que acuden al santuario y a la basílica para celebrar a la patrona.",
+    "Por la región abundan las romerías, la gaita asturiana, la sidra escanciada y la comida campestre.",
+    "El ambiente festivo se completa con verbenas, música y reuniones familiares al aire libre."
+  ],
+  "Día de Canarias": [
+    "Se luce el traje típico canario y las calles se llenan de música folclórica y de timple.",
+    "Plazas y colegios acogen romerías, bailes tradicionales y exhibiciones de lucha canaria.",
+    "Es día de disfrutar la gastronomía isleña, como las papas arrugadas con mojo y otros productos locales.",
+    "El ambiente es de fiesta popular, con actos culturales por todo el archipiélago."
+  ],
+  "Día de Castilla y León": [
+    "Villalar de los Comuneros se convierte en epicentro, con miles de personas reunidas en sus campos.",
+    "Hay actos institucionales, música, mercados artesanos y degustaciones de productos de la tierra.",
+    "El ambiente combina reivindicación, comida popular al aire libre y convivencia festiva.",
+    "Por toda la comunidad se programan actividades culturales y celebraciones locales."
+  ],
+  "Día de Extremadura": [
+    "Hay actos institucionales y se entregan las Medallas de Extremadura a personas y colectivos destacados de la región.",
+    "Muchos fieles peregrinan al Monasterio de Guadalupe para honrar a la patrona de Extremadura.",
+    "Las plazas se animan con música, bailes tradicionales y degustaciones de los productos típicos de la tierra."
+  ],
+  "Día de La Rioja": [
+    "Se celebran actos oficiales y se reconoce a quienes representan los valores de la región.",
+    "El vino es protagonista, con catas y degustaciones que ensalzan la cultura de la viña.",
+    "No faltan las actuaciones de música y danza tradicional en muchas localidades."
+  ],
+  "Día de Melilla | Melilla": [
+    "La ciudad organiza actos institucionales y ofrendas en recuerdo de su historia.",
+    "Las calles se engalanan y hay programación cultural pensada para toda la familia.",
+    "Vecinos y autoridades comparten una jornada festiva por toda la ciudad."
+  ],
+  "Epifanía del Señor": [
+    "La tarde del 5 de enero, las Cabalgatas de Reyes recorren pueblos y ciudades repartiendo caramelos.",
+    "La mañana del 6, los niños abren los regalos que han dejado Melchor, Gaspar y Baltasar.",
+    "No falta el roscón de Reyes, con su haba y su figurita escondidas."
+  ],
+  "Día de la Constitución Española": [
+    "Junto a la Inmaculada (8 de diciembre) forma el popular 'puente de diciembre', muy aprovechado para viajar.",
+    "Marca el pistoletazo de salida de las compras y los mercadillos navideños."
+  ],
+  "Día de la Cruz | Santa Cruz de Tenerife": [
+    "Las cruces de barrios, plazas y patios se adornan con flores, una tradición muy esperada cada año.",
+    "Hay actos religiosos, música en directo y un ambiente festivo por toda la ciudad.",
+    "Vecinos y visitantes recorren las calles para admirar los altares florales engalanados.",
+    "La jornada se anima con verbenas y con el reparto de comida y bebida tradicional."
+  ],
+  "Día de la Región Castilla-La Mancha": [
+    "Se celebra el acto institucional y se reconoce a personas y entidades destacadas de la región.",
+    "Muchos pueblos organizan jornadas de puertas abiertas, música y actividades culturales.",
+    "Es buena ocasión para disfrutar de la gastronomía manchega y de sus productos con denominación."
+  ],
+  "Día de la Región de Murcia": [
+    "Hay actos oficiales y se entregan distinciones a quienes destacan en la vida murciana.",
+    "Las localidades programan música, actividades culturales y jornadas para las familias.",
+    "Se aprovecha para saborear la rica huerta y la gastronomía de la región."
+  ],
+  "Día de la Romería | Murcia": [
+    "Miles de murcianos acompañan a la Virgen de la Fuensanta en su recorrido entre el santuario y la ciudad.",
+    "Muchos lucen el traje regional de huertano y vitorean a su paso por las calles.",
+    "El ambiente se llena de devoción, música y reencuentros familiares.",
+    "Al terminar, no faltan los dulces típicos y la comida compartida entre vecinos."
+  ],
+  "Día de la Toma | Granada": [
+    "Se celebra un acto institucional en el Ayuntamiento con el tradicional volteo del Pendón Real desde el balcón.",
+    "Hay una procesión cívica y misa solemne en recuerdo de la efeméride.",
+    "Es jornada de debate público, con concentraciones de defensores y de detractores.",
+    "El ambiente combina solemnidad institucional y presencia ciudadana en la plaza."
+  ],
+  "Día de las Instituciones de Cantabria": [
+    "Se celebra un acto institucional con autoridades autonómicas en Puente San Miguel, cuna del autogobierno cántabro.",
+    "Se entregan distinciones y reconocimientos a personas y entidades de la región.",
+    "La jornada combina discursos, música y actos abiertos al público."
+  ],
+  "Todos los Santos": [
+    "Es jornada de visita a los cementerios para llevar flores —sobre todo crisantemos— a los seres queridos.",
+    "En las pastelerías triunfan los huesos de santo y los buñuelos de viento.",
+    "Por la noche, en muchos teatros se representa el clásico 'Don Juan Tenorio'."
+  ],
+  "Eid al-Fitr (Fin del Ramadán) | Ceuta": [
+    "Las familias acuden a la oración comunitaria de la mañana, vestidas con sus mejores galas.",
+    "Después se visitan parientes y vecinos, intercambiando felicitaciones y dulces.",
+    "Las casas se llenan de pasteles, té y comidas especiales para celebrar el fin del ayuno.",
+    "Es día de generosidad, reencuentros familiares y ambiente alegre por toda la ciudad."
+  ],
+  "El Curpillos | Burgos": [
+    "Los burgaleses peregrinan hasta el monasterio de Las Huelgas para asistir a la misa y la procesión.",
+    "Es tradición pasar el día en el campo y merendar en las inmediaciones del monasterio.",
+    "El ambiente es de romería popular, con comida al aire libre y convivencia entre familias y amigos."
+  ],
+  "Festa Major (Sant Anastasi) | Lleida": [
+    "Las calles se llenan de cultura popular catalana con gigantes, cabezudos y bestiario festivo.",
+    "Los castellers levantan sus torres humanas ante el público congregado.",
+    "Hay conciertos, correfocs y actos para todas las edades durante varios días.",
+    "El ambiente es de fiesta mayor, con música y celebración por toda la ciudad."
+  ],
+  "Festa Major (Sant Miquel) | Lleida": [
+    "La ciudad se llena de cultura popular catalana, con gegants, capgrossos y castellers animando las plazas.",
+    "No faltan los correfocs, donde diablos y bestias de fuego recorren las calles entre música y bullicio.",
+    "Durante varios días hay conciertos y actividades para todas las edades.",
+    "El ambiente festivo se vive en la calle, con vecinos y visitantes compartiendo las celebraciones."
+  ],
+  "Festividad de la Bien Aparecida": [
+    "Los cántabros peregrinan hasta el santuario de Marrón para honrar a su patrona.",
+    "Se celebran misas solemnes y se rinde devoción ante la imagen de la Virgen.",
+    "El entorno del santuario se anima con romería, comida campestre y reencuentros familiares.",
+    "Es jornada de convivencia, con bailes y música tradicional cántabra."
+  ],
+  "Fiesta Nacional de España": [
+    "En Madrid se celebra el desfile de las Fuerzas Armadas, presidido por la Familia Real.",
+    "Coincide con la Virgen del Pilar: en Zaragoza, la multitudinaria Ofrenda de Flores es el acto central de sus fiestas."
+  ],
+  "Fiesta de la Comunidad de Madrid": [
+    "La región celebra con actos institucionales y diversas actividades culturales abiertas al público.",
+    "Hay programación festiva repartida por distintos municipios madrileños.",
+    "Muchos aprovechan la jornada para salir, pasear y disfrutar del ambiente primaveral."
+  ],
+  "Día del Trabajador": [
+    "El 1 de mayo los sindicatos convocan manifestaciones por los derechos laborales en las principales ciudades.",
+    "Al caer en plena primavera, muchas familias aprovechan para una escapada o una comida en el campo."
+  ],
+  "Fiesta local (Las Candelas) | Palencia": [
+    "Los palentinos acompañan la procesión en honor a la Virgen de la Calle por el centro de la ciudad.",
+    "Es tradicional encender velas y candelas, símbolo de la festividad de la Candelaria.",
+    "La ciudad vive una jornada entrañable de devoción, encuentro vecinal y ambiente invernal."
+  ],
+  "Fiesta local (Magdalena) | Castellón de la Plana": [
+    "Miles de romeros suben en la Romería de les Canyes hasta la ermita de la Magdalena.",
+    "Por la noche destacan las gaiatas, monumentos de luz que iluminan las calles de Castellón.",
+    "Hay desfiles, mascletàs y un ambiente festivo que llena la ciudad durante toda la semana.",
+    "Es tiempo de compartir comida al aire libre y disfrutar de la cultura popular valenciana."
+  ],
+  "Fiestas Colombinas | Huelva": [
+    "La ciudad se vuelca con su feria, llena de casetas, música y buen ambiente.",
+    "Suenan las sevillanas y las charangas, y se baila hasta bien entrada la noche.",
+    "El recinto festivo se anima con atracciones, gastronomía local y reencuentros entre vecinos.",
+    "Los conciertos completan unas jornadas que vive toda Huelva con entusiasmo."
+  ],
+  "Fogueres de Sant Joan | Alicante": [
+    "Alicante levanta enormes monumentos de cartón —las fogueres— que se queman la noche de San Juan en la 'cremà'.",
+    "Cada mediodía retumba la mascletà en la plaza del Ayuntamiento.",
+    "La fiesta culmina con la 'Palmera', un espectáculo de fuegos sobre el monte Benacantil."
+  ],
+  "Fundación de la Ciudad (San Juan) | Las Palmas de Gran Canaria": [
+    "La ciudad celebra su semana grande con verbenas, conciertos y actos populares repartidos por los distintos barrios.",
+    "En la noche de San Juan, las hogueras y el baño en la playa marcan el momento más esperado.",
+    "A los actos institucionales se suma el ambiente festivo, con música en las calles hasta bien entrada la madrugada."
+  ],
+  "Inmaculada Concepción": [
+    "Cierra el puente de diciembre; en muchas casas es el día de montar el belén y el árbol de Navidad.",
+    "En Sevilla, los Tunos cantan a la Inmaculada ante la Plaza del Triunfo."
+  ],
+  "Jueves La Saca (Fiestas de San Juan) | Soria": [
+    "Cuadrillas a caballo conducen las reses desde el monte Valonsadero hasta la ciudad en una multitudinaria comitiva campera.",
+    "Sorianos de todas las edades acompañan la marcha vestidos para la fiesta, entre cantos y bullicio.",
+    "La jornada se vive en el monte y en la pradera, con comida al aire libre y ambiente de cuadrilla."
+  ],
+  "Jueves Santo": [
+    "Las cofradías sacan sus pasos en procesión por las calles, acompañados por nazarenos y música solemne.",
+    "Es costumbre visitar varias iglesias para rezar ante los monumentos eucarísticos.",
+    "El ambiente es de recogimiento, con balcones engalanados y un silencio respetuoso al paso de las imágenes."
+  ],
+  "La Hiniesta | Zamora": [
+    "La imagen de la patrona recorre en romería el camino hasta La Hiniesta, acompañada por numerosos romeros.",
+    "La jornada se vive en el campo, con misa, comida popular y reencuentro entre vecinos.",
+    "El regreso de la Virgen a Zamora cierra una fiesta marcada por la tradición y la devoción."
+  ],
+  "La Mercè | Barcelona": [
+    "Las plazas se llenan de castells, gegants y capgrossos en pasacalles que recorren el centro de la ciudad.",
+    "Al caer la noche, los correfocs inundan las calles de fuego, diablos y tambores.",
+    "Hay conciertos al aire libre, actividades para todas las edades y fuegos artificiales que ponen el broche final."
+  ],
+  "Lunes de Carnaval | Cádiz": [
+    "Chirigotas y comparsas cantan por las calles del casco antiguo, entre coplas satíricas y mucho ingenio.",
+    "Los gaditanos salen disfrazados en grupo para tapear y celebrar el día con humor.",
+    "El ambiente es de fiesta continua, con música, risas y bullicio hasta bien entrada la noche."
+  ],
+  "Lunes de Pascua Granada (Segona Pasqua) | Barcelona": [
+    "Las familias aprovechan la jornada para salir al campo o a la montaña en un día de asueto primaveral.",
+    "Es tradición que los padrinos regalen a sus ahijados la mona de Pascua, un dulce adornado con huevos y figuras de chocolate.",
+    "Las pastelerías llenan sus escaparates de monas, que se comparten en comidas y meriendas al aire libre."
+  ],
+  "Lunes de Pascua": [
+    "Es día de salidas al campo y comidas al aire libre para prolongar el ambiente festivo de la Pascua.",
+    "En muchos lugares se comparte la mona de Pascua y otros dulces típicos de la temporada.",
+    "El buen tiempo invita a romerías, paseos y reuniones familiares que cierran la Semana Santa."
+  ],
+  "Lunes de la Vaquilla del Ángel | Teruel": [
+    "Las calles se llenan de peñas vestidas con el pañuelo y el blusón típicos, animadas por charangas durante toda la jornada.",
+    "Hay encierros y sueltas de vaquillas que congregan a vecinos y visitantes en el centro de la ciudad.",
+    "Se comparte comida y bebida en las peñas, y la fiesta se prolonga con verbenas y música.",
+    "El ambiente es de alegría continua en torno al Torico, símbolo muy querido de Teruel."
+  ],
+  "Martes de Campo | Oviedo": [
+    "Los ovetenses salen a merendar al campo, sobre todo a la zona del Naranco, en una gran jornada campestre.",
+    "Se comparte el bollu preñáu, el bollo relleno de chorizo, acompañado de sidra entre familiares y amigos.",
+    "Hay romería, música y ambiente festivo al aire libre durante toda la jornada.",
+    "La Cofradía de La Balesquida organiza la celebración, fiel a una tradición de siglos."
+  ],
+  "Martes de Carnaval (Entroido) | A Coruña": [
+    "Las calles se llenan de gente disfrazada, comparsas y desfiles que recorren el centro de la ciudad.",
+    "Hay música, charangas y un ambiente festivo y bullicioso que cierra los días de Carnaval.",
+    "Es tradición degustar productos de la matanza y dulces de la temporada como las orejas y las filloas."
+  ],
+  "Martes de Carnaval (Entroido) | Lugo": [
+    "La gente sale disfrazada y las comparsas animan las calles del casco histórico con música y bailes.",
+    "Es jornada de comidas copiosas con productos del cerdo, orejas, filloas y otros dulces típicos del Entroido.",
+    "El ambiente festivo y participativo llena la ciudad antes del Miércoles de Ceniza."
+  ],
+  "Martes de Carnaval (Entroido) | Ourense": [
+    "Las calles se llenan de máscaras y comparsas que desafían a los vecinos con burlas e ingenio.",
+    "Suenan las charangas mientras los disfraces más elaborados desfilan entre el bullicio.",
+    "Se come en abundancia, con productos del cerdo y dulces típicos de estas fechas como las orejas y las filloas.",
+    "El ambiente festivo se prolonga hasta la noche, antes de dar paso a la Cuaresma."
+  ],
+  "Martes de Carnaval | Badajoz": [
+    "La ciudad se vuelca en la calle con comparsas y murgas que llenan de color las avenidas.",
+    "Los grupos rivalizan con coreografías, plumas y vestuarios llamativos al ritmo de la música.",
+    "Vecinos y visitantes se disfrazan y participan del ambiente festivo en plazas y barrios.",
+    "Se bebe, se baila y se canta hasta bien entrada la noche, antes del cierre del carnaval."
+  ],
+  "Martes de Carnaval | Las Palmas de Gran Canaria": [
+    "Las murgas y comparsas toman las calles con disfraces deslumbrantes y plumas de colores.",
+    "Suena la música y la gente baila en grupo hasta la madrugada.",
+    "Es jornada de ambiente festivo en la calle, con disfraces para todas las edades.",
+    "Los actos culminan poco después con el tradicional entierro de la sardina."
+  ],
+  "Martes de Carnaval | Santa Cruz de Tenerife": [
+    "Las comparsas desfilan con trajes brillantes y coreografías al ritmo de la música.",
+    "Murgas y agrupaciones recorren las calles entre confeti, plumas y mucho baile.",
+    "Vecinos y visitantes se disfrazan y se suman al bullicio en plazas y avenidas.",
+    "La fiesta se prolonga hasta la madrugada, antes del entierro de la sardina."
+  ],
+  "Miércoles de Ceniza | Pontevedra": [
+    "Se celebra el simbólico entierro de la sardina, que pone fin a los días de Entroido.",
+    "Una comitiva acompaña la figura de la sardina entre lloros fingidos y mucho humor.",
+    "Es jornada de transición, más calmada, que da paso al recogimiento de la Cuaresma."
+  ],
+  "Miércoles de Feria | Sevilla": [
+    "El recinto se llena de casetas donde se baila por sevillanas y se comparte la jornada.",
+    "Muchas mujeres lucen el traje de flamenca y los caballistas pasean engalanados.",
+    "Se toman tapas y rebujito mientras suena la música hasta la madrugada.",
+    "Por la tarde, el paseo de caballos y enganches es uno de los momentos más vistosos."
+  ],
+  "Navidad": [
+    "La noche anterior, la Nochebuena, reúne a la familia en torno a una gran cena y, para algunos, la Misa del Gallo.",
+    "El día 25 se prolonga con comidas, turrones, mazapanes y villancicos."
+  ],
+  "Nuestra Señora de San Lorenzo (Patrona) | Valladolid": [
+    "La ciudad honra a su patrona con actos religiosos y una procesión que recorre el centro histórico.",
+    "Es jornada grande de las fiestas patronales, con ambiente festivo en plazas y soportales.",
+    "Las familias salen a la calle y comparten dulces y platos de la cocina castellana."
+  ],
+  "Nuestra Señora de la Almudena | Madrid": [
+    "Los madrileños acuden a la catedral de la Almudena para celebrar la misa solemne en honor a su patrona.",
+    "Es tradición la ofrenda floral ante su imagen, que reúne a numerosos devotos.",
+    "La jornada se vive con devoción en el entorno del Madrid de los Austrias."
+  ],
+  "Nuestra Señora de la Cinta (Patrona) | Huelva": [
+    "Los onubenses se acercan al santuario del Conquero para honrar a su patrona.",
+    "La jornada combina misa solemne y procesión en su honor.",
+    "Familias y devotos comparten un ambiente festivo y participativo."
+  ],
+  "Nuestra Señora de la Victoria (Patrona) | Melilla": [
+    "Melilla honra a su patrona con misa solemne y procesión por las calles de la ciudad.",
+    "Vecinos y autoridades acompañan a la imagen en su recorrido.",
+    "La jornada combina los actos religiosos con un ambiente festivo y de encuentro."
+  ],
+  "Nuestra Señora de la Victoria (Patrona) | Málaga": [
+    "Honra a la patrona de la ciudad con una solemne procesión hasta el Santuario de la Victoria.",
+    "Es una jornada más recogida y devocional, muy distinta al bullicio de la Feria de agosto."
+  ],
+  "Nuestra Señora del Rosario (Patrona) | Cádiz": [
+    "Los gaditanos rinden homenaje a su patrona con una solemne procesión por el casco antiguo.",
+    "Es tradición la ofrenda floral ante la Virgen, una de las fiestas más arraigadas de la ciudad.",
+    "Las calles se llenan de devotos y el ambiente festivo se prolonga durante la jornada."
+  ],
+  "Nuestra Señora del Rosario | A Coruña": [
+    "A Coruña honra a la Virgen del Rosario con misa solemne y procesión por la ciudad.",
+    "Vecinos y cofradías acompañan a la imagen en su recorrido.",
+    "El día se vive con devoción y ambiente festivo en las calles del centro."
+  ],
+  "Octava de la Virgen del Prado | Ciudad Real": [
+    "Los ciudadrealeños acompañan a su patrona en una solemne procesión por el centro de la ciudad.",
+    "La jornada despide la feria entre verbenas, casetas y ambiente festivo hasta la madrugada.",
+    "Al caer la noche, un castillo de fuegos artificiales ilumina el cielo y pone el broche final.",
+    "Las familias se reúnen para comer y disfrutar de las últimas atracciones del recinto ferial."
+  ],
+  "Romería de San Antonio | Ceuta": [
+    "Miles de ceutíes se visten de fiesta y peregrinan hasta el santuario en alegre romería.",
+    "Se instalan casetas donde se come, se bebe y se baila al ritmo de la música popular.",
+    "El ambiente mezcla la devoción al santo franciscano con las comidas al aire libre y los reencuentros familiares.",
+    "Es costumbre pasar el día entero entre cantos, convivencia y celebración multitudinaria."
+  ],
+  "San Antolín | Palencia": [
+    "Los palentinos bajan a la cripta de la catedral para beber el agua de la fuente, según marca la tradición.",
+    "La ciudad se vuelca en sus fiestas mayores con la procesión del patrón, verbenas y orquestas.",
+    "Las calles se llenan de peñas, charangas y ambiente festivo durante toda la jornada.",
+    "Hay actos populares, música y reuniones que congregan a vecinos y visitantes."
+  ],
+  "San Benitiño (San Benito) | Pontevedra": [
+    "Miles de devotos peregrinan hasta el monasterio de Lérez para honrar a este santo milagroso.",
+    "La famosa festa do mexillón reparte mejillones cocidos entre los romeros congregados.",
+    "El día transcurre entre comidas campestres, música tradicional gallega y ambiente de romería.",
+    "Las familias comparten mesa al aire libre y disfrutan de la jornada festiva."
+  ],
+  "San Bernabé | Logroño": [
+    "Logroño reparte pez, pan y vino entre vecinos y visitantes, recreando el antiguo voto.",
+    "Hay actos y recreaciones que rememoran el asedio de 1521 y la gesta de la ciudad.",
+    "Las calles se animan con música, degustaciones y un ambiente festivo muy participativo.",
+    "Los riojanos acompañan los actos institucionales y disfrutan de la jornada en comunidad."
+  ],
+  "San Froilán | León": [
+    "Los leoneses celebran la multitudinaria romería del Foro u Oferta con carros engalanados y trajes regionales.",
+    "Las calles se llenan de charangas, música tradicional y un ambiente festivo otoñal.",
+    "Es cita habitual disfrutar de la gastronomía local y de las atracciones y puestos de feria.",
+    "Vecinos y visitantes acompañan los actos en honor al patrón durante varias jornadas."
+  ],
+  "San Froilán | Lugo": [
+    "La gente se reúne en las pulperías de la feria para comer pulpo á feira con cachelos y vino.",
+    "Las calles se llenan con la feria de ganado, las atracciones y los puestos de artesanía.",
+    "Hay conciertos, charangas y pasacalles que animan el casco antiguo durante varios días.",
+    "Los gigantes y cabezudos y los grupos de folclore gallego acompañan las jornadas festivas."
+  ],
+  "San Frutos (Patrón) | Segovia": [
+    "Los segovianos acuden a la catedral, donde se venera al patrón, para asistir a la misa solemne.",
+    "Es tradición el llamado paso de la hoja del libro del santo entre los devotos.",
+    "Muchos vecinos se acercan en romería a la ermita junto a las hoces del Duratón.",
+    "El ambiente combina los actos religiosos con encuentros familiares y comida popular."
+  ],
+  "San Ignacio de Loyola | Bilbao": [
+    "La jornada se vive con misas en honor al santo y actos de raíz vasca.",
+    "Es habitual disfrutar de música tradicional y de bailes como el aurresku.",
+    "Las familias aprovechan el día festivo para comer juntas y pasear por la villa.",
+    "En las calles no faltan los pintxos y el ambiente tranquilo de jornada local."
+  ],
+  "San Ildefonso | Toledo": [
+    "Los toledanos asisten a la misa solemne en honor a su patrón.",
+    "Es una jornada de descanso local que las familias dedican a reunirse y pasear.",
+    "El ambiente invita a recorrer el casco histórico y disfrutar de la gastronomía manchega.",
+    "Los dulces y guisos tradicionales acompañan las comidas de estas fechas."
+  ],
+  "San Isidro Labrador | Madrid": [
+    "Los madrileños se visten de chulapos y chulapas y acuden a la pradera de San Isidro a merendar.",
+    "Se baila el chotis al son del organillo y se comen las típicas rosquillas 'tontas' y 'listas'.",
+    "Coincide con la feria taurina más importante del mundo, en Las Ventas."
+  ],
+  "San Jorge (Día de Aragón)": [
+    "Los aragoneses celebran su día con actos institucionales y exaltación de la identidad propia.",
+    "Es tradición regalar rosas y disfrutar de jotas, dances y música popular aragonesa.",
+    "Las plazas acogen degustaciones, puestos y actividades culturales para todos los públicos.",
+    "Muchas familias aprovechan la jornada para salir al campo y compartir comida."
+  ],
+  "San Jorge | Cáceres": [
+    "La ciudad vive recreaciones medievales que rememoran la lucha entre moros y cristianos.",
+    "El acto más esperado es la quema del Diablo en la Plaza Mayor.",
+    "Hay desfiles, música y luces que animan el casco antiguo.",
+    "Vecinos y visitantes llenan las calles disfrutando del ambiente festivo nocturno."
+  ],
+  "San Juan de Sahagún (Patrón) | Salamanca": [
+    "La ciudad saca al patrón en procesión solemne por las calles del centro histórico.",
+    "Suenan repiques de campanas y la corporación municipal acompaña al santo.",
+    "La jornada combina actos religiosos con un ambiente festivo en toda la ciudad.",
+    "Las familias salmantinas aprovechan el día para reunirse y disfrutar juntas."
+  ],
+  "San Juan | Albacete": [
+    "En la víspera se encienden hogueras y muchos saltan sobre el fuego al caer la noche.",
+    "Las verbenas con música animan plazas y barrios hasta bien entrada la madrugada.",
+    "Vecinos y familias se reúnen al aire libre para celebrar el solsticio de verano.",
+    "El ambiente se prolonga con baile y convivencia durante toda la noche."
+  ],
+  "San Juan | Almería": [
+    "La noche se vive en la playa, con hogueras encendidas frente al mar.",
+    "Muchos se bañan a medianoche siguiendo la tradición purificadora del agua.",
+    "Hay verbenas, música y comida compartida en la arena hasta el amanecer.",
+    "Familias y cuadrillas montan sus reuniones junto al fuego."
+  ],
+  "San Juan | Badajoz": [
+    "La Feria de San Juan llena la ciudad de casetas, atracciones y ambiente festivo.",
+    "Las verbenas con música acompañan las celebraciones durante varios días.",
+    "Las familias acuden al recinto ferial a comer, bailar y pasear.",
+    "El bullicio se extiende por las noches hasta bien tarde."
+  ],
+  "San Juan | León": [
+    "Las fiestas de San Juan y San Pedro llenan León de conciertos y ferias.",
+    "La popular fiesta del agua refresca calles y plazas en pleno verano.",
+    "Hay verbenas y mucho ambiente festivo por todo el casco antiguo.",
+    "Vecinos y visitantes salen a disfrutar de las noches de música y baile."
+  ],
+  "San Lorenzo | Huesca": [
+    "Las comparsas y la gente visten de blanco y verde, los colores de la fiesta.",
+    "Se celebra la procesión del patrón acompañada de bailes tradicionales.",
+    "Las peñas recorren la ciudad con charangas y mucho ambiente.",
+    "Hay verbenas multitudinarias y comidas populares durante toda la semana."
+  ],
+  "San Martiño (Patrón) | Ourense": [
+    "La ciudad se vuelca con misa solemne y procesión del patrón por las calles del casco viejo.",
+    "Suena la gaita y las charangas animan plazas y soportales durante toda la jornada.",
+    "Es tiempo de magosto: se asan castañas al calor de las hogueras entre vecinos.",
+    "Bodegas y mesones abren para catar el vino nuevo con productos de temporada."
+  ],
+  "San Mateo | Cuenca": [
+    "Las peñas, con sus pañuelos, toman el casco antiguo entre música y bullicio.",
+    "Los encierros y festejos taurinos marcan el pulso de las mañanas festivas.",
+    "Las calles empinadas se llenan de charangas, peñistas y ambiente hasta la madrugada.",
+    "No falta la zurra para acompañar las largas jornadas de fiesta."
+  ],
+  "San Mateo | Logroño": [
+    "El pisado de la uva y la ofrenda del primer mosto a la Virgen abren las fiestas.",
+    "La calle Laurel se llena de gente para ir de pinchos y catar el vino riojano.",
+    "Las peñas recorren la ciudad con sus charangas y blusas tradicionales.",
+    "Verbenas, música y degustaciones populares acompañan la celebración de la vendimia."
+  ],
+  "San Mateo | Oviedo": [
+    "La ciudad se entrega a conciertos, verbenas y actividades en sus calles y parques.",
+    "Es jornada para compartir sidra escanciada y comida popular entre cuadrillas.",
+    "El ambiente festivo se prolonga día y noche por todo el centro ovetense.",
+    "Numerosos actos multitudinarios reúnen a vecinos y visitantes en la capital asturiana."
+  ],
+  "San Pedro Regalado (Patrón) | Valladolid": [
+    "La ciudad honra a su patrón con misa solemne y procesión por el centro histórico.",
+    "Por su vínculo taurino, la jornada suele acompañarse de festejos en la plaza de toros.",
+    "Las calles se animan con música y ambiente popular en torno a las celebraciones.",
+    "Vecinos y visitantes comparten el día entre actos religiosos y festivos."
+  ],
+  "San Pedro y San Pablo | Burgos": [
+    "Las peñas llenan la ciudad de música, color y casetas durante los «Sampedros».",
+    "Verbenas, charangas y conciertos animan las noches de finales de junio.",
+    "El paseo del Espolón se convierte en punto de encuentro de la fiesta.",
+    "No faltan los actos populares ni la buena gastronomía castellana entre cuadrillas."
+  ],
+  "San Pedro | Castellón de la Plana": [
+    "Se celebra una misa solemne en honor al apóstol y la procesión recorre las calles del barrio.",
+    "Por la tarde se animan verbenas con orquesta y charangas, y la gente se reúne entre vecinos.",
+    "No faltan los actos populares ni el ambiente festivo que acompaña a estas celebraciones."
+  ],
+  "San Pedro | Segovia": [
+    "La ciudad vive sus fiestas patronales con procesión, misa mayor y desfiles por el casco histórico.",
+    "Las plazas se llenan de conciertos y verbenas que animan las noches de finales de junio.",
+    "Hay actividades para todas las edades, charangas y degustaciones de la cocina local."
+  ],
+  "San Pedro | Zamora": [
+    "Zamora honra al apóstol con misa, procesión y un animado programa de fiestas patronales.",
+    "Las verbenas con orquesta llenan las plazas y la gente sale a disfrutar de las noches de junio.",
+    "Se suceden actos populares, conciertos y degustaciones de la gastronomía zamorana."
+  ],
+  "San Rafael (Custodio de la ciudad) | Córdoba": [
+    "Los cordobeses acuden a la misa solemne y a la procesión del arcángel por las calles del centro.",
+    "Es tradición visitar los triunfos de San Rafael repartidos por la ciudad para honrar a su custodio.",
+    "El ambiente se vive en patios, plazas y templos, entre devoción y alegría."
+  ],
+  "San Saturio (Patrón) | Soria": [
+    "Los sorianos peregrinan a la ermita junto al Duero en una concurrida romería al patrón.",
+    "Se celebran misa, procesión y actos populares en el entorno del río y la ciudad.",
+    "Las verbenas y la convivencia al aire libre marcan estas fiestas de finales de agosto."
+  ],
+  "San Saturnino (Patrón) | Pamplona": [
+    "Pamplona honra a su patrón con misa solemne y procesión por el casco viejo de la ciudad.",
+    "Los gigantes y cabezudos salen a la calle y la jota acompaña los actos populares.",
+    "Las charangas, el ambiente festivo y la gastronomía navarra animan la jornada de finales de noviembre."
+  ],
+  "San Sebastián (Tamborrada) | San Sebastián": [
+    "A medianoche se iza la bandera en la plaza de la Constitución y arrancan los tambores.",
+    "Compañías de adultos desfilan vestidos de cocineros y soldados redoblando barriles y tambores.",
+    "Una multitudinaria tamborrada infantil recorre las calles a lo largo de la jornada.",
+    "La ciudad come y disfruta en sus sociedades gastronómicas, en un ambiente festivo de día entero."
+  ],
+  "San Segundo | Ávila": [
+    "La jornada gira en torno a la misa solemne y la procesión en honor al patrón.",
+    "Vecinos y autoridades acompañan la imagen por las calles del casco antiguo amurallado.",
+    "Es costumbre acercarse a la ermita junto al río para vivir la celebración religiosa."
+  ],
+  "San Valero | Zaragoza": [
+    "El día se asocia al reparto y la degustación del tradicional roscón de San Valero.",
+    "Hay misa y actos religiosos en honor al patrón de la ciudad.",
+    "Las pastelerías llenan sus escaparates de roscones para endulzar esta jornada invernal."
+  ],
+  "San Vicente Ferrer (Lunes de San Vicente) | Valencia": [
+    "Los barrios montan altares callejeros adornados con flores y telas.",
+    "Los niños representan en pequeños escenarios los milagros atribuidos al santo.",
+    "La jornada combina los actos religiosos con un animado ambiente de calle.",
+    "Es tradición pasear entre los altares disfrutando del buen tiempo primaveral."
+  ],
+  "San Vicente Mártir | Valencia": [
+    "La fecha se vive con misa y actos religiosos en honor al patrón de la ciudad.",
+    "Es habitual la procesión y la veneración de la imagen del santo mártir.",
+    "La jornada mantiene un tono devoto en pleno mes de enero."
+  ],
+  "San Vicente | Huesca": [
+    "La víspera se enciende la tradicional hoguera, en torno a la que se reúnen los vecinos.",
+    "Al calor del fuego se comparte comida, bebida y buena conversación entre amigos.",
+    "El día se celebra con misa en honor al copatrón de la ciudad."
+  ],
+  "Sant Esteve": [
+    "Las familias se reúnen en una larga sobremesa para alargar el ambiente navideño.",
+    "El plato estrella son los canelones, elaborados a menudo con las sobras del día anterior.",
+    "Es una jornada tranquila y casera, dedicada al descanso y a la compañía de los seres queridos.",
+    "En muchas localidades se programan conciertos y representaciones teatrales de raíz navideña."
+  ],
+  "Sant Jaume | Girona": [
+    "La localidad celebra su fiesta mayor de verano en honor al apóstol Santiago.",
+    "Las calles se llenan de verbenas, música y bailes que se prolongan hasta la madrugada.",
+    "No faltan las actividades populares, los pasacalles y las comidas que reúnen al vecindario.",
+    "El ambiente combina la tradición religiosa con el bullicio cálido del verano."
+  ],
+  "Sant Joan | Palma": [
+    "La víspera se encienden hogueras y es costumbre saltar el fuego para despedir lo viejo.",
+    "Las playas y plazas se llenan de reuniones nocturnas, música y baños a medianoche.",
+    "Es habitual disfrutar de la coca de Sant Joan al calor de las celebraciones.",
+    "El ambiente es de noche mágica, con festejos que se alargan hasta el amanecer."
+  ],
+  "Sant Joan": [
+    "La noche del 23 al 24 se encienden hogueras para 'quemar' lo viejo y dar la bienvenida al verano.",
+    "En la costa se salta sobre el fuego y se baña uno en el mar a medianoche para atraer la suerte.",
+    "Petardos, verbenas y la coca de Sant Joan completan la fiesta en Cataluña, Valencia y Baleares."
+  ],
+  "Sant Magí | Tarragona": [
+    "La ciudad vive la baixada de l'aigua, que trae agua desde las fuentes de la Brufaganya.",
+    "Desfilan gigantes y cabezudos, y se levantan castells que llenan las plazas de emoción.",
+    "Las calles se animan con pasacalles, conciertos y actos populares por toda la ciudad.",
+    "El agua, repartida entre el vecindario, se convierte en el elemento central de la jornada."
+  ],
+  "Sant Narcís | Girona": [
+    "La ciudad celebra sus populares Fires con atracciones y ambiente festivo durante varios días.",
+    "Hay actos en honor al patrón, pasacalles de gigantes y bailes de sardanas en las calles.",
+    "El ambiente festivo se extiende de la mañana a la noche, con música y propuestas para todos.",
+    "La mosca, símbolo de la ciudad, asoma por todas partes en la decoración y el imaginario popular."
+  ],
+  "Sant Sebastià | Palma": [
+    "La gran noche se enciende con hogueras repartidas por las plazas y calles de la ciudad.",
+    "El vecindario asa carne y butifarras en barbacoas populares al calor de las llamas.",
+    "Hay conciertos al aire libre que animan el ambiente hasta bien entrada la madrugada.",
+    "La jornada combina tradición, música y reunión vecinal en pleno invierno mallorquín."
+  ],
+  "Santa Catalina (Patrona) | Jaén": [
+    "Muchos vecinos suben al cerro de Santa Catalina, coronado por el castillo que domina la capital.",
+    "La jornada combina los actos religiosos en honor a la copatrona con un ambiente festivo en la ciudad.",
+    "Es día de reunión familiar, paseo y disfrute del entorno monumental jiennense."
+  ],
+  "Santa Faz | Alicante": [
+    "Miles de peregrinos recorren a pie los kilómetros que separan la ciudad del monasterio de la Santa Faz.",
+    "Es habitual caminar con vara y bollo, parando para comer y beber a lo largo del trayecto.",
+    "El ambiente resulta a la vez devoto y festivo, con familias y cuadrillas compartiendo la romería.",
+    "Al llegar, los fieles veneran la reliquia entre una gran afluencia de público."
+  ],
+  "Santa Tecla | Tarragona": [
+    "Las colles castelleras levantan sus torres humanas en una de las citas más esperadas del calendario.",
+    "El séquito de gigantes, cabezudos y bestiario recorre las calles al son de la música tradicional.",
+    "La pólvora y los fuegos artificiales encienden las noches de la fiesta mayor.",
+    "La ciudad se llena de pasacalles, conciertos y ambiente en las plazas y el casco antiguo."
+  ],
+  "Santa Teresa de Jesús | Ávila": [
+    "La ciudad honra a su santa con actos religiosos y una intensa devoción popular.",
+    "Es habitual degustar las yemas de Santa Teresa, dulce típico abulense ligado a estas fechas.",
+    "Las calles se animan con verbenas, música y reuniones que llenan la capital amurallada."
+  ],
+  "Santiago Apóstol | Santander": [
+    "Santander celebra a su patrón con misa solemne y actos en honor al apóstol.",
+    "La ciudad vive una jornada festiva, con ambiente en calles, plazas y la zona marítima.",
+    "Es día de descanso, paseo y reunión familiar al calor del verano cántabro."
+  ],
+  "Santiago Apóstol": [
+    "En numerosas localidades se celebran misa y procesión en honor al apóstol patrón.",
+    "En Galicia la víspera se vive con especial solemnidad y suele iluminarse con fuegos.",
+    "Es jornada de fiestas patronales, con verbenas, música y comidas populares por todo el país."
+  ],
+  "Sermón de las Tortillas | Teruel": [
+    "Las familias y cuadrillas salen al campo para pasar la jornada al aire libre en buena compañía.",
+    "El plato protagonista es la tortilla, que se comparte en comidas campestres y meriendas.",
+    "Reina el ambiente de hermandad, con sobremesas largas y juegos al aire libre."
+  ],
+  "Toma de Málaga por los Reyes Católicos | Málaga": [
+    "Es el corazón de la Feria de Málaga, una de las más multitudinarias del verano andaluz.",
+    "De día, el centro histórico se llena de vino fino, biznagas, trajes de flamenca y verdiales; de noche, la fiesta se traslada al recinto del Cortijo de Torres.",
+    "Arranca con un gran castillo de fuegos artificiales sobre la playa de la Malagueta."
+  ],
+  "Velá de la Fuensanta | Córdoba": [
+    "Los cordobeses se acercan al santuario de la Fuensanta para honrar a la Virgen.",
+    "El entorno se anima con puestos, música y las típicas campanas de cerámica como recuerdo.",
+    "Se vive un ambiente de verbena popular, con paseo, baile y reencuentros vecinales."
+  ],
+  "Viernes Santo": [
+    "Es el día grande de la Semana Santa: procesiones de pasos y costaleros recorren las calles, a menudo en silencio.",
+    "Saetas, tambores y capirotes marcan el ambiente, especialmente en Andalucía y Castilla.",
+    "En la mesa, platos de vigilia como el potaje de garbanzos, el bacalao y, de postre, las torrijas."
+  ],
+  "Viernes de Ferias | Guadalajara": [
+    "El casco histórico se llena de gente en uno de los días grandes de las fiestas.",
+    "Se celebran encierros y actos taurinos en medio de la animación callejera.",
+    "Al caer la noche llegan las verbenas, la música y el ambiente festivo hasta tarde."
+  ],
+  "Virgen Blanca (Patrona) | Vitoria-Gasteiz": [
+    "La ciudad se enciende con la bajada del Celedón desde la torre de San Miguel.",
+    "Miles de personas se reúnen en la plaza luciendo la txapela y el pañuelo azul.",
+    "Arrancan días de música, txosnas, conciertos y celebración popular sin pausa."
+  ],
+  "Virgen de Alarcos | Ciudad Real": [
+    "Numerosos romeros acompañan a la Virgen de Alarcos hasta su ermita, a las afueras.",
+    "Se forma una romería con carrozas, caballos y peñas camino del cerro.",
+    "El día se disfruta con comida campera, convivencia y ambiente festivo junto a la ermita."
+  ],
+  "Virgen de Los Llanos | Albacete": [
+    "La festividad de la patrona da el pistoletazo de salida a la Feria de Albacete.",
+    "Los albaceteños acuden al recinto ferial para disfrutar de las atracciones y las casetas.",
+    "Se celebra una procesión en honor a la Virgen, entre música, baile y ambiente festivo."
+  ],
+  "Virgen de la Antigua (Patrona) | Guadalajara": [
+    "La festividad da inicio a las grandes Ferias y Fiestas de la ciudad, que llenan las calles de música y ambiente animado.",
+    "Se celebran misa y procesión en honor a la patrona, junto a verbenas y conciertos durante estos días.",
+    "Forman parte de la fiesta los encierros y festejos taurinos, muy seguidos por vecinos y visitantes.",
+    "El ambiente es de fiesta mayor, con casetas, atracciones y reuniones familiares."
+  ],
+  "Virgen de la Capilla | Jaén": [
+    "Es el día grande de los jiennenses, que conmemoran el Descenso de la Virgen y acompañan su procesión por el casco histórico.",
+    "La jornada se vive con gran devoción, entre misas solemnes y ofrendas en su honor.",
+    "Las familias salen a la calle y comparten comidas y reuniones festivas.",
+    "El ambiente combina recogimiento religioso con celebración popular."
+  ],
+  "Virgen de la Luz | Cuenca": [
+    "La procesión recorre la ciudad uniendo el casco antiguo con la parte moderna, en una de las jornadas más sentidas del año.",
+    "Los conquenses acompañan a su patrona y alcaldesa honoraria con honda participación.",
+    "A lo largo del día se celebran misas solemnes y actos religiosos.",
+    "El ambiente es de devoción y encuentro vecinal por las calles."
+  ],
+  "Virgen de la Vega (Patrona) | Salamanca": [
+    "La jornada coincide con las ferias y fiestas mayores, así que la ciudad se vuelca en la celebración.",
+    "Se celebran misa y procesión en honor a la patrona, cuya talla románica se venera en la catedral.",
+    "Durante estos días hay verbenas, conciertos, casetas y festejos populares.",
+    "Las familias y peñas llenan las calles en un ambiente festivo."
+  ],
+  "Virgen del Mar | Almería": [
+    "La imagen de la patrona sale en procesión por las calles de la ciudad hasta el mar.",
+    "Es la gran cita religiosa almeriense, vivida con devoción y acompañamiento popular.",
+    "Las familias se reúnen y la jornada se llena de actos en su honor.",
+    "El ambiente une recogimiento y celebración por toda la ciudad."
+  ],
+  "Virgen del Mar | Santander": [
+    "Los santanderinos acuden al santuario, sobre un islote del litoral, para honrar a una devoción de siglos.",
+    "Se celebran procesiones, tanto terrestre como marítima, junto a una ofrenda floral al mar.",
+    "Las embarcaciones acompañan la imagen en su recorrido por la costa.",
+    "El ambiente es de devoción marinera y encuentro vecinal."
+  ],
+  "Virgen del Sagrario | Toledo": [
+    "La catedral abre sus puertas y los fieles acuden a venerar a la patrona en su capilla, eje devocional de la jornada.",
+    "Se celebran solemnes misas y, por tradición, se ofrece a los devotos el agua asociada a la Virgen del Sagrario.",
+    "El ambiente es de jornada festiva en la ciudad, con calles concurridas y los actos religiosos como protagonistas.",
+    "Muchas familias aprovechan para reunirse y disfrutar de la repostería y la gastronomía local."
+  ]
+}

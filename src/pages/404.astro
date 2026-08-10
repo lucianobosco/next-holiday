@@ -1,0 +1,24 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+// Rendered on demand: the SSR routes call Astro.rewrite("/404") for a slug that does not
+// exist, and the Worker needs this component available at runtime. Prerendered it would be
+// a static asset, and the rewrite would fail.
+export const prerender = false;
+Astro.response.status = 404;
+---
+
+<Layout title="Página no encontrada — El Próximo Festivo" description="">
+  <div class="flex min-h-[60vh] flex-col items-center justify-center text-center">
+    <div class="font-display text-6xl font-semibold text-terracotta">404</div>
+    <h1 class="mt-2 font-display text-2xl font-semibold text-ink">
+      Esta página se tomó el día libre
+    </h1>
+    <p class="mt-2 max-w-md text-ink-soft">No encontramos lo que buscabas.</p>
+    <a
+      href="/"
+      class="mt-6 rounded-lg bg-terracotta px-4 py-2 font-semibold text-cream transition hover:brightness-110"
+      >Volver al inicio</a
+    >
+  </div>
+</Layout>

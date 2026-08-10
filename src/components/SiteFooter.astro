@@ -1,0 +1,9 @@
+---
+import CookiePrefs from "./CookiePrefs.tsx";
+const { year } = Astro.props as { year: number };
+---
+
+<footer class="mt-16 text-center text-xs text-ink-faint">
+  <p>El Próximo Festivo · {year}</p>
+  <CookiePrefs client:idle />
+</footer>
