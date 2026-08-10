@@ -50,6 +50,36 @@ Every push to `main` redeploys. This replaces the Git integration Cloudflare Pag
 3. Check `https://elproximofestivo.es/`.
 4. Delete or pause the **Pages** project once that is confirmed.
 
+## The Worker, the domain, and how they got that way
+
+The Worker is called **next-holiday** and `elproximofestivo.es` is attached to it as a custom
+domain. Its name comes from `package.json`, so renaming the package renames the Worker the
+next build would deploy to -- which is how this one came to be renamed at all.
+
+A custom domain is a Worker-level setting, not something a deployment carries: deploying a
+config with no `routes` leaves it attached. So the generated `dist/server/wrangler.json`
+needs no patching for ordinary deploys.
+
+Moving the domain from one Worker to another cannot be done without a gap, because Cloudflare
+will not attach the same hostname to two Workers. The sequence, for the next time:
+
+1. Deploy under the new name. It comes up with no routes and bothers nobody.
+2. Check it on its `*.workers.dev` URL, including a slug that should 404.
+3. Delete the old Worker, which is what releases the domain.
+4. Deploy again with the domain in the config:
+   `"routes": [{ "pattern": "elproximofestivo.es", "custom_domain": true }]`
+
+While a custom domain is attached, Cloudflare disables the `*.workers.dev` route -- so the
+Worker stops answering there, which also means no second copy of the site competing with the
+real one in search results.
+
+## Continuous deployment: why the repository may not appear
+
+Cloudflare lists only the repositories its GitHub App can see. The app is usually installed
+with access to _selected repositories_, so a repository created later is invisible to it until
+it is added: **github.com/settings/installations → Cloudflare Workers and Pages → Configure →
+Repository access**. Nothing is wrong with the repository when this happens.
+
 ## Notes
 
 - Free tier: 100k invocations a day, and requests for static assets do not count.
@@ -58,5 +88,8 @@ Every push to `main` redeploys. This replaces the Git integration Cloudflare Pag
   the sitemap) are prerendered and served from the CDN.
 - `public/_headers` — the cache rules for the fonts and for `/_astro/*` — is honoured on
   Workers.
+- `www.elproximofestivo.es` answers **522**: there is a proxied DNS record with nothing
+  behind it. It predates the rename. The right fix is a redirect to the apex, which is also
+  what canonicalisation wants.
 - TypeScript is pinned to 6.x: `@astrojs/check`, which `npm run typecheck` uses, does not
   support TypeScript 7 yet.
