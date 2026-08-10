@@ -47,4 +47,12 @@ regexes = [
 paths = [
   '''^\.gitleaks\.toml$''',
   '''^package-lock\.json$''',
+  # Build output and dependencies. None of it is versioned, and the beacon token ends up
+  # compiled into the bundle -- a check that cries wolf after every build is a check
+  # nobody reads.
+  '''^dist/''',
+  '''^\.astro/''',
+  '''^\.wrangler/''',
+  '''^node_modules/''',
+  '''^coverage/''',
 ]
