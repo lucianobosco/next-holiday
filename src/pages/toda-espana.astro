@@ -36,8 +36,8 @@ export const prerender = false;
 
 const today = todayInMadrid();
 const year = Number(today.slice(0, 4));
-// This is the heaviest page on the site -- the full national table -- and it was failing
-// the Worker CPU limit on nearly half of all requests. See edgeCacheSeconds().
+// This is the heaviest page on the site -- 282 KB, the full national table -- so it is the
+// one that gains most from not being rendered per request. See edgeCacheSeconds().
 Astro.cache.set({ maxAge: edgeCacheSeconds() });
 const upcoming = getUpcomingHolidays(ALL_HOLIDAYS, ALL_COMMUNITIES, today);
 const scoped = filterByScope(ALL_HOLIDAYS, ALL_COMMUNITIES);

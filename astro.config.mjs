@@ -60,10 +60,10 @@ export default defineConfig({
   // extension are left alone, which is what keeps /rss.xml and /sitemap-0.xml working.
   trailingSlash: "always",
   // Cache the on-demand HTML at Cloudflare's edge. A cache HIT does not invoke the Worker
-  // at all, which is what stops the 503 "error code: 1102" (CPU limit exceeded) responses
-  // that were costing roughly a third of all requests. The TTL is set per request, in the
-  // pages themselves, so that it can never outlive the Spanish day -- see
-  // secondsUntilMadridMidnight().
+  // at all, so the 105 on-demand URLs stop paying a render per request: cheaper, and a
+  // smaller blast radius if the Worker ever goes unhealthy again (see DEPLOY.md). The TTL
+  // is set per request, in the pages themselves, so that it can never outlive the Spanish
+  // day -- see secondsUntilMadridMidnight().
   cache: { provider: cacheCloudflare() },
   // Inline the CSS in the <head> rather than emit blocking <link>s, which removes a
   // render-blocking request and shows up in FCP and LCP. It costs a few KB on every SSR

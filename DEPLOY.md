@@ -80,6 +80,35 @@ with access to _selected repositories_, so a repository created later is invisib
 it is added: **github.com/settings/installations → Cloudflare Workers and Pages → Configure →
 Repository access**. Nothing is wrong with the repository when this happens.
 
+## The 503s of 17 August 2026, and why the cause is still open
+
+For at least the 90 minutes before the deploy of 17 August, the on-demand pages were
+returning **HTTP 503 with the body `error code: 1102`** -- Cloudflare's "Worker exceeded
+resource limits" -- at rates between 13% and 47% depending on the page, and occasionally a
+`200` with a zero-byte body, which is worse because a crawler accepts it. The prerendered
+page and the static assets never failed, which puts the fault on the Worker path.
+
+It was first diagnosed as the free plan's per-invocation CPU ceiling, on the reasoning that
+the pages parse ~170 KB of JSON and emit 155-282 KB of HTML. **That diagnosis did not
+survive testing and should not be repeated.** After the deploy, 69 uncached renders failed
+zero times: 29 distinct cold URLs, 20 sequential cold hits on `/toda-espana/`, and 20
+concurrent cold hits on it. `/toda-espana/` is the page that failed most often and its
+render cost was not changed by that deploy, so "the render is too expensive" does not
+explain it.
+
+What is left, untested either way:
+
+- The deployment then live was six days old (2026-08-10T23:39Z) and the redeploy replaced
+  it. If it had gone unhealthy, the fix was a side effect of shipping something else.
+- The measurements were taken during a long automated audit making sustained concurrent
+  requests. Some of the failures may have been self-inflicted, and the rates therefore not
+  representative of real traffic.
+
+If it comes back: check **Workers Analytics for errors and CPU time per invocation** before
+assuming a cause, and note whether it correlates with traffic. A redeploy is worth trying
+early, since that is what coincided with it stopping. Do not buy a plan upgrade on the
+strength of the original diagnosis -- there is no evidence for it.
+
 ## Notes
 
 - Free tier: 100k invocations a day, and requests for static assets do not count.
