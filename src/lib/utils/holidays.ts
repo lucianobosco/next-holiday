@@ -76,8 +76,9 @@ export function secondsUntilMadridMidnight(): number {
 }
 
 // How long an on-demand page may sit in the edge cache: five minutes, and never past
-// midnight in Madrid. Five minutes is what takes the CPU cost of a render off the vast
-// majority of requests; the pre-hydration countdown digits can be that stale, and
+// midnight in Madrid. Five minutes takes a render off the vast majority of requests while
+// keeping the page fresh enough to be honest; the pre-hydration countdown digits can be
+// that stale, and
 // Countdown.tsx and HolidayListStatic's updDays() both recompute from the real clock as
 // soon as they hydrate, so nothing a visitor reads survives it. The day itself cannot be
 // wrong, because the TTL cannot cross the boundary that would change it.

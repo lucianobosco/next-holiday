@@ -11,8 +11,8 @@ interface Props {
 }
 // `limit` is how many show before the "ver más" fold; `max` is how many exist at all.
 // The holiday pages set `max` because all 32 of them were rendering the same national
-// list -- 58% of the page, byte-identical across every one of them -- which cost both a
-// duplicate-content problem and the Worker CPU that was returning 503s.
+// list -- byte-identical across every one of them -- which is duplicate content and 12 KB
+// of HTML per page that says nothing specific to the holiday being described.
 const { holidays, today, nextKey, activeKey, limit = 7, max } = Astro.props;
 const all = max ? holidays.slice(0, max) : holidays;
 const visible = all.slice(0, limit);
