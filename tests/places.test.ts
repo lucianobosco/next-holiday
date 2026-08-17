@@ -85,8 +85,11 @@ describe("capital cities", () => {
     expect(CITY_SLUGS).toContain(slug);
     expect(getCityBySlug(slug)?.name).toBe(city.name);
     expect(getCityBySlug("no-existe")).toBeUndefined();
-    expect(cityPath(city.name)).toBe(`/comunidad/${communitySlug(city.communityCode)}/${slug}`);
+    // The trailing slash is part of it: it is the shape the canonical tag and the sitemap
+    // use, and the only one that does not cost a redirect.
+    expect(cityPath(city.name)).toBe(`/comunidad/${communitySlug(city.communityCode)}/${slug}/`);
     expect(CITY_PATHS).toContain(cityPath(city.name));
+    expect(CITY_PATHS.every((p) => p.endsWith("/"))).toBe(true);
   });
 
   it("sends a town it does not know to the front page rather than to a broken URL", () => {

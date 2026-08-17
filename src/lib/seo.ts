@@ -9,6 +9,45 @@ import { nextOccurrence } from "./utils/allHolidays";
 
 const SITE = "https://elproximofestivo.es";
 
+// An absolute URL in the one shape the canonical tag and the sitemap use. Every URL this
+// file emits goes through it: a graph that mixes the two shapes is a graph that tells
+// Google about a duplicate of every page it describes.
+function abs(path: string): string {
+  return SITE + (path.endsWith("/") ? path : `${path}/`);
+}
+
+const ORG_ID = `${SITE}/#organization`;
+const SITE_ID = `${SITE}/#website`;
+
+// The publisher behind every page, and the site itself, as two nodes the rest of the graph
+// can point at by @id. Without them each page described an isolated CollectionPage that
+// belonged to nobody. This is entity data and logo eligibility -- not a ranking lever, and
+// no knowledge panel comes out of markup alone.
+export function siteNodes(): object[] {
+  return [
+    {
+      "@type": "Organization",
+      "@id": ORG_ID,
+      name: "El Próximo Festivo",
+      url: `${SITE}/`,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE}/logo.png`,
+        width: 512,
+        height: 512,
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": SITE_ID,
+      name: "El Próximo Festivo",
+      url: `${SITE}/`,
+      inLanguage: "es-ES",
+      publisher: { "@id": ORG_ID },
+    },
+  ];
+}
+
 export function graph(jsonLd: object[]): object {
   return { "@context": "https://schema.org", "@graph": jsonLd };
 }
@@ -20,7 +59,7 @@ function crumb(items: { name: string; path: string }[]) {
       "@type": "ListItem",
       position: i + 1,
       name: it.name,
-      item: SITE + it.path,
+      item: abs(it.path),
     })),
   };
 }
@@ -34,7 +73,7 @@ function heroDetailLd(hero: Holiday | null, path: string, placeSuffix: string): 
   return [
     {
       "@type": "ItemList",
-      "@id": `${SITE}${path}#tradiciones`,
+      "@id": `${abs(path)}#tradiciones`,
       name: `Tradiciones de ${hero.localName}`,
       itemListElement: customs.map((t, i) => ({ "@type": "ListItem", position: i + 1, name: t })),
     },
@@ -52,18 +91,18 @@ function heroDetailLd(hero: Holiday | null, path: string, placeSuffix: string): 
 }
 
 export function homeJsonLd(): object {
-  return graph([
-    { "@type": "WebSite", name: "El Próximo Festivo", url: SITE + "/", inLanguage: "es-ES" },
-  ]);
+  return graph(siteNodes());
 }
 
 export function communityJsonLd(communityName: string, path: string, hero: Holiday | null): object {
   return graph([
+    ...siteNodes(),
     {
       "@type": "CollectionPage",
       name: `Festivos en ${communityName}`,
       inLanguage: "es-ES",
-      url: SITE + path,
+      url: abs(path),
+      isPartOf: { "@id": SITE_ID },
     },
     crumb([
       { name: "Inicio", path: "/" },
@@ -80,13 +119,19 @@ export function cityJsonLd(
   hero: Holiday | null,
 ): object {
   const commName = getCommunityName(communityCode);
-  const commPath = `/comunidad/${communitySlug(communityCode)}`;
+  const commPath = `/comunidad/${communitySlug(communityCode)}/`;
   return graph([
+    ...siteNodes(),
     {
+      // Deliberately not "Festivos en X": that was byte-identical to the community node
+      // above for Madrid, Murcia, Ceuta and Melilla, where the city and the community
+      // share a name. The city page is the one that carries the municipal fiestas, and
+      // this is the intent it should be indexed for.
       "@type": "CollectionPage",
-      name: `Festivos en ${cityName}`,
+      name: `Fiestas locales de ${cityName}`,
       inLanguage: "es-ES",
-      url: SITE + path,
+      url: abs(path),
+      isPartOf: { "@id": SITE_ID },
     },
     crumb([
       { name: "Inicio", path: "/" },
@@ -108,7 +153,7 @@ export function holidayJsonLd(festivo: HolidayMeta, today: string, path: string)
   };
   const info = getHolidayInfo(synthetic);
   const customs = getCustoms(synthetic);
-  const eventId = `${SITE}${path}#event`;
+  const eventId = `${abs(path)}#event`;
   const event = next
     ? {
         "@type": "Event",
@@ -132,7 +177,7 @@ export function holidayJsonLd(festivo: HolidayMeta, today: string, path: string)
     ? [
         {
           "@type": "ItemList",
-          "@id": `${SITE}${path}#tradiciones`,
+          "@id": `${abs(path)}#tradiciones`,
           name: `Tradiciones de ${festivo.name}`,
           about: { "@id": eventId },
           itemListElement: customs.map((t, i) => ({
@@ -159,8 +204,10 @@ export function holidayJsonLd(festivo: HolidayMeta, today: string, path: string)
       ...(info?.description
         ? [
             {
+              // "en", not "el": the names are a mix of genders and forms, and "el" made
+              // this read "¿Qué se celebra el Navidad?" on a third of the pages.
               "@type": "Question",
-              name: `¿Qué se celebra el ${festivo.name}?`,
+              name: `¿Qué se celebra en ${festivo.name}?`,
               acceptedAnswer: { "@type": "Answer", text: info.description },
             },
           ]
@@ -188,6 +235,7 @@ export function holidayJsonLd(festivo: HolidayMeta, today: string, path: string)
     ],
   };
   return graph([
+    ...siteNodes(),
     event,
     ...tradicionesLd,
     crumb([

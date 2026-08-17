@@ -4,7 +4,7 @@ import { holidayKey } from "../lib/utils/holidays";
 import { holidaySlug, cityPath } from "../lib/utils/slug";
 
 function festDest(h: Holiday): string {
-  return h.locality ? cityPath(h.locality) : `/festivo/${holidaySlug(h.localName)}`;
+  return h.locality ? cityPath(h.locality) : `/festivo/${holidaySlug(h.localName)}/`;
 }
 
 const MONTHS = [

@@ -81,6 +81,13 @@ html {
   html {
     scroll-behavior: auto;
   }
+  /* The entrance animations too, not just the scrolling. They start at opacity 0 with
+     fill-mode both, so honouring the preference means switching them off outright rather
+     than shortening them -- otherwise the content they carry never appears. */
+  .animate-fade-up,
+  .animate-fade-in {
+    animation: none;
+  }
 }
 
 a:focus-visible,

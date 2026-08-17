@@ -16,9 +16,10 @@ export default function SiteSearch() {
       <option value="" selected disabled hidden>
         Buscar lugar…
       </option>
+      <option value="/toda-espana/">Toda España</option>
       <optgroup label="Comunidades">
         {COMMUNITIES.map((c) => (
-          <option value={`/comunidad/${communitySlug(c.code)}`}>{c.name}</option>
+          <option value={`/comunidad/${communitySlug(c.code)}/`}>{c.name}</option>
         ))}
       </optgroup>
       <optgroup label="Ciudades">

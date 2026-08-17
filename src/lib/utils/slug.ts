@@ -48,16 +48,20 @@ export function capitalsOf(communityCode: string): CapitalCity[] {
 }
 // A capital's path, nested under its community. The segments stay Spanish because they
 // are the site's public URLs and they are indexed:
-//   /comunidad/{community}/{city}
+//   /comunidad/{community}/{city}/
+// The trailing slash is part of the path, not decoration: it is the shape the canonical
+// tag and the sitemap use, and with trailingSlash: "always" it is the only shape that
+// does not cost a redirect. Every emitter of an internal link has to agree on it.
 export function cityPath(name: string): string {
   const slug = slugByCityName.get(name);
   const city = slug ? cityBySlug.get(slug) : undefined;
   if (!slug || !city) return "/";
-  return `/comunidad/${communitySlug(city.communityCode)}/${slug}`;
+  return `/comunidad/${communitySlug(city.communityCode)}/${slug}/`;
 }
-export const CITY_PATHS = CAPITAL_CITIES.map(
-  (c) => `/comunidad/${communitySlug(c.communityCode)}/${citySlug(c.name)}`,
-);
+// Derived from cityPath rather than rebuilt, so the two cannot drift apart. They did:
+// this list had its own copy of the template and would have kept emitting slash-free
+// paths into the sitemap while cityPath emitted the canonical ones.
+export const CITY_PATHS = CAPITAL_CITIES.map((c) => cityPath(c.name));
 
 // ---- Holidays (national and regional, one entry per distinct name) ----
 export interface HolidayMeta {
