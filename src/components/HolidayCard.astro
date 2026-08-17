@@ -27,7 +27,7 @@ const scope = h.locality
   : isNational(h)
     ? "Nacional"
     : (h.counties ?? []).map(getCommunityName).join(", ");
-const dest = h.locality ? cityPath(h.locality) : `/festivo/${holidaySlug(h.localName)}`;
+const dest = h.locality ? cityPath(h.locality) : `/festivo/${holidaySlug(h.localName)}/`;
 const border = isActive
   ? "border-terracotta"
   : isNext

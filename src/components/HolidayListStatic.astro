@@ -7,10 +7,16 @@ interface Props {
   nextKey?: string | null;
   activeKey?: string | null;
   limit?: number;
+  max?: number;
 }
-const { holidays, today, nextKey, activeKey, limit = 7 } = Astro.props;
-const visible = holidays.slice(0, limit);
-const rest = holidays.slice(limit);
+// `limit` is how many show before the "ver más" fold; `max` is how many exist at all.
+// The holiday pages set `max` because all 32 of them were rendering the same national
+// list -- 58% of the page, byte-identical across every one of them -- which cost both a
+// duplicate-content problem and the Worker CPU that was returning 503s.
+const { holidays, today, nextKey, activeKey, limit = 7, max } = Astro.props;
+const all = max ? holidays.slice(0, max) : holidays;
+const visible = all.slice(0, limit);
+const rest = all.slice(limit);
 ---
 
 <ul class="flex flex-col gap-2.5">

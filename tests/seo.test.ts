@@ -35,16 +35,32 @@ describe("graph", () => {
   });
 });
 
-describe("the home page", () => {
-  it("declares the site and nothing else", () => {
-    expect(types(homeJsonLd())).toEqual(["WebSite"]);
+describe("the site and publisher nodes", () => {
+  it("names the publisher, the site, and links the one to the other", () => {
+    const ld = homeJsonLd();
+    expect(types(ld)).toEqual(["Organization", "WebSite"]);
+    const org = node(ld, "Organization") as { "@id": string; logo: { url: string } };
+    const site = node(ld, "WebSite") as { publisher: { "@id": string } };
+    // The logo has to be a file that exists -- public/logo.png, 512x512 -- because a node
+    // pointing at a 404 is worse than no node.
+    expect(org.logo.url).toBe("https://elproximofestivo.es/logo.png");
+    expect(site.publisher["@id"]).toBe(org["@id"]);
+  });
+
+  it("rides along on every page shape, not just the home page", () => {
+    for (const ld of [
+      communityJsonLd("Madrid", "/comunidad/madrid/", null),
+      cityJsonLd("Málaga", "ES-AN", "/comunidad/andalucia/malaga/", null),
+    ]) {
+      expect(types(ld).slice(0, 2)).toEqual(["Organization", "WebSite"]);
+    }
   });
 });
 
 describe("a community page", () => {
   it("is a collection with a trail back to the front page", () => {
     const ld = communityJsonLd("Madrid", "/comunidad/madrid", null);
-    expect(types(ld)).toEqual(["CollectionPage", "BreadcrumbList"]);
+    expect(types(ld)).toEqual(["Organization", "WebSite", "CollectionPage", "BreadcrumbList"]);
     const crumbs = node(ld, "BreadcrumbList") as {
       itemListElement: { name: string; item: string; position: number }[];
     };
@@ -69,6 +85,8 @@ describe("a community page", () => {
       types: [],
     };
     expect(types(communityJsonLd("Madrid", "/comunidad/madrid", bare))).toEqual([
+      "Organization",
+      "WebSite",
       "CollectionPage",
       "BreadcrumbList",
     ]);
@@ -80,6 +98,34 @@ describe("a city page", () => {
     const ld = cityJsonLd("Málaga", "ES-AN", "/comunidad/andalucia/malaga", null);
     const crumbs = node(ld, "BreadcrumbList") as { itemListElement: { name: string }[] };
     expect(crumbs.itemListElement.map((i) => i.name)).toEqual(["Inicio", "Andalucía", "Málaga"]);
+  });
+
+  it("is named for the municipal fiestas, so it cannot collide with its community", () => {
+    // Madrid the city and Madrid the community share a name, and both nodes used to be
+    // called "Festivos en Madrid" -- two pages telling Google they were the same thing.
+    const city = node(
+      cityJsonLd("Madrid", "ES-MD", "/comunidad/madrid/madrid/", null),
+      "CollectionPage",
+    ) as {
+      name: string;
+    };
+    const community = node(
+      communityJsonLd("Madrid", "/comunidad/madrid/", null),
+      "CollectionPage",
+    ) as {
+      name: string;
+    };
+    expect(city.name).toBe("Fiestas locales de Madrid");
+    expect(community.name).toBe("Festivos en Madrid");
+  });
+
+  it("emits every URL with the trailing slash the canonical uses", () => {
+    // A graph that mixes the two shapes advertises a duplicate of every page it describes.
+    const ld = cityJsonLd("Málaga", "ES-AN", "/comunidad/andalucia/malaga", null);
+    const page = node(ld, "CollectionPage") as { url: string };
+    const crumbs = node(ld, "BreadcrumbList") as { itemListElement: { item: string }[] };
+    expect(page.url).toBe("https://elproximofestivo.es/comunidad/andalucia/malaga/");
+    for (const c of crumbs.itemListElement) expect(c.item.endsWith("/")).toBe(true);
   });
 });
 
@@ -130,7 +176,7 @@ describe("a holiday page", () => {
       communityCodes: ["ES-MD"],
     };
     const ld = holidayJsonLd(invented, "1970-01-01", "/festivo/dia-del-invento");
-    expect(types(ld)).toEqual(["WebPage", "BreadcrumbList", "FAQPage"]);
+    expect(types(ld)).toEqual(["Organization", "WebSite", "WebPage", "BreadcrumbList", "FAQPage"]);
     const faq = node(ld, "FAQPage") as { mainEntity: { name: string }[] };
     expect(faq.mainEntity).toHaveLength(2);
     expect(faq.mainEntity[0].name).toContain("¿Cuándo es");
@@ -138,15 +184,31 @@ describe("a holiday page", () => {
   });
 
   it("keeps the event but drops the keywords when the traditions are not curated", () => {
-    // One holiday in the data has a date but no curated traditions, which is the case
-    // the other tests never reach: the Event has to survive without keywords.
-    const bare = HOLIDAY_SLUGS.map((s) => getHolidayBySlug(s)!).find(
-      (m) =>
-        !Object.entries(customsData as Record<string, string[]>).some(
-          ([key, list]) => key === m.name && list.length > 0,
-        ),
+    // The Event has to survive without keywords. This case used to be found by scanning
+    // HOLIDAY_SLUGS for a name with no curated traditions, and exactly one matched:
+    // "Feast of Saint Stephen" -- which only lacked them because holidays.json carried the
+    // English name while holiday-customs.json was keyed "Sant Esteve". So the branch was
+    // covered by a data bug, and fixing the bug uncovered it. Now every national and
+    // regional name resolves (tests/content.test.ts asserts exactly that), so the case is
+    // built on purpose instead of found.
+    //
+    // A LOCAL fiesta name does it: nextOccurrence finds it in ALL_HOLIDAYS, so there is a
+    // date and an Event, but holidayJsonLd's synthetic Holiday has no `locality`, so the
+    // customs key comes out as the bare name and cannot match the "<name> | <city>" the
+    // traditions are filed under.
+    const localOnly = ALL_HOLIDAYS.find(
+      (h) =>
+        h.locality &&
+        !(customsData as Record<string, string[]>)[h.localName]?.length &&
+        (customsData as Record<string, string[]>)[`${h.localName} | ${h.locality}`]?.length,
     )!;
-    expect(bare).toBeDefined();
+    expect(localOnly).toBeDefined();
+    const bare: HolidayMeta = {
+      slug: "x",
+      name: localOnly.localName,
+      kind: "regional",
+      communityCodes: ["ES-MD"],
+    };
     const ld = holidayJsonLd(bare, "1970-01-01", "/festivo/x");
     const event = node(ld, "Event") as { keywords?: string[]; startDate: string };
     expect(event.startDate).toMatch(/^\d{4}-\d{2}-\d{2}$/);

@@ -24,6 +24,7 @@ import {
   formatDate,
   cap,
   todayInMadrid,
+  edgeCacheSeconds,
 } from "../lib/utils/holidays";
 import { getCommunityName } from "../lib/utils/communities";
 import { SPAIN_GYG_ID } from "../lib/utils/gygLocations";
@@ -35,49 +36,68 @@ export const prerender = false;
 
 const today = todayInMadrid();
 const year = Number(today.slice(0, 4));
+// Cached at the edge, so that most requests never invoke the Worker at all. The TTL stops
+// at midnight in Madrid, which is the only moment the answer changes.
+Astro.cache.set({ maxAge: edgeCacheSeconds() });
 const upcoming = getUpcomingHolidays(ALL_HOLIDAYS, null, today);
-// If the data ever runs out of future holidays, fall back to a 404 rather than a 500.
-// Under SSG that broke the build; under SSR it would break every request.
-if (!upcoming.length) return Astro.rewrite("/404");
 const scoped = filterByScope(ALL_HOLIDAYS, null);
-const hero = upcoming[0];
-const nextKey = holidayKey(upcoming[0]);
-const activeKey = holidayKey(hero);
-const heroBadge = isLocal(hero)
-  ? `Festivo local · ${hero.locality}`
-  : isNational(hero)
-    ? "Festivo nacional"
-    : (hero.counties ?? []).map(getCommunityName).join(", ");
+// When the data runs out of future holidays there is no "next" one to show. That is not a
+// missing page: this URL is valid and so is most of what it renders, so it answers 200
+// without the countdown rather than 404. It used to rewrite to /404, which on the day
+// holidays.json expires would have taken 73 of the site's 106 URLs out of the index at
+// once, silently.
+const hero = upcoming[0] ?? null;
+const nextKey = hero ? holidayKey(hero) : null;
+const activeKey = nextKey;
+const heroBadge = !hero
+  ? ""
+  : isLocal(hero)
+    ? `Festivo local · ${hero.locality}`
+    : isNational(hero)
+      ? "Festivo nacional"
+      : (hero.counties ?? []).map(getCommunityName).join(", ");
 ---
 
 <Layout
-  title="El Próximo Festivo en España — Cuenta atrás a tu próximo día libre"
-  description="Descubre cuándo es el próximo día festivo en España —nacional, autonómico y local— con cuenta atrás en vivo y el porqué de cada celebración."
+  title="Festivos en España — Próximo día festivo y cuenta atrás"
+  description="Cuándo es el próximo día festivo en España —nacional, autonómico y local— con cuenta atrás en vivo y el porqué de cada celebración."
   jsonLd={homeJsonLd()}
 >
+  {
+    /* The head term leads, and the brand lives in the eyebrow and the site header instead.
+       No year in this title on purpose: `year` comes from today's date while the data spans
+       two years, so from late December it would read "2026" over a list of 2027 dates. The
+       year belongs on /toda-espana/ and /puentes/, which are year-scoped. */
+  }
   <Masthead
-    eyebrow="Almanaque de festivos · España"
+    eyebrow="El Próximo Festivo · Almanaque de España"
     subheading="Cuenta atrás para tu próximo día libre en España — nacional, autonómico y local."
-    >El Próximo <span class="italic text-terracotta">Festivo</span></Masthead
+    >Festivos en <span class="italic text-terracotta">España</span></Masthead
   >
 
   <div class="mt-6 animate-fade-up"><Filter value={null} home={true} client:idle /></div>
 
-  <div class="mt-6 animate-fade-up">
-    <Hero
-      targetDate={hero.date}
-      eyebrow={hero.date === today ? "Hoy es festivo" : "Próximo festivo"}
-      title={hero.localName}
-      dateLine={cap(formatDate(hero.date))}
-      badge={heroBadge}
-    >
-      <HeroFooterInfo holiday={hero} />
-    </Hero>
-  </div>
+  {
+    hero && (
+      <div class="mt-6 animate-fade-up">
+        <Hero
+          targetDate={hero.date}
+          eyebrow={hero.date === today ? "Hoy es festivo" : "Próximo festivo"}
+          title={hero.localName}
+          dateLine={cap(formatDate(hero.date))}
+          badge={heroBadge}
+        >
+          <HeroFooterInfo holiday={hero} />
+        </Hero>
+      </div>
+    )
+  }
 
   <div class="mt-8 grid items-start gap-8 lg:grid-cols-[0.9fr_1.1fr]">
     <div class="min-w-0 animate-fade-up">
-      <h2 class="sr-only">Próximos festivos</h2><HolidayListStatic
+      <h2 class="mb-4 font-display text-xl font-semibold text-ink">
+        Próximos días festivos en España {year}
+      </h2><HolidayListStatic
         holidays={upcoming}
         today={today}
         nextKey={nextKey}
@@ -85,10 +105,12 @@ const heroBadge = isLocal(hero)
       />
     </div>
     <div class="min-w-0 animate-fade-up lg:sticky lg:top-20 lg:self-start">
-      <h2 class="sr-only">Calendario</h2>
+      <h2 class="mb-4 font-display text-xl font-semibold text-ink">
+        Calendario laboral de España {year}
+      </h2>
       <Calendar
         festivos={scoped}
-        activeDate={hero.date}
+        activeDate={hero ? hero.date : today}
         activeKey={activeKey}
         today={today}
         client:visible
@@ -100,11 +122,15 @@ const heroBadge = isLocal(hero)
 
   <GetYourGuideWidget cityName="España" />
 
-  <HolidayDetails
-    holiday={hero}
-    comoSeViveHeading={`Cómo se vive ${hero.localName}`}
-    practicalHeading={`Qué tener en cuenta: ${hero.localName}`}
-  />
+  {
+    hero && (
+      <HolidayDetails
+        holiday={hero}
+        comoSeViveHeading={`Cómo se vive ${hero.localName}`}
+        practicalHeading={`Qué tener en cuenta: ${hero.localName}`}
+      />
+    )
+  }
 
   <PuentesTeaser today={today} />
   <Explore year={year} />

@@ -13,29 +13,51 @@ import Explore from "../components/Explore.astro";
 import EmbedSnippet from "../components/EmbedSnippet.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import { getUpcomingLongWeekends } from "../lib/utils/longWeekends";
-import { holidayKey, formatDate, cap } from "../lib/utils/holidays";
+import {
+  holidayKey,
+  formatDate,
+  cap,
+  todayInMadrid,
+  edgeCacheSeconds,
+} from "../lib/utils/holidays";
 import { SPAIN_GYG_ID } from "../lib/utils/gygLocations";
+import { siteNodes } from "../lib/seo";
 
-const today = new Date().toISOString().slice(0, 10);
+// Rendered on demand, like the other pages that need the real date. Prerendered, "the
+// upcoming puentes" were frozen at the date of the build: by December this page was still
+// offering August's, under a heading claiming to be this year's calendar. Being SSR it is
+// no longer discoverable by the sitemap either, so it is listed in astro.config.mjs.
+export const prerender = false;
+
+// todayInMadrid(), not new Date().toISOString(): the latter is UTC, and for the last two
+// hours of every Spanish day it names yesterday. A puente is decided by which weekday a
+// date falls on, so being a day out can invent one or lose one.
+const today = todayInMadrid();
 const year = Number(today.slice(0, 4));
+Astro.cache.set({ maxAge: edgeCacheSeconds() });
 const puentes = getUpcomingLongWeekends(today);
 const nextPuente = puentes.find((p) => p.daysOff) ?? puentes[0];
 const calFestivos = puentes.filter((p) => p.daysOff).map((p) => p.holiday);
 const SITE = "https://elproximofestivo.es";
+// This page builds its own @graph rather than going through seo.ts's graph(), so the site
+// and publisher nodes have to be spread in by hand -- prepending them inside graph() would
+// have missed this one page entirely.
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
+    ...siteNodes(),
     {
       "@type": "CollectionPage",
       name: `Puentes en España ${year}`,
       inLanguage: "es-ES",
-      url: SITE + "/puentes",
+      url: SITE + "/puentes/",
+      isPartOf: { "@id": `${SITE}/#website` },
     },
     {
       "@type": "BreadcrumbList",
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Inicio", item: SITE + "/" },
-        { "@type": "ListItem", position: 2, name: "Puentes", item: SITE + "/puentes" },
+        { "@type": "ListItem", position: 2, name: "Puentes", item: SITE + "/puentes/" },
       ],
     },
   ],
@@ -80,10 +102,12 @@ const jsonLd = {
 
   <div class="mt-8 grid items-start gap-8 lg:grid-cols-[0.9fr_1.1fr]">
     <div class="min-w-0 animate-fade-up">
-      <h2 class="sr-only">Todos los puentes</h2><PuentesList today={today} year={year} />
+      <h2 class="mb-4 font-display text-xl font-semibold text-ink">
+        Puentes de {year} en España
+      </h2><PuentesList today={today} year={year} />
     </div>
     <div class="min-w-0 animate-fade-up lg:sticky lg:top-20 lg:self-start">
-      <h2 class="sr-only">Calendario</h2>
+      <h2 class="mb-4 font-display text-xl font-semibold text-ink">Calendario de puentes {year}</h2>
       <Calendar
         festivos={calFestivos}
         activeDate={nextPuente ? nextPuente.holiday.date : today}

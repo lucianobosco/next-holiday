@@ -4,6 +4,7 @@ import {
   ALL_COMMUNITIES,
   cap,
   daysUntil,
+  edgeCacheSeconds,
   filterByScope,
   formatDate,
   fullDaysUntil,
@@ -12,6 +13,7 @@ import {
   isLocal,
   isNational,
   matchesScope,
+  secondsUntilMadridMidnight,
   todayInMadrid,
   todayStr,
 } from "../src/lib/utils/holidays";
@@ -129,6 +131,27 @@ describe("dates", () => {
     vi.useFakeTimers();
     vi.setSystemTime(new Date("2026-03-09T10:00:00"));
     expect(todayStr()).toBe("2026-03-09");
+    vi.useRealTimers();
+  });
+
+  it("counts the seconds left of the Spanish day, in summer and in winter", () => {
+    // Same discipline as todayInMadrid below: asserted against a fixed UTC instant, never
+    // against the machine's own clock, and in both offsets so that the hour is really
+    // being read in Europe/Madrid rather than assumed to be CEST.
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("2026-07-15T21:30:00Z")); // 23:30 in Madrid, CEST (+2)
+    expect(secondsUntilMadridMidnight()).toBe(1800);
+    vi.setSystemTime(new Date("2026-01-15T23:30:00Z")); // 00:30 in Madrid, CET (+1)
+    expect(secondsUntilMadridMidnight()).toBe(84600);
+    vi.useRealTimers();
+  });
+
+  it("caps the edge cache at five minutes, and at midnight when that comes first", () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("2026-07-15T12:00:00Z")); // midday: the five minutes win
+    expect(edgeCacheSeconds()).toBe(300);
+    vi.setSystemTime(new Date("2026-07-15T21:57:00Z")); // 23:57 in Madrid: midnight wins
+    expect(edgeCacheSeconds()).toBe(180);
     vi.useRealTimers();
   });
 

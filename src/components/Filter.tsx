@@ -8,11 +8,13 @@ import { detectCommunity } from "../lib/utils/geolocation";
 const fieldClass =
   "field rounded-lg border border-line bg-paper-card px-3 py-2 pr-9 text-sm font-medium text-ink shadow-sm transition cursor-pointer disabled:cursor-default disabled:opacity-50";
 
+// The trailing slash is the canonical shape; without it every navigation from the filter
+// cost a 301.
 function scopeToPath(v: string | null): string {
   if (!v) return "/";
-  if (v === ALL_COMMUNITIES) return "/toda-espana";
+  if (v === ALL_COMMUNITIES) return "/toda-espana/";
   if (v.startsWith(CITY_PREFIX)) return cityPath(v.slice(CITY_PREFIX.length));
-  return `/comunidad/${communitySlug(v)}`;
+  return `/comunidad/${communitySlug(v)}/`;
 }
 
 // A Preact island: the scope filter. Changing it navigates, by URL, like the rest of the

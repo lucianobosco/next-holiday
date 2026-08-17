@@ -24,6 +24,7 @@ import {
   formatDate,
   cap,
   todayInMadrid,
+  edgeCacheSeconds,
 } from "../../lib/utils/holidays";
 import { getCommunityBySlug } from "../../lib/utils/slug";
 import { getCommunityName } from "../../lib/utils/communities";
@@ -35,27 +36,31 @@ export const prerender = false;
 
 const { slug } = Astro.params;
 const community = getCommunityBySlug(slug!);
+// A slug nobody has is genuinely a missing page, and stays a 404.
 if (!community) return Astro.rewrite("/404");
 const today = todayInMadrid();
 const year = Number(today.slice(0, 4));
+Astro.cache.set({ maxAge: edgeCacheSeconds() });
 const sel = community.code;
 const upcoming = getUpcomingHolidays(ALL_HOLIDAYS, sel, today);
-if (!upcoming.length) return Astro.rewrite("/404");
 const scoped = filterByScope(ALL_HOLIDAYS, sel);
-const hero = upcoming[0];
-const nextKey = holidayKey(upcoming[0]);
-const activeKey = holidayKey(hero);
-const heroBadge = isLocal(hero)
-  ? `Festivo local · ${hero.locality}`
-  : isNational(hero)
-    ? "Festivo nacional"
-    : (hero.counties ?? []).map(getCommunityName).join(", ");
+// Running out of future data is not a missing page. See index.astro.
+const hero = upcoming[0] ?? null;
+const nextKey = hero ? holidayKey(hero) : null;
+const activeKey = nextKey;
+const heroBadge = !hero
+  ? ""
+  : isLocal(hero)
+    ? `Festivo local · ${hero.locality}`
+    : isNational(hero)
+      ? "Festivo nacional"
+      : (hero.counties ?? []).map(getCommunityName).join(", ");
 ---
 
 <Layout
   title={`Festivos en ${community.name} ${year} — Calendario y próximo día libre`}
   description={`Calendario de días festivos en ${community.name}: nacionales y autonómicos, con la fecha del próximo festivo y qué se celebra.`}
-  jsonLd={communityJsonLd(community.name, `/comunidad/${slug}`, hero)}
+  jsonLd={communityJsonLd(community.name, `/comunidad/${slug}/`, hero)}
 >
   <Masthead
     eyebrow="Festivos por comunidad"
@@ -65,21 +70,27 @@ const heroBadge = isLocal(hero)
 
   <div class="mt-6 animate-fade-up"><Filter value={sel} client:idle /></div>
 
-  <div class="mt-6 animate-fade-up">
-    <Hero
-      targetDate={hero.date}
-      eyebrow={hero.date === today ? "Hoy es festivo" : "Próximo festivo"}
-      title={hero.localName}
-      dateLine={cap(formatDate(hero.date))}
-      badge={heroBadge}
-    >
-      <HeroFooterInfo holiday={hero} />
-    </Hero>
-  </div>
+  {
+    hero && (
+      <div class="mt-6 animate-fade-up">
+        <Hero
+          targetDate={hero.date}
+          eyebrow={hero.date === today ? "Hoy es festivo" : "Próximo festivo"}
+          title={hero.localName}
+          dateLine={cap(formatDate(hero.date))}
+          badge={heroBadge}
+        >
+          <HeroFooterInfo holiday={hero} />
+        </Hero>
+      </div>
+    )
+  }
 
   <div class="mt-8 grid items-start gap-8 lg:grid-cols-[0.9fr_1.1fr]">
     <div class="min-w-0 animate-fade-up">
-      <h2 class="sr-only">Próximos festivos</h2><HolidayListStatic
+      <h2 class="mb-4 font-display text-xl font-semibold text-ink">
+        {`Próximos días festivos en ${community.name} ${year}`}
+      </h2><HolidayListStatic
         holidays={upcoming}
         today={today}
         nextKey={nextKey}
@@ -87,10 +98,12 @@ const heroBadge = isLocal(hero)
       />
     </div>
     <div class="min-w-0 animate-fade-up lg:sticky lg:top-20 lg:self-start">
-      <h2 class="sr-only">Calendario</h2>
+      <h2 class="mb-4 font-display text-xl font-semibold text-ink">
+        {`Calendario laboral de ${community.name} ${year}`}
+      </h2>
       <Calendar
         festivos={scoped}
-        activeDate={hero.date}
+        activeDate={hero ? hero.date : today}
         activeKey={activeKey}
         today={today}
         client:visible
@@ -102,11 +115,15 @@ const heroBadge = isLocal(hero)
 
   <GetYourGuideWidget cityName={community.name} />
 
-  <HolidayDetails
-    holiday={hero}
-    comoSeViveHeading={`Cómo se vive ${hero.localName} en ${community.name}`}
-    practicalHeading={`Qué tener en cuenta en ${community.name}`}
-  />
+  {
+    hero && (
+      <HolidayDetails
+        holiday={hero}
+        comoSeViveHeading={`Cómo se vive ${hero.localName} en ${community.name}`}
+        practicalHeading={`Qué tener en cuenta en ${community.name}`}
+      />
+    )
+  }
 
   <PuentesTeaser today={today} />
   <Explore activeCommunity={community.code} year={year} />
