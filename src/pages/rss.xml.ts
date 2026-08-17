@@ -11,7 +11,7 @@ export function GET(context: { site: string }) {
     .map((h) => ({
       title: `${h.localName} — ${formatDate(h.date)}`,
       description: getHolidayInfo(h)?.description ?? "",
-      link: h.locality ? cityPath(h.locality) : `/festivo/${holidaySlug(h.localName)}`,
+      link: h.locality ? cityPath(h.locality) : `/festivo/${holidaySlug(h.localName)}/`,
     }));
   return rss({
     title: "El Próximo Festivo en España",

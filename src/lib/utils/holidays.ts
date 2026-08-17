@@ -58,6 +58,33 @@ export function todayInMadrid(): string {
   }).format(new Date());
 }
 
+// Seconds left of today in Spain. The on-demand pages are cached at Cloudflare's edge,
+// and what they say only changes at midnight HERE: which holiday is next, and how many
+// days away it is. So the TTL must never be allowed to outlive the Madrid day, or a
+// cached page would be served into the next one and the countdown would be a day out --
+// the same trap todayInMadrid() exists for, and for the same reason: Workers run in UTC.
+export function secondsUntilMadridMidnight(): number {
+  const parts = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Europe/Madrid",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+  }).formatToParts(new Date());
+  const at = (type: string) => Number(parts.find((p) => p.type === type)!.value);
+  return 86400 - (at("hour") * 3600 + at("minute") * 60 + at("second"));
+}
+
+// How long an on-demand page may sit in the edge cache: five minutes, and never past
+// midnight in Madrid. Five minutes is what takes the CPU cost of a render off the vast
+// majority of requests; the pre-hydration countdown digits can be that stale, and
+// Countdown.tsx and HolidayListStatic's updDays() both recompute from the real clock as
+// soon as they hydrate, so nothing a visitor reads survives it. The day itself cannot be
+// wrong, because the TTL cannot cross the boundary that would change it.
+export function edgeCacheSeconds(): number {
+  return Math.min(300, secondsUntilMadridMidnight());
+}
+
 export function getUpcomingHolidays(
   holidays: Holiday[],
   selection: string | null,

@@ -6,25 +6,45 @@ import { communitySlug, cityPath } from "../lib/utils/slug";
 interface Props {
   activeCommunity?: string;
   isPuentes?: boolean;
+  isAllSpain?: boolean;
   year: number;
 }
-const { activeCommunity, isPuentes, year } = Astro.props;
+const { activeCommunity, isPuentes, isAllSpain, year } = Astro.props;
 ---
 
 <nav class="mt-16" aria-label="Explorar festivos por lugar">
-  <a
-    href={isPuentes ? "/" : "/puentes"}
-    class="mb-10 inline-flex items-center gap-2 rounded border border-terracotta/40 bg-terracotta-soft px-4 py-2 text-sm font-semibold text-terracotta-deep transition hover:brightness-95"
-  >
-    {isPuentes ? "Ver el próximo festivo →" : `Puentes ${year} en España →`}
-  </a>
+  <div class="mb-10 flex flex-wrap gap-3">
+    <a
+      href={isPuentes ? "/" : "/puentes/"}
+      class="inline-flex items-center gap-2 rounded border border-terracotta/40 bg-terracotta-soft px-4 py-2 text-sm font-semibold text-terracotta-deep transition hover:brightness-95"
+    >
+      {isPuentes ? "Ver el próximo festivo →" : `Puentes ${year} en España →`}
+    </a>
+    {
+      /* This component is rendered by all six page templates, so one anchor here is the
+         whole site linking to /toda-espana/. It had none: its only route in was a Preact
+         <select> navigated with window.location.assign, which a crawler never fires -- so
+         the richest page on the site, and the only one whose title matches "festivos en
+         España", was an orphan. */
+    }
+    {
+      !isAllSpain && (
+        <a
+          href="/toda-espana/"
+          class="inline-flex items-center gap-2 rounded border border-line bg-paper-card px-4 py-2 text-sm font-semibold text-ink transition hover:border-terracotta/40 hover:text-terracotta"
+        >
+          {`Todos los festivos de España ${year} →`}
+        </a>
+      )
+    }
+  </div>
 
   <h2 class="font-display text-xl font-semibold text-ink">Festivos por comunidad</h2>
   <div class="mt-4 flex flex-wrap gap-2">
     {
       COMMUNITIES.map((c) => (
         <a
-          href={`/comunidad/${communitySlug(c.code)}`}
+          href={`/comunidad/${communitySlug(c.code)}/`}
           class={`rounded border px-3.5 py-1.5 text-sm font-medium transition hover:border-terracotta/40 hover:text-terracotta ${c.code === activeCommunity ? "border-terracotta/50 bg-terracotta-soft text-terracotta-deep" : "border-line bg-paper-card text-ink"}`}
         >
           {c.name}

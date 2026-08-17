@@ -45,6 +45,31 @@ describe("the whole set of holidays", () => {
   });
 });
 
+describe("every holiday has the content its page needs", () => {
+  // The test that would have caught "Feast of Saint Stephen". Nager returns an English
+  // localName for the Catalan 26 December holiday, and because the slug, the <title> and
+  // the <h1> all derive from localName, an English page shipped on a Spanish site -- while
+  // holiday-info.json, holiday-customs.json and holiday-wikipedia.json were all keyed on
+  // "Sant Esteve", so the curated content was stranded and the page rendered nearly empty.
+  // A name that resolves in none of them is that failure, whatever caused it.
+  it("resolves a curated description for every distinct name in holidays.json", () => {
+    const names = [...new Set(ALL_HOLIDAYS.filter((h) => !h.locality).map((h) => h.localName))];
+    expect(names.length).toBeGreaterThan(0);
+    const orphans = names.filter((n) => !getHolidayInfo(holiday({ localName: n })));
+    expect(orphans).toEqual([]);
+  });
+
+  it("keeps the user-facing names out of English", () => {
+    // Not a spell-check: these are the words the upstream API actually uses, and each one
+    // reaching localName would put an English URL and heading on the live site.
+    const ENGLISH = [" of ", " Day", "Saint ", "Feast", "Eve", "Year", "Christmas"];
+    const offenders = ALL_HOLIDAYS.filter((h) => ENGLISH.some((w) => h.localName.includes(w))).map(
+      (h) => h.localName,
+    );
+    expect([...new Set(offenders)]).toEqual([]);
+  });
+});
+
 describe("curated content", () => {
   const [infoKey] = Object.keys(infoData as Record<string, unknown>);
   const [customsKey] = Object.keys(customsData as Record<string, string[]>);

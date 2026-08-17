@@ -1,10 +1,13 @@
 ---
 import { ALL_HOLIDAYS } from "../lib/utils/allHolidays";
 import { getHolidayInfo } from "../lib/utils/holidayInfo";
+import { getCustoms } from "../lib/utils/holidayCustoms";
+import { holidayKey } from "../lib/utils/holidays";
 interface Props {
   cityName: string;
+  heroKey?: string;
 }
-const { cityName } = Astro.props;
+const { cityName, heroKey } = Astro.props;
 const localFiestas = ALL_HOLIDAYS.filter((h) => h.locality === cityName);
 ---
 
@@ -17,11 +20,24 @@ const localFiestas = ALL_HOLIDAYS.filter((h) => h.locality === cityName);
       <div class="grid gap-3 sm:grid-cols-2">
         {localFiestas.map((h) => {
           const info = getHolidayInfo(h);
+          // holiday-customs.json already carries curated traditions for all 52 cities,
+          // and nothing rendered them: they were reachable only in the rare window when a
+          // town's own fiesta happened to be the next holiday, through HolidayDetails.
+          // Skipped when this fiesta IS the page hero, because HolidayDetails renders the
+          // same bullets above and seo.ts owns the #tradiciones list for it.
+          const customs = holidayKey(h) === heroKey ? null : getCustoms(h);
           return (
             <div class="rounded-xl border border-line bg-paper-card p-5">
               <h3 class="font-display text-lg font-medium text-ink">{h.localName}</h3>
               {info?.description && (
                 <p class="mt-1.5 text-sm leading-relaxed text-ink-soft">{info.description}</p>
+              )}
+              {customs && (
+                <ul class="mt-3 flex flex-col gap-2">
+                  {customs.map((c) => (
+                    <li class="text-sm leading-relaxed text-ink-soft">{c}</li>
+                  ))}
+                </ul>
               )}
             </div>
           );

@@ -25,6 +25,7 @@ import {
   formatDate,
   cap,
   todayInMadrid,
+  edgeCacheSeconds,
 } from "../../../lib/utils/holidays";
 import { CITY_PREFIX } from "../../../lib/utils/localHolidays";
 import { communitySlug, getCityBySlug, cityPath } from "../../../lib/utils/slug";
@@ -42,48 +43,63 @@ const city = getCityBySlug(citySlugParam!);
 if (!city || communitySlug(city.communityCode) !== slug) return Astro.rewrite("/404");
 const today = todayInMadrid();
 const year = Number(today.slice(0, 4));
+Astro.cache.set({ maxAge: edgeCacheSeconds() });
 const sel = CITY_PREFIX + city.name;
 const upcoming = getUpcomingHolidays(ALL_HOLIDAYS, sel, today);
-if (!upcoming.length) return Astro.rewrite("/404");
 const scoped = filterByScope(ALL_HOLIDAYS, sel);
-const hero = upcoming[0];
-const nextKey = holidayKey(upcoming[0]);
-const activeKey = holidayKey(hero);
-const heroBadge = isLocal(hero)
-  ? `Festivo local · ${hero.locality}`
-  : isNational(hero)
-    ? "Festivo nacional"
-    : (hero.counties ?? []).map(getCommunityName).join(", ");
+// Running out of future data is not a missing page. See index.astro. It matters more here
+// than anywhere: local-holidays.json runs out a year before holidays.json does, and the
+// municipal fiestas below are this page's whole reason to exist.
+const hero = upcoming[0] ?? null;
+const nextKey = hero ? holidayKey(hero) : null;
+const activeKey = nextKey;
+const heroBadge = !hero
+  ? ""
+  : isLocal(hero)
+    ? `Festivo local · ${hero.locality}`
+    : isNational(hero)
+      ? "Festivo nacional"
+      : (hero.counties ?? []).map(getCommunityName).join(", ");
+// The title and the H1 below are pivoted onto the intent this page actually serves.
+// "Festivos en {city}" was byte-identical to the community page's H1 wherever the two share
+// a name -- Madrid, Murcia, Ceuta, Melilla -- and a near-subset of it everywhere else. The
+// municipal fiestas are the thing only this page has.
 ---
 
 <Layout
-  title={`Festivos en ${city.name} ${year} — Locales, autonómicos y nacionales`}
-  description={`Días festivos en ${city.name}: fiestas locales del municipio, festivos autonómicos y nacionales, con fechas y qué se celebra.`}
+  title={`Fiestas locales de ${city.name} ${year} — Festivos del municipio`}
+  description={`Fiestas locales de ${city.name} con fechas, más los festivos autonómicos y nacionales que se celebran en el municipio.`}
   jsonLd={cityJsonLd(city.name, city.communityCode, cityPath(city.name), hero)}
 >
   <Masthead
     eyebrow="Festivos por ciudad"
     subheading={`Fiestas locales, autonómicas y nacionales en ${city.name}, con cuenta atrás al próximo`}
-    >Festivos en {city.name}</Masthead
+    >Fiestas locales de {city.name}</Masthead
   >
 
   <div class="mt-6 animate-fade-up"><Filter value={sel} client:idle /></div>
 
-  <div class="mt-6 animate-fade-up">
-    <Hero
-      targetDate={hero.date}
-      eyebrow={hero.date === today ? "Hoy es festivo" : "Próximo festivo"}
-      title={hero.localName}
-      dateLine={cap(formatDate(hero.date))}
-      badge={heroBadge}
-    >
-      <HeroFooterInfo holiday={hero} />
-    </Hero>
-  </div>
+  {
+    hero && (
+      <div class="mt-6 animate-fade-up">
+        <Hero
+          targetDate={hero.date}
+          eyebrow={hero.date === today ? "Hoy es festivo" : "Próximo festivo"}
+          title={hero.localName}
+          dateLine={cap(formatDate(hero.date))}
+          badge={heroBadge}
+        >
+          <HeroFooterInfo holiday={hero} />
+        </Hero>
+      </div>
+    )
+  }
 
   <div class="mt-8 grid items-start gap-8 lg:grid-cols-[0.9fr_1.1fr]">
     <div class="min-w-0 animate-fade-up">
-      <h2 class="sr-only">Próximos festivos</h2><HolidayListStatic
+      <h2 class="mb-4 font-display text-xl font-semibold text-ink">
+        {`Próximos días festivos en ${city.name} ${year}`}
+      </h2><HolidayListStatic
         holidays={upcoming}
         today={today}
         nextKey={nextKey}
@@ -91,10 +107,12 @@ const heroBadge = isLocal(hero)
       />
     </div>
     <div class="min-w-0 animate-fade-up lg:sticky lg:top-20 lg:self-start">
-      <h2 class="sr-only">Calendario</h2>
+      <h2 class="mb-4 font-display text-xl font-semibold text-ink">
+        {`Calendario laboral de ${city.name} ${year}`}
+      </h2>
       <Calendar
         festivos={scoped}
-        activeDate={hero.date}
+        activeDate={hero ? hero.date : today}
         activeKey={activeKey}
         today={today}
         client:visible
@@ -106,13 +124,18 @@ const heroBadge = isLocal(hero)
 
   <GetYourGuideWidget cityName={city.name} />
 
-  <HolidayDetails
-    holiday={hero}
-    comoSeViveHeading={`Cómo se vive ${hero.localName} en ${city.name}`}
-    practicalHeading={`Qué tener en cuenta en ${city.name}`}
-  />
+  {
+    hero && (
+      <HolidayDetails
+        holiday={hero}
+        comoSeViveHeading={`Cómo se vive ${hero.localName} en ${city.name}`}
+        practicalHeading={`Qué tener en cuenta en ${city.name}`}
+      />
+    )
+  }
 
-  <LocalFiestas cityName={city.name} />
+  {/* heroKey so the fiesta already detailed in the hero above is not repeated here. */}
+  <LocalFiestas cityName={city.name} heroKey={hero ? holidayKey(hero) : undefined} />
 
   <PuentesTeaser today={today} />
   <Explore activeCommunity={city.communityCode} year={year} />

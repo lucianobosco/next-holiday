@@ -6,7 +6,12 @@ interface Props {
 const { eyebrow, subheading } = Astro.props;
 ---
 
-<header class="text-center pb-4 sm:pb-6 animate-fade-up">
+{
+  /* No animate-fade-up here on purpose: the animation starts the H1 at opacity 0 with
+     fill-mode both, so Chrome measured the tiny header logo as the LCP element instead of
+     the actual heading. The below-the-fold sections keep theirs. */
+}
+<header class="pb-4 text-center sm:pb-6">
   <div class="mb-4 flex items-center justify-center gap-3 text-ink-soft">
     <span class="h-px w-10 bg-line"></span>
     <span class="text-[0.7rem] font-semibold uppercase tracking-[0.28em]">{eyebrow}</span>
