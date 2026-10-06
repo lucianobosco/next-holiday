@@ -1,4 +1,5 @@
 import { useState, useEffect } from "preact/hooks";
+import { madridMidnight } from "../lib/utils/holidays";
 
 // The countdown island, on the right of the hero. `serverNow` in milliseconds is optional
 // and comes from the server so that the first value is rendered during SSR: the big number
@@ -18,7 +19,7 @@ export default function Countdown({
     return () => clearInterval(id);
   }, []);
 
-  const target = new Date(targetDate + "T00:00:00").getTime();
+  const target = madridMidnight(targetDate);
   const diff = now === null ? null : Math.max(0, target - now);
   const days = diff === null ? null : Math.floor(diff / 86400000);
   const hours = diff === null ? null : Math.floor(diff / 3600000) % 24;

@@ -125,11 +125,32 @@ export function daysUntil(dateStr: string, today: string): number {
   return Math.round((target - from) / (1000 * 60 * 60 * 24));
 }
 
+// The instant a date starts in Spain, as epoch milliseconds. A holiday begins at midnight in
+// Madrid, not at midnight wherever the code happens to run: `dateStr + "T00:00:00"` is local
+// midnight, which on a Worker is UTC midnight -- one or two hours late -- and that is enough
+// for the countdown to show a day too many between 00:00 and 02:00 in Spain. It did, in
+// production. The offset is read at UTC midnight of the same date, which is 01:00 or 02:00 in
+// Madrid: the clocks change at 01:00 UTC, so that instant always has the offset midnight had.
+export function madridMidnight(dateStr: string): number {
+  const utcMidnight = Date.parse(dateStr + "T00:00:00Z");
+  const parts = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Europe/Madrid",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  }).formatToParts(new Date(utcMidnight));
+  const at = (type: string) => Number(parts.find((p) => p.type === type)!.value);
+  const wallClock = Date.UTC(at("year"), at("month") - 1, at("day"), at("hour") % 24, at("minute"));
+  return utcMidnight - (wallClock - utcMidnight);
+}
+
 // WHOLE days left from this instant, not calendar days: the same rule the hero's
-// countdown uses (useCountdown), so the two never disagree.
+// countdown uses, so the two never disagree.
 export function fullDaysUntil(dateStr: string, nowMs: number): number {
-  const target = new Date(dateStr + "T00:00:00").getTime();
-  return Math.max(0, Math.floor((target - nowMs) / (1000 * 60 * 60 * 24)));
+  return Math.max(0, Math.floor((madridMidnight(dateStr) - nowMs) / (1000 * 60 * 60 * 24)));
 }
 
 // Capitalises the first letter, for dates whose weekday comes out lowercase.

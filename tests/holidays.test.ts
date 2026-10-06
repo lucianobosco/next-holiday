@@ -12,6 +12,7 @@ import {
   holidayKey,
   isLocal,
   isNational,
+  madridMidnight,
   matchesScope,
   secondsUntilMadridMidnight,
   todayInMadrid,
@@ -121,10 +122,25 @@ describe("dates", () => {
   });
 
   it("counts whole days left, and never goes negative", () => {
-    const noon = new Date("2026-01-05T12:00:00").getTime();
+    const noon = Date.parse("2026-01-05T11:00:00Z"); // 12:00 in Madrid
     expect(fullDaysUntil("2026-01-06", noon)).toBe(0);
     expect(fullDaysUntil("2026-01-07", noon)).toBe(1);
     expect(fullDaysUntil("2026-01-01", noon)).toBe(0);
+  });
+
+  it("counts to midnight in Madrid, not midnight wherever the code runs", () => {
+    // The production case: 01:39 on 7 October in Madrid is still 6 October in UTC. Counting
+    // to UTC midnight said 5 days; it is 4 days and 22 hours.
+    expect(fullDaysUntil("2026-10-12", Date.parse("2026-10-06T23:39:28Z"))).toBe(4);
+  });
+
+  it("starts a date at midnight in Madrid, in summer, in winter and on both clock changes", () => {
+    expect(madridMidnight("2026-10-12")).toBe(Date.parse("2026-10-11T22:00:00Z")); // CEST
+    expect(madridMidnight("2026-12-08")).toBe(Date.parse("2026-12-07T23:00:00Z")); // CET
+    // 29 March 2026 the clocks go forward at 02:00, after midnight: that midnight is CET.
+    expect(madridMidnight("2026-03-29")).toBe(Date.parse("2026-03-28T23:00:00Z"));
+    // 25 October 2026 they go back at 03:00: that midnight is still CEST.
+    expect(madridMidnight("2026-10-25")).toBe(Date.parse("2026-10-24T22:00:00Z"));
   });
 
   it("reads today off the clock as YYYY-MM-DD", () => {
