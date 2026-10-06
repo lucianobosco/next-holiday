@@ -40,11 +40,13 @@ const rest = all.slice(limit);
   )
 }
 <script>
+  import { madridMidnight } from "../lib/utils/holidays";
+
   function updDays() {
     document.querySelectorAll("[data-festdate]").forEach((el) => {
       const ds = el.getAttribute("data-festdate");
       if (!ds) return;
-      const t = new Date(ds + "T00:00:00").getTime();
+      const t = madridMidnight(ds);
       const d = Math.max(0, Math.floor((t - Date.now()) / 86400000));
       const n = el.querySelector("[data-days-num]");
       const u = el.querySelector("[data-days-unit]");
