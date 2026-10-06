@@ -2,10 +2,21 @@
 import "../styles/global.css";
 import Countdown from "../components/Countdown.tsx";
 import { ALL_HOLIDAYS } from "../lib/utils/allHolidays";
-import { getUpcomingHolidays, formatDate } from "../lib/utils/holidays";
+import {
+  getUpcomingHolidays,
+  formatDate,
+  todayInMadrid,
+  edgeCacheSeconds,
+} from "../lib/utils/holidays";
 
-const today = new Date().toISOString().slice(0, 10);
-const hero = getUpcomingHolidays(ALL_HOLIDAYS, null, today)[0];
+// Rendered on demand, like the home page. Prerendered, it froze at the build's date: the
+// widget other sites embed kept counting towards a holiday that had already passed, and
+// "the next holiday" was worked out in UTC. Cached at the edge until midnight in Madrid.
+export const prerender = false;
+Astro.cache.set({ maxAge: edgeCacheSeconds() });
+
+const today = todayInMadrid();
+const hero = getUpcomingHolidays(ALL_HOLIDAYS, null, today)[0] ?? null;
 ---
 
 <!doctype html>
@@ -27,11 +38,23 @@ const hero = getUpcomingHolidays(ALL_HOLIDAYS, null, today)[0];
       <span class="text-[0.62rem] font-semibold uppercase tracking-[0.22em] text-cream/70"
         >Próximo festivo en España</span
       >
-      <h1 class="font-display mt-1 text-2xl font-semibold leading-tight text-cream">
-        {hero.localName}
-      </h1>
-      <p class="mt-0.5 text-sm text-cream/85">{formatDate(hero.date)}</p>
-      <div class="mt-3 max-w-[160px]"><Countdown targetDate={hero.date} client:load /></div>
+      {
+        hero ? (
+          <>
+            <h1 class="font-display mt-1 text-2xl font-semibold leading-tight text-cream">
+              {hero.localName}
+            </h1>
+            <p class="mt-0.5 text-sm text-cream/85">{formatDate(hero.date)}</p>
+            <div class="mt-3 max-w-[160px]">
+              <Countdown targetDate={hero.date} serverNow={Date.now()} client:load />
+            </div>
+          </>
+        ) : (
+          <h1 class="font-display mt-1 text-2xl font-semibold leading-tight text-cream">
+            Consulta el calendario de festivos
+          </h1>
+        )
+      }
       <p class="mt-3 text-[0.6rem] text-cream/60">elproximofestivo.es</p>
     </a>
   </body>
