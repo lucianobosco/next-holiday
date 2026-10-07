@@ -1,34 +1,28 @@
 ---
 import SiteSearch from "./SiteSearch.tsx";
 
-// Mobile first: on a narrow screen the brand and the search share the first row and the
-// links drop to a second one, so nothing hides behind a menu. From sm up it is one row.
+// Mobile first: one row on every width. On a phone it is the brand, the link to the long
+// weekends and a search button; "Toda España" stays in the HTML for crawlers and is the
+// first option of the search. From sm up both links show and the search is a select.
 const linkClass =
-  "inline-flex min-h-11 items-center text-sm font-semibold text-ink no-underline underline-offset-4 transition-colors hover:text-accent hover:underline";
+  "min-h-11 items-center whitespace-nowrap text-sm font-semibold text-ink no-underline underline-offset-4 transition-colors hover:text-accent hover:underline";
 ---
 
 <header class="sticky top-0 z-40 border-b border-line bg-paper-card">
-  <div
-    class="mx-auto flex max-w-6xl flex-wrap items-center gap-x-3 gap-y-0 px-4 py-1.5 sm:flex-nowrap sm:px-6"
-  >
+  <div class="mx-auto flex max-w-6xl items-center gap-4 px-4 py-1.5 sm:gap-5 sm:px-6">
     <a
       href="/"
-      class="flex min-h-11 shrink-0 items-center gap-2 text-base font-extrabold sm:text-[17px] tracking-tight text-ink no-underline"
+      class="mr-auto flex min-h-11 shrink-0 items-center gap-2 text-base font-extrabold tracking-tight text-ink no-underline sm:text-[17px]"
       aria-label="El Próximo Festivo — inicio"
     >
       <span class="inline-block size-3 shrink-0 rounded-[3px] bg-accent" aria-hidden="true"></span>
       El Próximo Festivo
     </a>
-    <nav
-      aria-label="Principal"
-      class="order-3 flex w-full items-center gap-5 sm:order-2 sm:ml-auto sm:w-auto"
-    >
-      <a href="/puentes/" class={linkClass}>Puentes</a>
-      <a href="/toda-espana/" class={linkClass}>Toda España</a>
+    <nav aria-label="Principal" class="flex items-center gap-5">
+      <a href="/puentes/" class:list={[linkClass, "inline-flex"]}>Puentes</a>
+      <a href="/toda-espana/" class:list={[linkClass, "hidden sm:inline-flex"]}>Toda España</a>
     </nav>
-    <div
-      class="order-2 ml-auto flex min-w-[7.5rem] max-w-[11rem] flex-1 justify-end sm:order-3 sm:ml-0 sm:max-w-[14rem]"
-    >
+    <div class="shrink-0 sm:w-44 lg:w-56">
       <SiteSearch client:idle />
     </div>
   </div>
