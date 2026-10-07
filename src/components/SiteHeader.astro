@@ -1,15 +1,14 @@
 ---
-import SiteSearch from "./SiteSearch.tsx";
-
-// Mobile first: one row on every width. On a phone it is the brand, the link to the long
-// weekends and a search button; "Toda España" stays in the HTML for crawlers and is the
-// first option of the search. From sm up both links show and the search is a select.
+// One row at every width: the brand and the two sections that are not a place. Choosing a
+// community or a city is the filter's job, on every page, so the header does not repeat it.
+// Below 375px "Toda España" does not fit beside the brand; it stays in the HTML for crawlers
+// and is the filter's second option.
 const linkClass =
   "min-h-11 items-center whitespace-nowrap text-sm font-semibold text-ink no-underline underline-offset-4 transition-colors hover:text-accent hover:underline";
 ---
 
 <header class="sticky top-0 z-40 border-b border-line bg-paper-card">
-  <div class="mx-auto flex max-w-6xl items-center gap-4 px-4 py-1.5 sm:gap-5 sm:px-6">
+  <div class="mx-auto flex max-w-6xl items-center gap-3 px-4 py-1.5 sm:gap-5 sm:px-6">
     <a
       href="/"
       class="mr-auto flex min-h-11 shrink-0 items-center gap-2 text-base font-extrabold tracking-tight text-ink no-underline sm:text-[17px]"
@@ -26,12 +25,11 @@ const linkClass =
       </svg>
       El Próximo Festivo
     </a>
-    <nav aria-label="Principal" class="flex items-center gap-5">
+    <nav aria-label="Principal" class="flex items-center gap-3 sm:gap-5">
       <a href="/puentes/" class:list={[linkClass, "inline-flex"]}>Puentes</a>
-      <a href="/toda-espana/" class:list={[linkClass, "hidden sm:inline-flex"]}>Toda España</a>
+      <a href="/toda-espana/" class:list={[linkClass, "hidden min-[375px]:inline-flex"]}
+        >Toda España</a
+      >
     </nav>
-    <div class="shrink-0 sm:w-44 lg:w-56">
-      <SiteSearch client:idle />
-    </div>
   </div>
 </header>
