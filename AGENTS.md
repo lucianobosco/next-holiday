@@ -50,9 +50,9 @@ the threshold wants lowering.
   `astro.config.mjs` under `customPages`. Add a page of that kind and you have to add it
   there too.
 - **The GetYourGuide widgets must not hydrate.** Preact's reconciliation would wipe the
-  iframe the third-party script injects. Their global state is torn down and the script
-  re-injected on every navigation, from `src/layouts/Layout.astro`, because View Transitions
-  replace the `<body>` underneath it.
+  iframe the third-party script injects. `src/layouts/Layout.astro` injects that script once
+  a widget comes near the viewport. There is no client-side router: every navigation is a
+  full page load, so nothing has to survive a swapped `<body>`.
 - **`scripts/` is run by hand**, not by the build. It regenerates the JSON in
   `src/lib/data/` when a year has to be added.
 

@@ -54,9 +54,6 @@ summary:focus-visible,
   outline-offset: 2px;
   border-radius: 4px;
 }
-#page-heading:focus {
-  outline: none;
-}
 
 /* Tailwind v4 drops the pointer cursor from buttons and selects; put it back. */
 button:not(:disabled),

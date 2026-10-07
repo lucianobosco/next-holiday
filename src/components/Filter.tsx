@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "preact/hooks";
-import { navigate } from "astro:transitions/client";
 import { COMMUNITIES, getCommunityName } from "../lib/utils/communities";
 import { ALL_COMMUNITIES } from "../lib/utils/holidays";
 import { CITY_PREFIX, capitalsByCommunity, getCityCommunity } from "../lib/utils/localHolidays";
@@ -43,9 +42,7 @@ export default function Filter({
 
   function go(next: string | null) {
     setV(next);
-    // Through the router, so the page swaps instead of reloading -- and so that Back is a
-    // swap too, which renders the previous page's own filter rather than this one.
-    void navigate(scopePath(next));
+    window.location.assign(scopePath(next));
   }
   function pickCity(name: string) {
     go(name ? CITY_PREFIX + name : community || null);
@@ -62,8 +59,7 @@ export default function Filter({
     if (s && s.value !== scope) go(s.value || null);
     else if (c && !c.disabled && c.value !== city) pickCity(c.value);
 
-    // Coming Back from another site restores this page from the back/forward cache exactly
-    // as it was left: with the selects showing the choice that navigated away from it.
+    // Going Back restores this page from the back/forward cache exactly as it was left: with the selects showing the choice that navigated away from it.
     // Put them back to what this page actually shows.
     function onPageShow(e: PageTransitionEvent) {
       if (!e.persisted) return;

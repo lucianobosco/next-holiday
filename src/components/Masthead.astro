@@ -7,14 +7,12 @@ const { subheading } = Astro.props;
 
 {
   /* The page's H1, deliberately quiet: the countdown under it is what people came for. It
-     must stay an <h1 id="page-heading" tabindex="-1"> -- the layout moves focus to it after
-     each navigation -- and it never animates in: an entrance starting at opacity 0 once made
+     never animates in: an entrance starting at opacity 0 once made
      Chrome measure the header logo as the LCP element instead of the heading. */
 }
 <header class="pb-4">
   <h1
     id="page-heading"
-    tabindex="-1"
     class="text-2xl font-extrabold leading-tight tracking-tight text-ink sm:text-[1.65rem]"
   >
     <slot />
