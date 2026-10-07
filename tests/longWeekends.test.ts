@@ -233,9 +233,9 @@ describe("nextLongerWeekend", () => {
 });
 
 describe("bridge copy", () => {
-  it("says there is a long weekend for free on a Monday", () => {
+  it("calls a Monday holiday a long weekend, not a puente", () => {
     const lw = longWeekendOf(on("2026-10-12"));
-    expect(bridgeHeadline(lw)).toBe("Hay puente, y no tienes que pedir nada");
+    expect(bridgeHeadline(lw)).toBe("Fin de semana largo, sin pedir nada");
     expect(bridgeSentence(lw)).toBe(
       "Cae en lunes: libras del sábado 10 al lunes 12. Tres días seguidos.",
     );

@@ -46,7 +46,7 @@ const note = !lw.span
   ? `Cae en ${lw.weekdayName}`
   : lw.span.ask.length
     ? `${lw.daysOff} días pidiendo ${lw.span.ask.map((d) => `el ${dayRef(d)}`).join(" y ")}`
-    : `Puente de ${lw.daysOff} días`;
+    : `${lw.daysOff} días sin pedir nada`;
 ---
 
 <li>
