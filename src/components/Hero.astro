@@ -18,13 +18,19 @@ interface Props {
 const { targetDate, eyebrow, title, dateLine, badge, bridge, holidayDates = [] } = Astro.props;
 ---
 
-<section class="rounded-xl border border-line bg-paper-card p-5 sm:p-6">
-  <div class="flex flex-wrap items-center gap-x-9 gap-y-5">
+<section class="rounded-xl border border-line bg-paper-card p-4 sm:p-6">
+  {
+    /* Mobile first: three stacked parts split by hairlines -- how long, to what, and the
+      long weekend. From sm up they sit side by side and wrap. */
+  }
+  <div class="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-9 sm:gap-y-5">
     <Countdown targetDate={targetDate} serverNow={Date.now()} client:load />
 
-    <div class="min-w-0 flex-1 basis-56">
+    <div class="min-w-0 sm:flex-1 sm:basis-56 border-t border-line pt-4 sm:border-0 sm:pt-0">
       <p class="text-sm font-semibold text-ink-soft">{eyebrow}</p>
-      <h2 class="mt-0.5 text-xl font-extrabold leading-tight tracking-tight text-ink">{title}</h2>
+      <h2 class="mt-0.5 text-lg font-extrabold sm:text-xl leading-tight tracking-tight text-ink">
+        {title}
+      </h2>
       <p class="mt-0.5 text-[0.95rem] text-ink">{dateLine}</p>
       {
         badge && (
@@ -39,8 +45,8 @@ const { targetDate, eyebrow, title, dateLine, badge, bridge, holidayDates = [] }
       bridge && (
         <>
           <span class="hidden w-px self-stretch bg-line lg:block" aria-hidden="true" />
-          <div class="min-w-0 flex-1 basis-80">
-            <h3 class="text-[1.05rem] font-extrabold leading-snug text-ink">
+          <div class="min-w-0 sm:flex-1 sm:basis-80 border-t border-line pt-4 sm:border-0 sm:pt-0">
+            <h3 class="text-base font-extrabold sm:text-[1.05rem] leading-snug text-ink">
               {bridgeHeadline(bridge)}
             </h3>
             <p class="mt-1 text-sm text-ink-soft">{bridgeSentence(bridge)}</p>

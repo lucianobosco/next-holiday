@@ -89,7 +89,9 @@ const jsonLd = {
       <div class="mt-4">
         <Hero
           targetDate={nextPuente.holiday.date}
-          eyebrow="Próximo puente"
+          eyebrow={
+            nextPuente.label === "Finde largo" ? "Próximo fin de semana largo" : "Próximo puente"
+          }
           title={nextPuente.holiday.localName}
           dateLine={cap(formatDate(nextPuente.holiday.date))}
           badge={nextPuente.label}

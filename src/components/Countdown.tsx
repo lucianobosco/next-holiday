@@ -35,21 +35,24 @@ export default function Countdown({
     );
   }
 
-  // A stable width, so the blocks beside it do not shift as the hours and minutes tick.
+  // A stable width, so the blocks beside it do not shift as the hours and minutes tick. The
+  // unit and the hours sit beside the number rather than under it, so the whole answer is
+  // one compact block on a phone.
   return (
     <div class="min-w-0 sm:min-w-[15.5rem]">
       <p class="text-sm font-bold text-ink-soft">Faltan</p>
-      <p class="flex items-baseline gap-2">
-        <span class="text-[clamp(4.5rem,9vw,6.5rem)] font-extrabold leading-[0.9] tracking-[-0.05em] text-accent tabular-nums">
+      <p class="mt-1 flex items-end gap-3">
+        <span class="text-[clamp(4.25rem,9vw,6.5rem)] font-extrabold leading-[0.8] tracking-[-0.05em] text-accent tabular-nums">
           {days ?? "··"}
         </span>
-        <span class="text-2xl font-extrabold tracking-tight text-ink sm:text-3xl">
-          {days === 1 ? "día" : "días"}
+        <span class="flex flex-col pb-0.5">
+          <span class="text-2xl font-extrabold leading-none tracking-tight text-ink sm:text-3xl">
+            {days === 1 ? "día" : "días"}
+          </span>
+          <span class="mt-1.5 text-sm font-semibold text-ink-soft tabular-nums">
+            {hours ?? "··"} h {minutes ?? "··"} min
+          </span>
         </span>
-      </p>
-      <p class="mt-2 text-sm font-semibold text-ink tabular-nums sm:text-base">
-        y {hours ?? "··"} {hours === 1 ? "hora" : "horas"}, {minutes ?? "··"}{" "}
-        {minutes === 1 ? "minuto" : "minutos"}
       </p>
     </div>
   );

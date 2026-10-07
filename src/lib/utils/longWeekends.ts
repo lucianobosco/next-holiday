@@ -204,12 +204,14 @@ function asked(days: string[]): string {
   return days.map((d) => `el ${dayRef(d)}`).join(" y ");
 }
 
-// The verdict, in a line: is there a long weekend, and does it cost you a day off.
+// The verdict, in a line: is there a long weekend, and does it cost you a day off. A run
+// with nothing to ask for is a long weekend, not a "puente": a puente is the working day
+// you take off to join a holiday to the weekend.
 export function bridgeHeadline(lw: LongWeekend): string {
   if (!lw.span) return `No hay puente: cae en ${lw.weekdayName}`;
   return lw.span.ask.length
     ? `Hay puente si pides ${asked(lw.span.ask)}`
-    : "Hay puente, y no tienes que pedir nada";
+    : "Fin de semana largo, sin pedir nada";
 }
 
 // The detail under the verdict: which days you get, from when to when.
