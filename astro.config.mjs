@@ -19,6 +19,7 @@ const onDemandPaths = [
   "/",
   "/toda-espana/",
   "/puentes/",
+  "/festivos-nacionales/",
   ...COMMUNITY_SLUGS.map((s) => `/comunidad/${s}/`),
   ...CITY_PATHS,
   ...HOLIDAY_SLUGS.map((s) => `/festivo/${s}/`),
@@ -82,7 +83,11 @@ export default defineConfig({
       serialize(item) {
         // Prioridad: home > comunidades/puentes > ciudades/festivos.
         if (item.url === "https://elproximofestivo.es/") item.priority = 1.0;
-        else if (/\/comunidad\/[^/]+\/$/.test(item.url) || item.url.endsWith("/puentes/"))
+        else if (
+          /\/comunidad\/[^/]+\/$/.test(item.url) ||
+          item.url.endsWith("/puentes/") ||
+          item.url.endsWith("/festivos-nacionales/")
+        )
           item.priority = 0.8;
         else item.priority = 0.6;
         item.changefreq = "weekly";

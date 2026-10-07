@@ -1,7 +1,15 @@
 import { describe, expect, it } from "vitest";
 import type { Holiday } from "../src/lib/types/holiday";
 import customsData from "../src/lib/data/holiday-customs.json";
-import { cityJsonLd, communityJsonLd, holidayJsonLd, graph, homeJsonLd } from "../src/lib/seo";
+import {
+  cityJsonLd,
+  communityJsonLd,
+  holidayJsonLd,
+  graph,
+  homeJsonLd,
+  nationalJsonLd,
+} from "../src/lib/seo";
+import { nationalFaq, nationalHolidaysOf } from "../src/lib/utils/nationalHolidays";
 import { ALL_HOLIDAYS } from "../src/lib/utils/allHolidays";
 import { HOLIDAY_SLUGS, getHolidayBySlug, type HolidayMeta } from "../src/lib/utils/slug";
 
@@ -223,5 +231,32 @@ describe("a holiday page", () => {
     if (!meta) return;
     const ld = holidayJsonLd(meta, "1970-01-01", "/festivo/x");
     expect(types(ld)).toContain("ItemList");
+  });
+});
+
+describe("nationalJsonLd", () => {
+  const ld = nationalJsonLd(
+    "/festivos-nacionales",
+    [{ year: 2026, holidays: nationalHolidaysOf(2026) }],
+    nationalFaq(2026),
+  );
+  it("lists each year's national holidays as dated events", () => {
+    const list = node(ld, "ItemList") as {
+      "@id": string;
+      itemListElement: { item: { name: string; startDate: string } }[];
+    };
+    expect(list["@id"]).toBe("https://elproximofestivo.es/festivos-nacionales/#2026");
+    expect(list.itemListElement).toHaveLength(10);
+    expect(list.itemListElement[0].item).toMatchObject({
+      name: "Año Nuevo",
+      startDate: "2026-01-01",
+    });
+  });
+  it("carries the page, its breadcrumb and the FAQ", () => {
+    expect(types(ld)).toEqual(
+      expect.arrayContaining(["CollectionPage", "BreadcrumbList", "FAQPage"]),
+    );
+    const faq = node(ld, "FAQPage") as { mainEntity: { name: string }[] };
+    expect(faq.mainEntity[0].name).toBe("¿Cuántos festivos nacionales hay en España en 2026?");
   });
 });

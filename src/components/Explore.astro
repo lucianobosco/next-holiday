@@ -7,9 +7,10 @@ interface Props {
   activeCommunity?: string;
   isPuentes?: boolean;
   isAllSpain?: boolean;
+  isNational?: boolean;
   year: number;
 }
-const { activeCommunity, isPuentes, isAllSpain, year } = Astro.props;
+const { activeCommunity, isPuentes, isAllSpain, isNational, year } = Astro.props;
 ---
 
 <nav
@@ -37,6 +38,18 @@ const { activeCommunity, isPuentes, isAllSpain, year } = Astro.props;
           class="inline-flex min-h-11 items-center rounded-md border border-line bg-paper-card px-4 py-2.5 text-sm font-bold text-ink no-underline transition-colors hover:border-accent hover:text-accent"
         >
           {`Todos los festivos de España ${year}`}
+        </a>
+      )
+    }
+    {
+      /* Like /toda-espana/ above: one anchor here is every template linking to the page
+         that answers "festivos nacionales". */
+      !isNational && (
+        <a
+          href="/festivos-nacionales/"
+          class="inline-flex min-h-11 items-center rounded-md border border-line bg-paper-card px-4 py-2.5 text-sm font-bold text-ink no-underline transition-colors hover:border-accent hover:text-accent"
+        >
+          {`Festivos nacionales ${year}`}
         </a>
       )
     }
