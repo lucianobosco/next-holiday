@@ -245,3 +245,56 @@ export function holidayJsonLd(festivo: HolidayMeta, today: string, path: string)
     faq,
   ]);
 }
+
+// /festivos-nacionales/: the national holidays of each year shown, as a list of dated
+// events, and the questions the page answers in its FAQ.
+export function nationalJsonLd(
+  path: string,
+  years: { year: number; holidays: Holiday[] }[],
+  faq: { q: string; a: string }[],
+): object {
+  return graph([
+    ...siteNodes(),
+    {
+      "@type": "CollectionPage",
+      name: "Festivos nacionales en España",
+      inLanguage: "es-ES",
+      url: abs(path),
+      isPartOf: { "@id": SITE_ID },
+    },
+    crumb([
+      { name: "Inicio", path: "/" },
+      { name: "Festivos nacionales", path },
+    ]),
+    ...years.map(({ year, holidays }) => ({
+      "@type": "ItemList",
+      "@id": `${abs(path)}#${year}`,
+      name: `Festivos nacionales de España en ${year}`,
+      itemListElement: holidays.map((h, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        item: {
+          "@type": "Event",
+          name: h.localName,
+          startDate: h.date,
+          endDate: h.date,
+          eventStatus: "https://schema.org/EventScheduled",
+          eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+          location: {
+            "@type": "Place",
+            name: "España",
+            address: { "@type": "PostalAddress", addressCountry: "ES" },
+          },
+        },
+      })),
+    })),
+    {
+      "@type": "FAQPage",
+      mainEntity: faq.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    },
+  ]);
+}
