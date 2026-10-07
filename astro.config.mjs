@@ -72,8 +72,7 @@ export default defineConfig({
   // Sessions are not used. Declaring a no-op driver stops the adapter adding its default
   // "SESSION" KV binding, which would mean creating a namespace for nothing.
   session: { driver: sessionDrivers.null() },
-  // Prefetch internal links on hover, which together with the ClientRouter's View
-  // Transitions makes a navigation feel immediate.
+  // Prefetch internal links on hover, so that a navigation feels immediate.
   prefetch: { prefetchAll: true, defaultStrategy: "hover" },
   integrations: [
     preact(),
@@ -94,5 +93,9 @@ export default defineConfig({
       },
     }),
   ],
-  vite: { plugins: [tailwindcss()] },
+  vite: {
+    plugins: [tailwindcss()],
+    // A different value on every build, for src/middleware.ts to tell a new deploy apart.
+    define: { __BUILD_ID__: JSON.stringify(Date.now().toString(36)) },
+  },
 });

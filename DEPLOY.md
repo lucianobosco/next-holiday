@@ -115,6 +115,11 @@ strength of the original diagnosis -- there is no evidence for it.
 - "The next holiday" is computed on demand, from the real date of each request, in
   `Europe/Madrid`. The pages that are genuinely static (`/puentes/`, `/embed/`, `/rss.xml`,
   the sitemap) are prerendered and served from the CDN.
+- The on-demand HTML is cached at the edge for up to five minutes, and it names the hashed
+  `/_astro/` scripts of the build that rendered it. A deploy deletes those, so a page cached
+  across a deploy asks for files that answer 404. `src/middleware.ts` empties the cache on
+  the first request a new build serves; after a deploy, `wrangler tail` should show
+  `purging the edge cache for build ...` once the first uncached request arrives.
 - `public/_headers` — the cache rules for the fonts and for `/_astro/*` — is honoured on
   Workers.
 - `www.elproximofestivo.es` answers **522**: there is a proxied DNS record with nothing
