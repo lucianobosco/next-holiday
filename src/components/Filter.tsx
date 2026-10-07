@@ -1,21 +1,13 @@
-import { useState } from "preact/hooks";
+import { useEffect, useRef, useState } from "preact/hooks";
+import { navigate } from "astro:transitions/client";
 import { COMMUNITIES, getCommunityName } from "../lib/utils/communities";
 import { ALL_COMMUNITIES } from "../lib/utils/holidays";
 import { CITY_PREFIX, capitalsByCommunity, getCityCommunity } from "../lib/utils/localHolidays";
-import { communitySlug, cityPath } from "../lib/utils/slug";
+import { scopePath } from "../lib/utils/slug";
 import { detectCommunity } from "../lib/utils/geolocation";
 
 const fieldClass =
-  "field rounded-lg border border-line bg-paper-card px-3 py-2 pr-9 text-sm font-medium text-ink shadow-sm transition cursor-pointer disabled:cursor-default disabled:opacity-50";
-
-// The trailing slash is the canonical shape; without it every navigation from the filter
-// cost a 301.
-function scopeToPath(v: string | null): string {
-  if (!v) return "/";
-  if (v === ALL_COMMUNITIES) return "/toda-espana/";
-  if (v.startsWith(CITY_PREFIX)) return cityPath(v.slice(CITY_PREFIX.length));
-  return `/comunidad/${communitySlug(v)}/`;
-}
+  "field min-h-11 w-full cursor-pointer rounded-md border border-line bg-paper-card py-2 pr-9 pl-3 text-sm font-semibold text-ink transition-colors disabled:cursor-default disabled:opacity-50 sm:w-auto";
 
 // A Preact island: the scope filter. Changing it navigates, by URL, like the rest of the
 // site. On the home page it also offers a button that detects your community and SUGGESTS
@@ -34,10 +26,55 @@ export default function Filter({
   home?: boolean;
 }) {
   const [v, setV] = useState<string | null>(value ?? null);
+  // Bumped to remount the selects, which is the only way to make the DOM forget a choice.
+  const [epoch, setEpoch] = useState(0);
   const [suggested, setSuggested] = useState<string | null>(null);
   const [detecting, setDetecting] = useState(false);
   const [noLocation, setNoLocation] = useState(false);
   const [dismissed, setDismissed] = useState(false);
+  const scopeRef = useRef<HTMLSelectElement>(null);
+  const cityRef = useRef<HTMLSelectElement>(null);
+
+  const isCity = !!v && v.startsWith(CITY_PREFIX);
+  const city = isCity ? v!.slice(CITY_PREFIX.length) : "";
+  const community = isCity ? (getCityCommunity(city) ?? "") : v && v !== ALL_COMMUNITIES ? v : "";
+  const scope = v === null ? "" : v === ALL_COMMUNITIES ? ALL_COMMUNITIES : community;
+  const capitals = community ? capitalsByCommunity(community) : [];
+
+  function go(next: string | null) {
+    setV(next);
+    // Through the router, so the page swaps instead of reloading -- and so that Back is a
+    // swap too, which renders the previous page's own filter rather than this one.
+    void navigate(scopePath(next));
+  }
+  function pickCity(name: string) {
+    go(name ? CITY_PREFIX + name : community || null);
+  }
+
+  useEffect(() => {
+    // client:idle can leave the selects on screen, and usable, for a while before this
+    // runs; a choice made in that window fired no handler, and hydration does not reset a
+    // select's value, so the page kept showing the new choice over the old content. If the
+    // DOM disagrees with the props now, that was the visitor: act on it. (autocomplete="off"
+    // keeps the browser's own form restoration from producing the same disagreement.)
+    const s = scopeRef.current;
+    const c = cityRef.current;
+    if (s && s.value !== scope) go(s.value || null);
+    else if (c && !c.disabled && c.value !== city) pickCity(c.value);
+
+    // Coming Back from another site restores this page from the back/forward cache exactly
+    // as it was left: with the selects showing the choice that navigated away from it.
+    // Put them back to what this page actually shows.
+    function onPageShow(e: PageTransitionEvent) {
+      if (!e.persisted) return;
+      setV(value ?? null);
+      setDetecting(false);
+      setEpoch((n) => n + 1);
+    }
+    window.addEventListener("pageshow", onPageShow);
+    return () => window.removeEventListener("pageshow", onPageShow);
+    // Mount only: the props of an island never change after it hydrates.
+  }, []);
 
   function detect() {
     setDetecting(true);
@@ -54,36 +91,25 @@ export default function Filter({
       });
   }
 
-  const isCity = !!v && v.startsWith(CITY_PREFIX);
-  const city = isCity ? v!.slice(CITY_PREFIX.length) : "";
-  const community = isCity ? (getCityCommunity(city) ?? "") : v && v !== ALL_COMMUNITIES ? v : "";
-  const scope = v === null ? "" : v === ALL_COMMUNITIES ? ALL_COMMUNITIES : community;
-  const capitals = community ? capitalsByCommunity(community) : [];
-
-  function go(next: string | null) {
-    setV(next);
-    if (typeof window !== "undefined") window.location.assign(scopeToPath(next));
-  }
-  function dismiss() {
-    setDismissed(true);
-    if (typeof sessionStorage !== "undefined") sessionStorage.setItem("epf-suggest-dismissed", "1");
-  }
-
   const showSuggestion = home && suggested && !dismissed && suggested !== community;
+  const cityDisabled = disabled || !community;
 
   return (
-    <div class="flex flex-wrap items-center gap-x-3 gap-y-2 rounded-xl border border-line bg-paper-card/60 px-4 py-3 backdrop-blur-sm">
-      <span class="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-ink-soft">
-        <SunDot />
+    <div class="flex flex-col gap-2 rounded-xl border border-line bg-paper-card p-2.5 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-3 sm:p-3">
+      <label for="filter-scope" class="text-sm font-bold text-ink">
         Festivos de
-      </span>
+      </label>
 
       <select
+        key={`scope-${epoch}`}
+        ref={scopeRef}
+        id="filter-scope"
         aria-label="Ámbito de festivos"
+        autocomplete="off"
         value={scope}
         disabled={disabled}
         onChange={(e) => go((e.target as HTMLSelectElement).value || null)}
-        class={`${fieldClass} max-w-[15rem]`}
+        class={`${fieldClass} sm:max-w-[16rem]`}
       >
         <option value="" selected={scope === ""}>
           Solo nacionales
@@ -100,26 +126,27 @@ export default function Filter({
         </optgroup>
       </select>
 
-      {community && !disabled && (
-        <select
-          aria-label="Ciudad"
-          value={city}
-          onChange={(e) => {
-            const name = (e.target as HTMLSelectElement).value;
-            go(name ? CITY_PREFIX + name : community);
-          }}
-          class={`${fieldClass} max-w-[13rem]`}
-        >
-          <option value="" selected={city === ""}>
-            Toda la comunidad
+      {/* Always rendered, disabled until there is a community: appearing only after a
+          choice made the bar change height under the page. */}
+      <select
+        key={`city-${epoch}`}
+        ref={cityRef}
+        aria-label="Ciudad"
+        autocomplete="off"
+        value={city}
+        disabled={cityDisabled}
+        onChange={(e) => pickCity((e.target as HTMLSelectElement).value)}
+        class={`${fieldClass} sm:max-w-[14rem]`}
+      >
+        <option value="" selected={city === ""}>
+          {community ? "Toda la comunidad" : "Elige antes una comunidad"}
+        </option>
+        {capitals.map((c) => (
+          <option value={c.name} selected={c.name === city}>
+            {c.name}
           </option>
-          {capitals.map((c) => (
-            <option value={c.name} selected={c.name === city}>
-              {c.name}
-            </option>
-          ))}
-        </select>
-      )}
+        ))}
+      </select>
 
       {note && <span class="text-xs text-ink-faint">{note}</span>}
 
@@ -128,7 +155,7 @@ export default function Filter({
           type="button"
           onClick={detect}
           disabled={detecting}
-          class="ml-auto inline-flex items-center gap-1.5 rounded-lg border border-line bg-paper-card px-3 py-2 text-sm font-medium text-terracotta shadow-sm transition hover:border-terracotta/40 hover:text-terracotta-deep disabled:opacity-60"
+          class="inline-flex min-h-11 items-center gap-1.5 self-start text-sm font-semibold text-accent underline underline-offset-4 transition-colors hover:text-accent-deep disabled:opacity-60 sm:ml-auto sm:self-auto"
         >
           <PinIcon />
           {detecting ? "Detectando…" : "Detectar mi comunidad"}
@@ -136,34 +163,38 @@ export default function Filter({
       )}
 
       {noLocation && !suggested && (
-        <span class="ml-auto text-sm text-ink-soft">
-          No pudimos detectar tu ubicación. Elígela arriba.
-        </span>
+        <p role="status" class="text-sm text-ink-soft sm:basis-full">
+          No pudimos detectar tu ubicación. Elige tu comunidad en el selector.
+        </p>
       )}
 
       {showSuggestion && (
-        <span class="ml-auto flex items-center gap-2 text-sm text-ink-soft">
+        <div
+          role="status"
+          class="flex flex-wrap items-center gap-x-3 text-sm text-ink-soft sm:ml-auto"
+        >
           <span class="inline-flex items-center gap-1.5">
             <PinIcon />
-            ¿Estás en <strong class="font-semibold text-ink">{getCommunityName(suggested!)}</strong>
-            ?
+            <span>
+              ¿Estás en <strong class="font-bold text-ink">{getCommunityName(suggested!)}</strong>?
+            </span>
           </span>
           <button
             type="button"
             onClick={() => go(suggested)}
-            class="font-semibold text-terracotta underline underline-offset-2 transition hover:text-terracotta-deep"
+            class="min-h-11 font-semibold text-accent underline underline-offset-4 transition-colors hover:text-accent-deep"
           >
             Ver festivos
           </button>
           <button
             type="button"
-            onClick={dismiss}
+            onClick={() => setDismissed(true)}
             aria-label="Descartar sugerencia"
-            class="rounded px-1 text-ink-faint transition hover:text-ink"
+            class="min-h-11 min-w-11 rounded-md text-ink-faint transition-colors hover:text-ink"
           >
             ✕
           </button>
-        </span>
+        </div>
       )}
     </div>
   );
@@ -180,29 +211,11 @@ function PinIcon() {
       stroke-width="2"
       stroke-linecap="round"
       stroke-linejoin="round"
-      class="shrink-0 text-terracotta"
+      class="shrink-0 text-accent"
       aria-hidden
     >
       <path d="M12 21s7-6.6 7-11a7 7 0 1 0-14 0c0 4.4 7 11 7 11z" />
       <circle cx="12" cy="10" r="2.4" />
-    </svg>
-  );
-}
-
-function SunDot() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 24 24" class="text-ochre shrink-0" aria-hidden>
-      <circle cx="12" cy="12" r="4.5" fill="currentColor" />
-      <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
-        <line x1="12" y1="2" x2="12" y2="5" />
-        <line x1="12" y1="19" x2="12" y2="22" />
-        <line x1="2" y1="12" x2="5" y2="12" />
-        <line x1="19" y1="12" x2="22" y2="12" />
-        <line x1="4.9" y1="4.9" x2="7" y2="7" />
-        <line x1="17" y1="17" x2="19.1" y2="19.1" />
-        <line x1="19.1" y1="4.9" x2="17" y2="7" />
-        <line x1="7" y1="17" x2="4.9" y2="19.1" />
-      </g>
     </svg>
   );
 }

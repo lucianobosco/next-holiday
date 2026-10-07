@@ -20,8 +20,10 @@ import {
   getCityBySlug,
   getCommunityBySlug,
   getHolidayBySlug,
+  scopePath,
   slugify,
 } from "../src/lib/utils/slug";
+import { ALL_COMMUNITIES } from "../src/lib/utils/holidays";
 
 describe("slugify", () => {
   it("strips accents, case and punctuation", () => {
@@ -136,5 +138,46 @@ describe("holidays as pages", () => {
     for (const m of regional) {
       expect(new Set(m.communityCodes).size).toBe(m.communityCodes.length);
     }
+  });
+});
+
+// What each page hands <Filter> as its value, worked out from the path alone -- the same
+// lookups the pages do. A selector value has to land on a page that hands it back.
+function valueOfPath(path: string): string | null | undefined {
+  if (path === "/") return null;
+  if (path === "/toda-espana/") return ALL_COMMUNITIES;
+  const m = path.match(/^\/comunidad\/([^/]+)\/(?:([^/]+)\/)?$/);
+  if (!m) return undefined;
+  const community = getCommunityBySlug(m[1]);
+  if (!community) return undefined;
+  if (!m[2]) return community.code;
+  const city = getCityBySlug(m[2]);
+  return city && city.communityCode === community.code ? CITY_PREFIX + city.name : undefined;
+}
+
+describe("scopePath", () => {
+  it("sends national-only home and everything to /toda-espana/", () => {
+    expect(scopePath(null)).toBe("/");
+    expect(scopePath("")).toBe("/");
+    expect(scopePath(ALL_COMMUNITIES)).toBe("/toda-espana/");
+  });
+
+  it("round-trips every community, Ceuta, Melilla and the islands included", () => {
+    for (const c of COMMUNITIES) expect(valueOfPath(scopePath(c.code))).toBe(c.code);
+  });
+
+  it("round-trips every capital, accents and spaces included", () => {
+    for (const c of CAPITAL_CITIES) {
+      const value = CITY_PREFIX + c.name;
+      expect(valueOfPath(scopePath(value))).toBe(value);
+    }
+    expect(scopePath(CITY_PREFIX + "Castellón de la Plana")).toBe(
+      "/comunidad/comunidad-valenciana/castellon-de-la-plana/",
+    );
+  });
+
+  it("falls back to the home page for a value nobody has, never to a broken path", () => {
+    expect(scopePath("ES-XX")).toBe("/");
+    expect(scopePath(CITY_PREFIX + "Atlantis")).toBe("/");
   });
 });
