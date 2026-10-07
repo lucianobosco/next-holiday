@@ -7,7 +7,7 @@ import { scopePath } from "../lib/utils/slug";
 import { detectCommunity } from "../lib/utils/geolocation";
 
 const fieldClass =
-  "field min-h-11 w-full cursor-pointer rounded-md border border-line bg-paper-card py-2 pr-9 pl-3 text-sm font-semibold text-ink transition-colors disabled:cursor-default disabled:opacity-50 sm:w-auto";
+  "field min-h-11 w-full min-w-0 cursor-pointer truncate rounded-md border border-line bg-paper-card py-2 pr-7 pl-2.5 text-sm font-semibold text-ink transition-colors disabled:cursor-default disabled:opacity-50 sm:w-auto sm:pr-9 sm:pl-3";
 
 // A Preact island: the scope filter. Changing it navigates, by URL, like the rest of the
 // site. On the home page it also offers a button that detects your community and SUGGESTS
@@ -95,8 +95,17 @@ export default function Filter({
   const cityDisabled = disabled || !community;
 
   return (
-    <div class="flex flex-col gap-2 rounded-xl border border-line bg-paper-card p-2.5 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-3 sm:p-3">
-      <label for="filter-scope" class="text-sm font-bold text-ink">
+    // Mobile first: one row of two selects (and the locate button on the home page), with
+    // no box around it, so the countdown stays in the first screen. From sm up it is the
+    // labelled bar.
+    <div
+      class={`grid items-center gap-2 sm:flex sm:flex-wrap sm:gap-x-3 sm:rounded-xl sm:border sm:border-line sm:bg-paper-card sm:p-3 ${
+        home && !disabled
+          ? "grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)_auto]"
+          : "grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)]"
+      }`}
+    >
+      <label for="filter-scope" class="sr-only text-sm font-bold text-ink sm:not-sr-only">
         Festivos de
       </label>
 
@@ -139,7 +148,7 @@ export default function Filter({
         class={`${fieldClass} sm:max-w-[14rem]`}
       >
         <option value="" selected={city === ""}>
-          {community ? "Toda la comunidad" : "Elige antes una comunidad"}
+          {community ? "Toda la comunidad" : "Ciudad"}
         </option>
         {capitals.map((c) => (
           <option value={c.name} selected={c.name === city}>
@@ -148,22 +157,25 @@ export default function Filter({
         ))}
       </select>
 
-      {note && <span class="text-xs text-ink-faint">{note}</span>}
+      {note && <span class="col-span-full text-xs text-ink-faint">{note}</span>}
 
       {home && !disabled && !dismissed && !community && !showSuggestion && (
         <button
           type="button"
           onClick={detect}
           disabled={detecting}
-          class="inline-flex min-h-11 items-center gap-1.5 self-start text-sm font-semibold text-accent underline underline-offset-4 transition-colors hover:text-accent-deep disabled:opacity-60 sm:ml-auto sm:self-auto"
+          aria-busy={detecting}
+          class="inline-flex size-11 items-center justify-center gap-1.5 rounded-md border border-line text-sm font-semibold text-accent underline-offset-4 transition-colors hover:text-accent-deep disabled:opacity-60 sm:ml-auto sm:size-auto sm:min-h-11 sm:border-0 sm:underline"
         >
           <PinIcon />
-          {detecting ? "Detectando…" : "Detectar mi comunidad"}
+          <span class="sr-only sm:not-sr-only">
+            {detecting ? "Detectando…" : "Detectar mi comunidad"}
+          </span>
         </button>
       )}
 
       {noLocation && !suggested && (
-        <p role="status" class="text-sm text-ink-soft sm:basis-full">
+        <p role="status" class="col-span-full text-sm text-ink-soft sm:basis-full">
           No pudimos detectar tu ubicación. Elige tu comunidad en el selector.
         </p>
       )}
@@ -171,7 +183,7 @@ export default function Filter({
       {showSuggestion && (
         <div
           role="status"
-          class="flex flex-wrap items-center gap-x-3 text-sm text-ink-soft sm:ml-auto"
+          class="col-span-full flex flex-wrap items-center gap-x-3 text-sm text-ink-soft sm:ml-auto"
         >
           <span class="inline-flex items-center gap-1.5">
             <PinIcon />
@@ -211,7 +223,7 @@ function PinIcon() {
       stroke-width="2"
       stroke-linecap="round"
       stroke-linejoin="round"
-      class="shrink-0 text-accent"
+      class="size-[18px] shrink-0 text-accent sm:size-[13px]"
       aria-hidden
     >
       <path d="M12 21s7-6.6 7-11a7 7 0 1 0-14 0c0 4.4 7 11 7 11z" />
