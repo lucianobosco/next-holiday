@@ -1,5 +1,9 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { detectCommunity } from "../src/lib/utils/geolocation";
+import {
+  DETECT_TIMEOUT_MS,
+  detectCommunity,
+  findNearestCommunity,
+} from "../src/lib/utils/geolocation";
 
 /** The two browser APIs this touches, replaced by whatever a test needs. */
 function withNavigator(nav: unknown) {
@@ -116,5 +120,53 @@ describe("detectCommunity", () => {
       await expect(detectCommunity()).resolves.toBe(code);
       vi.unstubAllGlobals();
     }
+  });
+
+  it("gives up when the prompt is never answered", async () => {
+    vi.useFakeTimers();
+    try {
+      withNavigator({ geolocation: { getCurrentPosition: () => {} } });
+      const pending = detectCommunity();
+      vi.advanceTimersByTime(DETECT_TIMEOUT_MS);
+      await expect(pending).resolves.toBeNull();
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+});
+
+describe("findNearestCommunity", () => {
+  // Every one of these came out wrong when the nearest community "centre" decided.
+  it("puts the provincial capitals near a border in their own community", () => {
+    const cases: [string, number, number, string][] = [
+      ["Toledo", 39.86, -4.03, "ES-CM"],
+      ["Guadalajara", 40.63, -3.17, "ES-CM"],
+      ["Segovia", 40.95, -4.12, "ES-CL"],
+      ["Ávila", 40.66, -4.7, "ES-CL"],
+      ["Alicante", 38.35, -0.48, "ES-VC"],
+      ["Almería", 36.84, -2.46, "ES-AN"],
+      ["Huelva", 37.26, -6.94, "ES-AN"],
+      ["Cádiz", 36.53, -6.29, "ES-AN"],
+      ["León", 42.6, -5.57, "ES-CL"],
+      ["Soria", 41.76, -2.46, "ES-CL"],
+      ["Teruel", 40.34, -1.11, "ES-AR"],
+      ["Elche", 38.27, -0.7, "ES-VC"],
+      ["Getafe", 40.31, -3.73, "ES-MD"],
+      ["Ibiza", 38.98, 1.43, "ES-IB"],
+      ["El Hierro", 27.75, -18.0, "ES-CN"],
+    ];
+    for (const [, lat, lon, code] of cases) expect(findNearestCommunity(lat, lon)).toBe(code);
+  });
+
+  it("never answers Ceuta or Melilla north of the Strait", () => {
+    expect(findNearestCommunity(36.13, -5.45)).toBe("ES-AN"); // Algeciras
+    expect(findNearestCommunity(36.01, -5.6)).toBe("ES-AN"); // Tarifa
+    expect(findNearestCommunity(35.89, -5.31)).toBe("ES-CE");
+  });
+
+  it("suggests nothing far from Spain, or for a position that is not one", () => {
+    expect(findNearestCommunity(48.86, 2.35)).toBeNull(); // Paris
+    expect(findNearestCommunity(38.72, -9.14)).toBeNull(); // Lisbon
+    expect(findNearestCommunity(Number.NaN, 0)).toBeNull();
   });
 });

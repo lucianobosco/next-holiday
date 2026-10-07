@@ -1,7 +1,8 @@
 import holidaysData from "../data/holidays.json";
 import type { Holiday, CommunityInfo } from "../types/holiday";
 import { COMMUNITIES } from "./communities";
-import { CAPITAL_CITIES, type CapitalCity } from "./localHolidays";
+import { CAPITAL_CITIES, CITY_PREFIX, type CapitalCity } from "./localHolidays";
+import { ALL_COMMUNITIES } from "./holidays";
 
 export function slugify(s: string): string {
   return s
@@ -62,6 +63,19 @@ export function cityPath(name: string): string {
 // this list had its own copy of the template and would have kept emitting slash-free
 // paths into the sitemap while cityPath emitted the canonical ones.
 export const CITY_PATHS = CAPITAL_CITIES.map((c) => cityPath(c.name));
+
+// ---- The scope selector ----
+// The page a selector value lives on: the inverse of what each page passes to <Filter>.
+// null is the home page, "ALL" is /toda-espana/, a community code its page and "city:Name"
+// that capital's. Anything unknown falls back to the home page rather than to a path like
+// /comunidad// that would 404.
+export function scopePath(value: string | null): string {
+  if (!value) return "/";
+  if (value === ALL_COMMUNITIES) return "/toda-espana/";
+  if (value.startsWith(CITY_PREFIX)) return cityPath(value.slice(CITY_PREFIX.length));
+  const slug = communitySlug(value);
+  return slug ? `/comunidad/${slug}/` : "/";
+}
 
 // ---- Holidays (national and regional, one entry per distinct name) ----
 export interface HolidayMeta {
