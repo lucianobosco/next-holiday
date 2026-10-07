@@ -24,18 +24,24 @@ const rest = all.slice(limit);
 </ul>
 {
   rest.length > 0 && (
-    <details class="group mt-3">
-      <summary class="flex min-h-11 cursor-pointer list-none items-center justify-center rounded-md bg-paper-deep px-4 py-2.5 text-sm font-bold text-ink transition-colors hover:bg-accent-soft [&::-webkit-details-marker]:hidden">
-        <span class="group-open:hidden">
-          Ver {rest.length} festivo{rest.length === 1 ? "" : "s"} más
-        </span>
-        <span class="hidden group-open:inline">Ver menos</span>
+    <details class="group mt-3 open:mt-0" data-fold>
+      {/* The summary opens the rest and then gets out of the way: "Ver menos" belongs where
+          the list ends, not above the holidays it would hide. */}
+      <summary class="flex min-h-11 w-full cursor-pointer items-center justify-center rounded-md bg-paper-deep px-4 py-2.5 text-sm font-bold text-ink transition-colors hover:bg-accent-soft list-none group-open:hidden [&::-webkit-details-marker]:hidden">
+        Ver {rest.length} festivo{rest.length === 1 ? "" : "s"} más
       </summary>
-      <ul class="mt-3">
+      <ul>
         {rest.map((h) => (
           <HolidayCard h={h} today={today} nextKey={nextKey} activeKey={activeKey} />
         ))}
       </ul>
+      <button
+        type="button"
+        data-fold-close
+        class="mt-3 flex min-h-11 w-full cursor-pointer items-center justify-center rounded-md bg-paper-deep px-4 py-2.5 text-sm font-bold text-ink transition-colors hover:bg-accent-soft"
+      >
+        Ver menos
+      </button>
     </details>
   )
 }
@@ -56,4 +62,16 @@ const rest = all.slice(limit);
   }
   updDays();
   document.addEventListener("astro:page-load", updDays);
+
+  // "Ver menos" sits at the end of the list: close it and bring the toggle back into view,
+  // or the visitor is left far below the list that just collapsed.
+  document.addEventListener("click", (e) => {
+    const btn = (e.target as Element).closest("[data-fold-close]");
+    const fold = btn?.closest<HTMLDetailsElement>("details[data-fold]");
+    if (!fold) return;
+    fold.open = false;
+    const summary = fold.querySelector("summary");
+    summary?.focus({ preventScroll: true });
+    summary?.scrollIntoView({ block: "center" });
+  });
 </script>
