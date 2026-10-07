@@ -72,31 +72,58 @@ export default function Calendar({ festivos, activeDate, activeKey, today }: Pro
   const next = new Date(view.y, view.m + 1, 1);
   const month2 = { y: next.getFullYear(), m: next.getMonth() };
 
+  const navBtn =
+    "flex h-11 w-11 items-center justify-center rounded-md border border-line bg-paper-card text-ink transition-colors hover:bg-paper-deep hover:text-accent-deep sm:h-10 sm:w-10";
+
   return (
-    <section class="animate-fade-up">
-      <div class="rounded-xl border border-line bg-paper-card p-4 shadow-sm sm:p-5">
-        <div class="mb-3 flex items-center justify-between">
+    <section>
+      <div>
+        <div class="mb-3 flex items-center justify-between gap-3">
           <button
             type="button"
             onClick={() => shift(-1)}
             aria-label="Meses anteriores"
-            class="rounded px-2 py-1 text-ink-soft transition hover:text-terracotta"
+            class={navBtn}
           >
-            ‹
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              class="h-4 w-4"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M15 6l-6 6 6 6" />
+            </svg>
           </button>
-          <span class="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-ink-faint">
+          <span class="text-sm font-bold tabular-nums text-ink-soft">
             {view.y === month2.y ? view.y : `${view.y}–${month2.y}`}
           </span>
           <button
             type="button"
             onClick={() => shift(1)}
             aria-label="Meses siguientes"
-            class="rounded px-2 py-1 text-ink-soft transition hover:text-terracotta"
+            class={navBtn}
           >
-            ›
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              class="h-4 w-4"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M9 6l6 6-6 6" />
+            </svg>
           </button>
         </div>
-        <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-4">
+        {/* auto-fit rather than sm:grid-cols-2: the calendar also lives in a narrow sidebar
+            column on lg, where two months side by side would not fit. */}
+        <div class="grid grid-cols-1 gap-x-8 gap-y-5 min-[34rem]:grid-cols-[repeat(auto-fit,minmax(15rem,1fr))]">
           <MonthGrid
             y={view.y}
             m={view.m}
@@ -114,13 +141,12 @@ export default function Calendar({ festivos, activeDate, activeKey, today }: Pro
             today={today}
           />
         </div>
-        <div class="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-[0.7rem] text-ink-soft">
+        <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs font-bold text-ink-soft">
           <span class="flex items-center gap-1.5">
-            <span class="inline-block h-2.5 w-2.5 rounded-full bg-terracotta"></span> Festivo
+            <span class="inline-block h-3 w-3 rounded-sm bg-accent"></span> Festivo
           </span>
           <span class="flex items-center gap-1.5">
-            <span class="inline-block h-2.5 w-2.5 rounded-full border-2 border-dashed border-terracotta/50"></span>{" "}
-            Día para puente
+            <span class="inline-block h-3 w-3 rounded-sm bg-accent-soft"></span> Día para puente
           </span>
         </div>
       </div>
@@ -148,15 +174,13 @@ function MonthGrid({ y, m, byDate, puenteDays, activeKey, today }: MonthProps) {
   while (cells.length % 7 !== 0) cells.push(null);
 
   return (
-    <div>
-      <h3 class="mb-2 text-center font-display text-sm font-semibold text-ink">
+    <div class="min-w-0">
+      <h3 class="mb-1.5 text-center text-sm font-bold text-ink">
         {MONTHS[m]} {y}
       </h3>
-      <div class="grid grid-cols-7 gap-0.5 text-center">
+      <div class="grid grid-cols-7 gap-[3px] text-center">
         {WEEKDAYS.map((w) => (
-          <div class="pb-1.5 text-[0.62rem] font-semibold uppercase tracking-wider text-ink-faint">
-            {w}
-          </div>
+          <div class="pb-1 text-xs font-bold text-ink-soft">{w}</div>
         ))}
         {cells.map((day, i) => {
           if (day === null) return <div />;
@@ -166,35 +190,36 @@ function MonthGrid({ y, m, byDate, puenteDays, activeKey, today }: MonthProps) {
           const isActive = fest?.some((h) => holidayKey(h) === activeKey);
           const isPuente = !isFest && puenteDays.has(dateStr);
           const isToday = dateStr === today;
+          const isPast = dateStr < today;
           const isSunday = i % 7 === 6;
-          return (
-            <div class="flex h-9 items-center justify-center">
-              {isFest ? (
-                <a
-                  href={festDest(fest![0])}
-                  aria-label={`${day} de ${MONTHS[m]}: ${fest!.map((h) => h.localName).join(", ")}`}
-                  title={fest!.map((h) => h.localName).join(" · ")}
-                  class={`flex h-8 w-8 items-center justify-center rounded-full bg-terracotta font-display text-sm font-semibold text-cream no-underline transition hover:brightness-110 ${isActive ? "ring-2 ring-ink/50 ring-offset-1 ring-offset-paper-card" : ""}`}
-                >
-                  {day}
-                </a>
-              ) : isPuente ? (
-                <span
-                  aria-label={`${day} de ${MONTHS[m]}: día para hacer puente`}
-                  title="Día para hacer puente"
-                  class="flex h-8 w-8 items-center justify-center rounded-full border border-dashed border-terracotta/50 font-display text-sm text-terracotta"
-                >
-                  {day}
-                </span>
-              ) : (
-                <span
-                  aria-current={isToday ? "date" : undefined}
-                  class={`flex h-8 w-8 items-center justify-center font-display text-sm ${isToday ? "rounded-full ring-1 ring-ink/40 text-ink" : isSunday ? "text-ochre-deep" : "text-ink-soft"}`}
-                >
-                  {day}
-                </span>
-              )}
-            </div>
+          const cell = "flex h-9 items-center justify-center rounded-md text-sm tabular-nums";
+          const todayRing = isToday ? "ring-2 ring-inset ring-ink" : "";
+          return isFest ? (
+            <a
+              href={festDest(fest![0])}
+              aria-label={`${day} de ${MONTHS[m]}: ${fest!.map((h) => h.localName).join(", ")}`}
+              title={fest!.map((h) => h.localName).join(" · ")}
+              aria-current={isToday ? "date" : undefined}
+              class={`${cell} bg-accent font-extrabold text-white no-underline transition-colors hover:bg-accent-deep ${isActive ? "underline decoration-2 underline-offset-2" : ""} ${todayRing}`}
+            >
+              {day}
+            </a>
+          ) : isPuente ? (
+            <span
+              aria-label={`${day} de ${MONTHS[m]}: día para hacer puente`}
+              title="Día para hacer puente"
+              aria-current={isToday ? "date" : undefined}
+              class={`${cell} bg-accent-soft font-bold text-ink ${isPast ? "text-ink-faint" : ""} ${todayRing}`}
+            >
+              {day}
+            </span>
+          ) : (
+            <span
+              aria-current={isToday ? "date" : undefined}
+              class={`${cell} ${isToday ? `font-extrabold text-ink ${todayRing}` : isPast ? "text-ink-faint" : isSunday ? "text-ink-soft" : "text-ink"}`}
+            >
+              {day}
+            </span>
           );
         })}
       </div>

@@ -1,8 +1,9 @@
 ---
-import { isNational, daysUntil, holidayKey } from "../lib/utils/holidays";
+import { isNational, dayCount, holidayKey } from "../lib/utils/holidays";
 import { getHolidayInfo } from "../lib/utils/holidayInfo";
 import { getCommunityName } from "../lib/utils/communities";
 import { holidaySlug, cityPath } from "../lib/utils/slug";
+import { datesInScopeOf, longWeekendOf } from "../lib/utils/longWeekends";
 import type { Holiday } from "../lib/types/holiday";
 
 interface Props {
@@ -15,61 +16,77 @@ const { h, today, nextKey, activeKey } = Astro.props;
 const key = holidayKey(h);
 const isNext = key === nextKey;
 const isActive = key === activeKey;
-const d = new Date(h.date + "T00:00:00");
-const day = d.getDate();
-const month = d.toLocaleDateString("es-ES", { month: "short" }).replace(".", "").toUpperCase();
-const yr = d.getFullYear();
-const otherYear = yr !== Number(today.slice(0, 4));
+
+// Read at UTC noon so neither the server's timezone nor a clock change moves the day.
+const at = (date: string) => new Date(date + "T12:00:00Z");
+const fmt = (date: string, opts: Intl.DateTimeFormatOptions) =>
+  at(date).toLocaleDateString("es-ES", { timeZone: "UTC", ...opts });
+const otherYear = h.date.slice(0, 4) !== today.slice(0, 4);
+const dateText = fmt(h.date, {
+  weekday: "long",
+  day: "numeric",
+  month: "long",
+  ...(otherYear ? { year: "numeric" } : {}),
+});
+const dateLine = dateText.charAt(0).toUpperCase() + dateText.slice(1);
+
 const desc = getHolidayInfo(h)?.description;
-const dd = daysUntil(h.date, today);
+const count = dayCount(h.date, today, Date.now());
 const scope = h.locality
   ? `${h.locality} · local`
   : isNational(h)
     ? "Nacional"
     : (h.counties ?? []).map(getCommunityName).join(", ");
 const dest = h.locality ? cityPath(h.locality) : `/festivo/${holidaySlug(h.localName)}/`;
-const border = isActive
-  ? "border-terracotta"
-  : isNext
-    ? "border-terracotta/60"
-    : "border-line hover:border-terracotta/40";
+
+// The long-weekend note on the right: how many days it frees and what it costs.
+const lw = longWeekendOf(h, datesInScopeOf(h));
+const dayRef = (date: string) => `${fmt(date, { weekday: "long" })} ${Number(date.slice(8))}`;
+const note = !lw.span
+  ? `Cae en ${lw.weekdayName}`
+  : lw.span.ask.length
+    ? `${lw.daysOff} días pidiendo ${lw.span.ask.map((d) => `el ${dayRef(d)}`).join(" y ")}`
+    : `Puente de ${lw.daysOff} días`;
 ---
 
 <li>
   <a
     href={dest}
-    class={`group flex items-start gap-4 rounded-xl border bg-paper-card px-3.5 py-3.5 shadow-sm transition hover:shadow-md ${border}`}
+    aria-current={isActive ? "true" : undefined}
+    class={`group/row grid grid-cols-[4.25rem_minmax(0,1fr)] items-center gap-x-3 gap-y-1.5 border-t border-line px-1.5 py-2.5 transition-colors hover:bg-paper sm:grid-cols-[4.75rem_minmax(0,1fr)_auto] sm:gap-x-4 ${isActive ? "bg-paper" : ""}`}
   >
-    <div
-      class={`flex h-14 w-14 shrink-0 flex-col items-center justify-center rounded-lg ${isNext ? "bg-terracotta text-cream" : "bg-paper-deep text-ink"}`}
-    >
-      <span class="font-display text-2xl font-semibold leading-none">{day}</span>
-      <span
-        class={`mt-0.5 text-[0.6rem] font-semibold tracking-wider ${isNext ? "text-cream" : "text-ink-soft"}`}
-        >{month}{otherYear ? ` '${String(yr).slice(2)}` : ""}</span
-      >
-    </div>
-    <div class="min-w-0 flex-1">
-      <div class="flex items-center gap-2">
-        <p class="font-display text-base font-medium leading-snug text-ink">{h.localName}</p>
+    <span class="whitespace-nowrap tabular-nums" data-festdate={h.date}>
+      <b
+        class={`text-2xl font-extrabold leading-none tracking-tight ${isNext ? "text-accent" : "text-ink"}`}
+        data-days-num>{count.num}</b
+      ><span class="ml-1 text-xs font-semibold text-ink-soft" data-days-unit>{count.unit}</span>
+    </span>
+    <span class="min-w-0">
+      <span class="flex flex-wrap items-center gap-x-2 gap-y-0.5">
+        <span
+          class="font-bold text-ink group-hover/row:underline group-hover/row:underline-offset-3"
+          >{h.localName}</span
+        >
         {
           isNext && (
-            <span class="shrink-0 rounded bg-terracotta px-1.5 py-0.5 text-[0.55rem] font-bold uppercase tracking-wider text-cream">
+            <span class="rounded-md bg-accent px-2 py-0.5 text-xs font-bold text-white">
               Próximo
             </span>
           )
         }
-      </div>
-      {desc && <p class="mt-1 text-sm leading-relaxed text-ink-soft line-clamp-2">{desc}</p>}
-      <p class="mt-1.5 text-xs text-ink-faint">{scope}</p>
-    </div>
-    <div class="shrink-0 text-right" data-festdate={h.date}>
-      <span class="font-display text-xl font-semibold text-terracotta" data-days-num
-        >{dd === 0 ? "hoy" : dd}</span
+      </span>
+      <span class="block text-sm text-ink-soft">{dateLine}</span>
+      {desc && <span class="mt-0.5 line-clamp-1 text-sm text-ink-soft">{desc}</span>}
+      <span
+        class="mt-1 inline-block max-w-full truncate rounded-md bg-paper-deep px-2 py-0.5 align-top text-xs font-bold text-ink-soft"
+        >{scope}</span
       >
-      <p class="text-[0.65rem] uppercase tracking-wide text-ink-faint" data-days-unit>
-        {dd === 0 ? "" : dd === 1 ? "día" : "días"}
-      </p>
-    </div>
+    </span>
+    <span class="col-start-2 sm:col-start-auto sm:text-right">
+      <span
+        class={`inline-block rounded-md px-2 py-0.5 text-xs font-bold ${lw.span ? "bg-accent-soft text-ink" : "bg-paper-deep text-ink-soft"}`}
+        >{note}</span
+      >
+    </span>
   </a>
 </li>

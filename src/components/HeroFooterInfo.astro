@@ -7,23 +7,21 @@ const info = getHolidayInfo(holiday);
 
 {
   info?.description && (
-    <div class="mt-5 border-t border-cream/15 pt-5">
-      <p class="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-cream/75">
-        Qué se conmemora
+    <div class="mt-5 border-t border-line pt-4">
+      <p class="text-sm font-bold text-ink-soft">Qué se conmemora</p>
+      <p class="mt-1 text-[0.95rem] leading-relaxed text-ink">
+        {info.description}{" "}
+        {info.pageUrl && (
+          <a
+            href={info.pageUrl}
+            target="_blank"
+            rel="noreferrer"
+            class="text-sm text-ink-soft underline underline-offset-2 hover:text-accent"
+          >
+            Saber más en Wikipedia
+          </a>
+        )}
       </p>
-      <p class="mt-2 text-[0.95rem] sm:text-base leading-relaxed text-cream/95">
-        {info.description}
-      </p>
-      {info.pageUrl && (
-        <a
-          href={info.pageUrl}
-          target="_blank"
-          rel="noreferrer"
-          class="mt-2 inline-block text-xs text-cream/90 underline underline-offset-2 transition hover:text-cream"
-        >
-          Saber más&nbsp;↗
-        </a>
-      )}
     </div>
   )
 }

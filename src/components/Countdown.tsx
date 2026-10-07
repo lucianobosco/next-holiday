@@ -1,10 +1,10 @@
 import { useState, useEffect } from "preact/hooks";
 import { madridMidnight } from "../lib/utils/holidays";
 
-// The countdown island, on the right of the hero. `serverNow` in milliseconds is optional
-// and comes from the server so that the first value is rendered during SSR: the big number
-// is the hero's LCP element, and it now paints at once instead of waiting for hydration and
-// showing "··" until then. Once hydrated, the client's clock takes over and ticks.
+// The countdown island, at the left of the hero band. `serverNow` in milliseconds comes from
+// the server so that the first value is rendered during SSR: the big number is the page's
+// LCP element, so it paints at once instead of waiting for hydration. Once hydrated, the
+// client's clock takes over. It ticks every minute: seconds would only add churn.
 export default function Countdown({
   targetDate,
   serverNow,
@@ -15,45 +15,42 @@ export default function Countdown({
   const [now, setNow] = useState<number | null>(serverNow ?? null);
   useEffect(() => {
     setNow(Date.now());
-    const id = setInterval(() => setNow(Date.now()), 1000);
+    const id = setInterval(() => setNow(Date.now()), 15000);
     return () => clearInterval(id);
   }, []);
 
-  const target = madridMidnight(targetDate);
-  const diff = now === null ? null : Math.max(0, target - now);
+  const diff = now === null ? null : Math.max(0, madridMidnight(targetDate) - now);
   const days = diff === null ? null : Math.floor(diff / 86400000);
   const hours = diff === null ? null : Math.floor(diff / 3600000) % 24;
   const minutes = diff === null ? null : Math.floor(diff / 60000) % 60;
-  const seconds = diff === null ? null : Math.floor(diff / 1000) % 60;
-  const show = (n: number | null) => (n === null ? "··" : String(n).padStart(2, "0"));
-  const small: [string, number | null][] = [
-    ["horas", hours],
-    ["min", minutes],
-    ["seg", seconds],
-  ];
+  const isToday = diff === 0;
 
+  if (isToday) {
+    return (
+      <div class="min-w-0">
+        <p class="text-[clamp(3rem,7vw,4.5rem)] font-extrabold leading-none tracking-tight text-accent">
+          Hoy
+        </p>
+      </div>
+    );
+  }
+
+  // A stable width, so the blocks beside it do not shift as the hours and minutes tick.
   return (
-    <div class="min-w-0" aria-hidden="true">
-      <div class="rounded-xl bg-cream/10 px-4 py-4 text-center ring-1 ring-cream/15">
-        <span class="block font-sans text-5xl sm:text-6xl font-bold tabular-nums leading-none text-cream">
-          {show(days)}
+    <div class="min-w-0 sm:min-w-[15.5rem]">
+      <p class="text-sm font-bold text-ink-soft">Faltan</p>
+      <p class="flex items-baseline gap-2">
+        <span class="text-[clamp(4.5rem,9vw,6.5rem)] font-extrabold leading-[0.9] tracking-[-0.05em] text-accent tabular-nums">
+          {days ?? "··"}
         </span>
-        <span class="mt-1.5 block text-[0.62rem] font-semibold uppercase tracking-[0.22em] text-cream/60">
-          días
+        <span class="text-2xl font-extrabold tracking-tight text-ink sm:text-3xl">
+          {days === 1 ? "día" : "días"}
         </span>
-      </div>
-      <div class="mt-2.5 grid grid-cols-3 gap-2">
-        {small.map(([l, v]) => (
-          <div class="rounded-lg bg-cream/[0.07] px-2 py-2.5 text-center ring-1 ring-cream/10">
-            <span class="block font-sans text-xl font-bold tabular-nums leading-none text-cream">
-              {show(v)}
-            </span>
-            <span class="mt-1 block text-[0.55rem] font-semibold uppercase tracking-wider text-cream/55">
-              {l}
-            </span>
-          </div>
-        ))}
-      </div>
+      </p>
+      <p class="mt-2 text-sm font-semibold text-ink tabular-nums sm:text-base">
+        y {hours ?? "··"} {hours === 1 ? "hora" : "horas"}, {minutes ?? "··"}{" "}
+        {minutes === 1 ? "minuto" : "minutos"}
+      </p>
     </div>
   );
 }

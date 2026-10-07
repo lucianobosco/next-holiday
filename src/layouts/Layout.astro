@@ -21,11 +21,11 @@ const ogImage = new URL("/og-image.png", Astro.site).href;
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es" transition:animate="none">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f4e9d2" />
+    <meta name="theme-color" content="#f3f4f6" />
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
     <link rel="canonical" href={canonicalUrl} />
@@ -50,14 +50,7 @@ const ogImage = new URL("/og-image.png", Astro.site).href;
     <link rel="dns-prefetch" href="https://widget.getyourguide.com" />
     <link rel="dns-prefetch" href="https://cdn.getyourguide.com" />
     <link rel="dns-prefetch" href="https://static.cloudflareinsights.com" />
-    <link
-      rel="preload"
-      href="/fonts/hanken-grotesk.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link rel="preload" href="/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/public-sans.woff2" as="font" type="font/woff2" crossorigin />
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
     <ClientRouter />
     <slot name="head" />
@@ -69,11 +62,11 @@ const ogImage = new URL("/og-image.png", Astro.site).href;
   <body>
     <a
       href="#main"
-      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-terracotta focus:px-4 focus:py-2 focus:font-semibold focus:text-cream"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-ink focus:px-4 focus:py-2.5 focus:text-sm focus:font-bold focus:text-white"
       >Saltar al contenido</a
     >
     <SiteHeader />
-    <main id="main" class="mx-auto max-w-6xl px-5 py-10 sm:px-8 sm:py-14">
+    <main id="main" class="mx-auto max-w-6xl px-4 py-6 sm:px-6 sm:py-8">
       <slot />
     </main>
     <CookieConsentBanner client:idle />
@@ -118,6 +111,17 @@ const ogImage = new URL("/og-image.png", Astro.site).href;
           s.async = true;
           s.src = "https://widget.getyourguide.com/dist/pa.umd.production.min.js";
           s.setAttribute("data-gyg-partner-id", "PNCUJCI");
+          // The widgets reserve their height so that nothing jumps when they arrive. If the
+          // script is blocked or never fills them, that reservation would stay as a blank
+          // hole the size of a screen: give it up and hide the empty boxes instead.
+          const release = () =>
+            document.querySelectorAll("[data-gyg-widget]").forEach((el) => {
+              if (el.querySelector("iframe")) return;
+              const box = el.closest("section");
+              if (box) box.hidden = true;
+            });
+          s.onerror = release;
+          setTimeout(release, 10000);
           document.head.appendChild(s);
         });
       };

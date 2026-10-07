@@ -26,36 +26,36 @@ const hero = getUpcomingHolidays(ALL_HOLIDAYS, null, today)[0] ?? null;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Próximo festivo en España</title>
     <meta name="robots" content="noindex" />
-    <link rel="preload" href="/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/public-sans.woff2" as="font" type="font/woff2" crossorigin />
   </head>
-  <body class="bg-gradient-to-br from-terracotta via-[#b33f24] to-[#8f2f1a]">
+  <body class="overflow-auto bg-transparent!">
     <a
       href="https://elproximofestivo.es/"
       target="_blank"
       rel="noopener"
-      class="block p-5 no-underline"
+      class="relative box-border block min-h-dvh rounded-xl border border-line bg-paper-card p-4 text-ink no-underline"
     >
-      <span class="text-[0.62rem] font-semibold uppercase tracking-[0.22em] text-cream/70"
-        >Próximo festivo en España</span
-      >
+      <span class="text-xs font-bold text-ink-soft">Próximo festivo en España</span>
       {
         hero ? (
           <>
-            <h1 class="font-display mt-1 text-2xl font-semibold leading-tight text-cream">
+            <h1 class="mt-0.5 truncate text-lg font-extrabold leading-tight text-ink">
               {hero.localName}
             </h1>
-            <p class="mt-0.5 text-sm text-cream/85">{formatDate(hero.date)}</p>
-            <div class="mt-3 max-w-[160px]">
+            <p class="text-sm text-ink-soft">{formatDate(hero.date)}</p>
+            {/* The site's countdown is sized for the home page's hero; in a 200px-high
+                iframe its number is brought down so the whole card fits without scrolling. */}
+            <div class="mt-2 [&_p_span:first-child]:text-5xl">
               <Countdown targetDate={hero.date} serverNow={Date.now()} client:load />
             </div>
           </>
         ) : (
-          <h1 class="font-display mt-1 text-2xl font-semibold leading-tight text-cream">
+          <h1 class="mt-0.5 text-lg font-extrabold leading-tight text-ink">
             Consulta el calendario de festivos
           </h1>
         )
       }
-      <p class="mt-3 text-[0.6rem] text-cream/60">elproximofestivo.es</p>
+      <span class="absolute bottom-3 right-4 text-xs text-ink-faint">elproximofestivo.es</span>
     </a>
   </body>
 </html>

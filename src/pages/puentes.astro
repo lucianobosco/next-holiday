@@ -2,18 +2,18 @@
 import Layout from "../layouts/Layout.astro";
 import Masthead from "../components/Masthead.astro";
 import Hero from "../components/Hero.astro";
-import PuentesAdvice from "../components/PuentesAdvice.astro";
 import PuentesList from "../components/PuentesList.astro";
 import Filter from "../components/Filter.tsx";
 import Calendar from "../components/Calendar.tsx";
 import GetYourGuideCity from "../components/GetYourGuideCity.tsx";
 import GetYourGuideWidget from "../components/GetYourGuideWidget.tsx";
-import AdSlot from "../components/AdSlot.astro";
 import Explore from "../components/Explore.astro";
 import EmbedSnippet from "../components/EmbedSnippet.astro";
 import SiteFooter from "../components/SiteFooter.astro";
-import { getUpcomingLongWeekends } from "../lib/utils/longWeekends";
+import { getUpcomingLongWeekends, heroBridge } from "../lib/utils/longWeekends";
+import { ALL_HOLIDAYS } from "../lib/utils/allHolidays";
 import {
+  filterByScope,
   holidayKey,
   formatDate,
   cap,
@@ -38,6 +38,9 @@ Astro.cache.set({ maxAge: edgeCacheSeconds() });
 const puentes = getUpcomingLongWeekends(today);
 const nextPuente = puentes.find((p) => p.daysOff) ?? puentes[0];
 const calFestivos = puentes.filter((p) => p.daysOff).map((p) => p.holiday);
+// Every national holiday, not just the ones in calFestivos, so that the week strip in the
+// hero draws a neighbouring holiday that makes no puente of its own (6 December beside the 8th).
+const holidayDates = filterByScope(ALL_HOLIDAYS, null).map((h) => h.date);
 const SITE = "https://elproximofestivo.es";
 // This page builds its own @graph rather than going through seo.ts's graph(), so the site
 // and publisher nodes have to be spread in by hand -- prepending them inside graph() would
@@ -70,55 +73,57 @@ const jsonLd = {
   jsonLd={jsonLd}
 >
   <Masthead
-    eyebrow="Puentes y findes largos"
     subheading="Qué día pedir libre en cada festivo nacional para maximizar tus días de descanso"
     >Puentes en España {year}</Masthead
   >
 
-  <div class="mt-6 animate-fade-up">
-    <Filter
-      value={null}
-      disabled={true}
-      note="Los puentes se calculan sobre festivos nacionales"
-      client:idle
-    />
-  </div>
+  <Filter
+    value={null}
+    disabled={true}
+    note="Los puentes se calculan sobre festivos nacionales"
+    client:idle
+  />
 
   {
     nextPuente && (
-      <div class="mt-6 animate-fade-up">
+      <div class="mt-4">
         <Hero
           targetDate={nextPuente.holiday.date}
           eyebrow="Próximo puente"
           title={nextPuente.holiday.localName}
           dateLine={cap(formatDate(nextPuente.holiday.date))}
           badge={nextPuente.label}
-        >
-          <PuentesAdvice advice={nextPuente.advice} daysOff={nextPuente.daysOff} />
-        </Hero>
+          bridge={heroBridge(nextPuente.holiday, today)}
+          holidayDates={holidayDates}
+        />
       </div>
     )
   }
 
-  <div class="mt-8 grid items-start gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-    <div class="min-w-0 animate-fade-up">
-      <h2 class="mb-4 font-display text-xl font-semibold text-ink">
-        Puentes de {year} en España
-      </h2><PuentesList today={today} year={year} />
-    </div>
-    <div class="min-w-0 animate-fade-up lg:sticky lg:top-20 lg:self-start">
-      <h2 class="mb-4 font-display text-xl font-semibold text-ink">Calendario de puentes {year}</h2>
-      <Calendar
-        festivos={calFestivos}
-        activeDate={nextPuente ? nextPuente.holiday.date : today}
-        activeKey={nextPuente ? holidayKey(nextPuente.holiday) : null}
-        today={today}
-        client:visible
-      />
+  {
+    /* No "next long weekend" block in the aside here: the list beside it is nothing but
+       long weekends, so it would only repeat one of its rows. */
+  }
+  <div class="mt-4 flex flex-col gap-4 lg:flex-row lg:items-stretch">
+    <section class="min-w-0 rounded-xl border border-line bg-paper-card p-4 sm:p-5 lg:flex-[2]">
+      <h2 class="mb-3 text-lg font-extrabold text-ink">Puentes de {year} en España</h2>
+      <PuentesList today={today} year={year} />
+    </section>
+    <div class="flex min-w-0 flex-col gap-4 lg:flex-1">
       <GetYourGuideCity locationId={SPAIN_GYG_ID} />
-      <AdSlot label="Publicidad" />
     </div>
   </div>
+
+  <section class="mt-4 rounded-xl border border-line bg-paper-card p-4 sm:p-5">
+    <h2 class="mb-3 text-lg font-extrabold text-ink">Calendario de puentes {year}</h2>
+    <Calendar
+      festivos={calFestivos}
+      activeDate={nextPuente ? nextPuente.holiday.date : today}
+      activeKey={nextPuente ? holidayKey(nextPuente.holiday) : null}
+      today={today}
+      client:visible
+    />
+  </section>
 
   <GetYourGuideWidget cityName="España" />
 

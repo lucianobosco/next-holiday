@@ -11,7 +11,7 @@ export default function SiteSearch() {
         const v = (e.target as HTMLSelectElement).value;
         if (v) window.location.assign(v);
       }}
-      class="field min-w-0 max-w-[14rem] flex-1 rounded-lg border border-line bg-paper-card py-1.5 pl-3 pr-8 text-sm text-ink"
+      class="field min-h-11 w-full min-w-0 rounded-md border border-line bg-paper-card py-2 pl-2.5 pr-7 text-sm text-ink transition-colors hover:border-ink-faint"
     >
       <option value="" selected disabled hidden>
         Buscar lugar…

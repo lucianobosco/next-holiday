@@ -19,19 +19,19 @@ const visible = all.slice(0, limit);
 const rest = all.slice(limit);
 ---
 
-<ul class="flex flex-col gap-2.5">
+<ul>
   {visible.map((h) => <HolidayCard h={h} today={today} nextKey={nextKey} activeKey={activeKey} />)}
 </ul>
 {
   rest.length > 0 && (
-    <details class="group mt-2.5">
-      <summary class="cursor-pointer list-none rounded-xl border border-line bg-paper-card px-4 py-3 text-center text-sm font-semibold text-terracotta shadow-sm transition hover:border-terracotta/40 hover:shadow-md">
+    <details class="group mt-3">
+      <summary class="flex min-h-11 cursor-pointer list-none items-center justify-center rounded-md bg-paper-deep px-4 py-2.5 text-sm font-bold text-ink transition-colors hover:bg-accent-soft [&::-webkit-details-marker]:hidden">
         <span class="group-open:hidden">
           Ver {rest.length} festivo{rest.length === 1 ? "" : "s"} más
         </span>
         <span class="hidden group-open:inline">Ver menos</span>
       </summary>
-      <ul class="mt-2.5 flex flex-col gap-2.5">
+      <ul class="mt-3">
         {rest.map((h) => (
           <HolidayCard h={h} today={today} nextKey={nextKey} activeKey={activeKey} />
         ))}
@@ -40,18 +40,18 @@ const rest = all.slice(limit);
   )
 }
 <script>
-  import { madridMidnight } from "../lib/utils/holidays";
+  import { dayCount, todayInMadrid } from "../lib/utils/holidays";
 
   function updDays() {
     document.querySelectorAll("[data-festdate]").forEach((el) => {
       const ds = el.getAttribute("data-festdate");
       if (!ds) return;
-      const t = madridMidnight(ds);
-      const d = Math.max(0, Math.floor((t - Date.now()) / 86400000));
+      // The same count the server rendered, recomputed in case the page sat open past midnight.
+      const c = dayCount(ds, todayInMadrid(), Date.now());
       const n = el.querySelector("[data-days-num]");
       const u = el.querySelector("[data-days-unit]");
-      if (n) n.textContent = d === 0 ? "hoy" : String(d);
-      if (u) u.textContent = d === 0 ? "" : d === 1 ? "día" : "días";
+      if (n) n.textContent = c.num;
+      if (u) u.textContent = c.unit;
     });
   }
   updDays();
