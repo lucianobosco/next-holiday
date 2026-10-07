@@ -3,6 +3,7 @@ import type { Holiday } from "../src/lib/types/holiday";
 import {
   ALL_COMMUNITIES,
   cap,
+  dayCount,
   daysUntil,
   edgeCacheSeconds,
   filterByScope,
@@ -126,6 +127,14 @@ describe("dates", () => {
     expect(fullDaysUntil("2026-01-06", noon)).toBe(0);
     expect(fullDaysUntil("2026-01-07", noon)).toBe(1);
     expect(fullDaysUntil("2026-01-01", noon)).toBe(0);
+  });
+
+  it("labels a list row with hoy, mañana or the whole days left", () => {
+    const now = Date.parse("2026-10-07T00:00:00Z"); // 02:00 on 7 October in Madrid
+    expect(dayCount("2026-10-07", "2026-10-07", now)).toEqual({ num: "hoy", unit: "" });
+    expect(dayCount("2026-10-08", "2026-10-07", now)).toEqual({ num: "mañana", unit: "" });
+    expect(dayCount("2026-10-09", "2026-10-07", now)).toEqual({ num: "1", unit: "día" });
+    expect(dayCount("2026-10-12", "2026-10-07", now)).toEqual({ num: "4", unit: "días" });
   });
 
   it("counts to midnight in Madrid, not midnight wherever the code runs", () => {

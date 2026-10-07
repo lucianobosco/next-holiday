@@ -153,6 +153,19 @@ export function fullDaysUntil(dateStr: string, nowMs: number): number {
   return Math.max(0, Math.floor((madridMidnight(dateStr) - nowMs) / (1000 * 60 * 60 * 24)));
 }
 
+// What a list row says about how far off a holiday is: "hoy", "mañana", or whole days left
+// -- the same whole days the countdown shows, so the list and the hero never disagree.
+export function dayCount(
+  dateStr: string,
+  today: string,
+  nowMs: number,
+): { num: string; unit: string } {
+  if (dateStr === today) return { num: "hoy", unit: "" };
+  if (daysUntil(dateStr, today) === 1) return { num: "mañana", unit: "" };
+  const n = fullDaysUntil(dateStr, nowMs);
+  return { num: String(n), unit: n === 1 ? "día" : "días" };
+}
+
 // Capitalises the first letter, for dates whose weekday comes out lowercase.
 export function cap(s: string): string {
   return s.charAt(0).toUpperCase() + s.slice(1);
