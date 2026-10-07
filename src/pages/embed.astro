@@ -46,7 +46,7 @@ const hero = getUpcomingHolidays(ALL_HOLIDAYS, null, today)[0] ?? null;
             {/* The site's countdown is sized for the home page's hero; in a 200px-high
                 iframe its number is brought down so the whole card fits without scrolling. */}
             <div class="mt-2 [&_p_span:first-child]:text-5xl">
-              <Countdown targetDate={hero.date} serverNow={Date.now()} client:load />
+              <Countdown targetDate={hero.date} serverNow={Date.now()} client:idle />
             </div>
           </>
         ) : (
