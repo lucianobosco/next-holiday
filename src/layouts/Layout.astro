@@ -1,6 +1,5 @@
 ---
 import "../styles/global.css";
-import { ClientRouter } from "astro:transitions";
 import SiteHeader from "../components/SiteHeader.astro";
 import CookieConsentBanner from "../components/CookieConsentBanner.tsx";
 import Feedback from "../components/Feedback.tsx";
@@ -21,7 +20,7 @@ const ogImage = new URL("/og-image.png", Astro.site).href;
 ---
 
 <!doctype html>
-<html lang="es" transition:animate="none">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -54,7 +53,6 @@ const ogImage = new URL("/og-image.png", Astro.site).href;
     <link rel="dns-prefetch" href="https://static.cloudflareinsights.com" />
     <link rel="preload" href="/fonts/public-sans.woff2" as="font" type="font/woff2" crossorigin />
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
-    <ClientRouter />
     <slot name="head" />
     <script
       defer
@@ -74,78 +72,40 @@ const ogImage = new URL("/og-image.png", Astro.site).href;
     <CookieConsentBanner client:idle />
     <Feedback client:idle />
     <script>
-      // After a View Transitions navigation, move focus to the H1, which is what announces
-      // the new page to a screen reader.
-      document.addEventListener("astro:after-swap", () => {
-        const h1 = document.getElementById("page-heading");
-        if (h1) (h1 as HTMLElement).focus();
-      });
-
-      // GetYourGuide's partner script scans the DOM once on load, mounts an iframe into
-      // every div[data-gyg-widget], and keeps global state (window.GYG, _GYG, gygPAStatus)
-      // tied to that <body>. View Transitions replace the <body> on every navigation, so
-      // that state goes stale and the new divs never get mounted after the first click --
-      // neither re-injecting the script nor GYG.refresh() is enough, because the old state
-      // is still there. So the state is torn down completely and the script re-injected,
-      // which gives it a clean scan of the <body> that is actually on screen. Calls within
-      // the same tick are coalesced through a microtask. The divs are static HTML -- the
-      // components never hydrate -- so that Preact's reconciliation cannot wipe the iframe.
-      const w = window as unknown as {
-        __reloadGyg?: () => void;
-        __gygScheduled?: boolean;
-        GYG?: unknown;
-        _GYG?: unknown;
-        gygPAStatus?: unknown;
-      };
-      w.__reloadGyg = () => {
-        if (w.__gygScheduled) return;
-        if (!document.querySelector("[data-gyg-widget]")) return;
-        w.__gygScheduled = true;
-        queueMicrotask(() => {
-          w.__gygScheduled = false;
-          if (!document.querySelector("[data-gyg-widget]")) return;
-          document.getElementById("gyg-widget-script")?.remove();
-          delete w.GYG;
-          delete w._GYG;
-          delete w.gygPAStatus;
-          const s = document.createElement("script");
-          s.id = "gyg-widget-script";
-          s.async = true;
-          s.src = "https://widget.getyourguide.com/dist/pa.umd.production.min.js";
-          s.setAttribute("data-gyg-partner-id", "PNCUJCI");
-          // The widgets reserve their height so that nothing jumps when they arrive. If the
-          // script is blocked or never fills them, that reservation would stay as a blank
-          // hole the size of a screen: give it up and hide the empty boxes instead.
-          const release = () =>
-            document.querySelectorAll("[data-gyg-widget]").forEach((el) => {
-              if (el.querySelector("iframe")) return;
-              const box = el.closest("section");
-              if (box) box.hidden = true;
-            });
-          s.onerror = release;
-          setTimeout(release, 10000);
-          document.head.appendChild(s);
-        });
-      };
+      // GetYourGuide's partner script scans the DOM once and mounts an iframe into every
+      // div[data-gyg-widget]. The divs are static HTML -- the components never hydrate -- so
+      // that Preact's reconciliation cannot wipe the iframe.
+      //
       // Deferred on purpose: the widgets live below the fold, and loading third-party JS on
       // first paint costs TBT and LCP. An IntersectionObserver waits until a widget comes
-      // near the viewport and only then is the script injected. Re-armed on every
-      // navigation, through astro:page-load.
-      const observeGyg = () => {
-        const widgets = document.querySelectorAll("[data-gyg-widget]");
-        if (!widgets.length) return;
+      // near the viewport and only then is the script injected.
+      const widgets = document.querySelectorAll("[data-gyg-widget]");
+      if (widgets.length) {
         const io = new IntersectionObserver(
-          (entries, obs) => {
-            if (entries.some((e) => e.isIntersecting)) {
-              obs.disconnect();
-              w.__reloadGyg?.();
-            }
+          (entries) => {
+            if (!entries.some((e) => e.isIntersecting)) return;
+            io.disconnect();
+            const s = document.createElement("script");
+            s.async = true;
+            s.src = "https://widget.getyourguide.com/dist/pa.umd.production.min.js";
+            s.setAttribute("data-gyg-partner-id", "PNCUJCI");
+            // The widgets reserve their height so that nothing jumps when they arrive. If the
+            // script is blocked or never fills them, that reservation would stay as a blank
+            // hole the size of a screen: give it up and hide the empty boxes instead.
+            const release = () =>
+              widgets.forEach((el) => {
+                if (el.querySelector("iframe")) return;
+                const box = el.closest("section");
+                if (box) box.hidden = true;
+              });
+            s.onerror = release;
+            setTimeout(release, 10000);
+            document.head.appendChild(s);
           },
           { rootMargin: "400px" },
         );
         widgets.forEach((el) => io.observe(el));
-      };
-      document.addEventListener("astro:page-load", observeGyg);
+      }
     </script>
   </body>
 </html>

@@ -6,45 +6,12 @@ import { useEffect } from "preact/hooks";
 // every page load ended in a 404 and an unhandled promise rejection.
 import "vanilla-cookieconsent/dist/cookieconsent.css";
 
-// vanilla-cookieconsent keeps its singleton in the module, and the module survives
-// ClientRouter's navigations, so `run()` must happen exactly once.
-let ccInitialized = false;
-
-// ClientRouter replaces the contents of the <body> -- taking with it the #cc-main the
-// library injects there -- and swaps the classes on <html> for the new document's. The
-// library caches that node internally and will NOT recreate it, not even on `show(true)`,
-// and it drives the dialog's visibility with a class on <html> (`show--consent`). So
-// navigating made the banner disappear twice over. The fix carries both across the swap:
-// the node itself and the state classes the library puts on <html>. Reusing the same node
-// is what keeps its listeners alive.
-const CC_HTML_STATE_CLASSES = ["show--consent", "show--preferences", "disable--interaction"];
-let ccMainNode: HTMLElement | null = null;
-let ccHtmlClasses: string[] = [];
-function preserveBannerAcrossNavigation() {
-  document.addEventListener("astro:before-swap", () => {
-    ccMainNode = document.getElementById("cc-main") ?? ccMainNode;
-    ccHtmlClasses = CC_HTML_STATE_CLASSES.filter((c) =>
-      document.documentElement.classList.contains(c),
-    );
-  });
-  document.addEventListener("astro:after-swap", () => {
-    if (ccMainNode && !document.getElementById("cc-main")) {
-      document.body.appendChild(ccMainNode);
-      document.documentElement.classList.add(...ccHtmlClasses);
-    }
-  });
-}
-
 // The GDPR banner, three categories. client:only: never rendered on the server.
 export default function CookieConsentBanner() {
   useEffect(() => {
     let active = true;
     import("vanilla-cookieconsent").then((CC) => {
-      // Re-hydrating after a navigation must not initialise anything again: the swap
-      // listeners, registered once, are what put the banner back.
-      if (!active || ccInitialized) return;
-      ccInitialized = true;
-      preserveBannerAcrossNavigation();
+      if (!active) return;
       const handleConsent = () => {
         const marketing = CC.acceptedCategory("marketing");
         window.dispatchEvent(new CustomEvent("cc-consent", { detail: { marketing } }));

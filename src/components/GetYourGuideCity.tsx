@@ -2,7 +2,7 @@ const PARTNER_ID = "PNCUJCI";
 
 // The "city" widget: a postcard of the destination. It needs a numeric location id.
 // Static on purpose (no client:*): it renders the div[data-gyg-widget] and nothing else,
-// and Layout mounts it through __reloadGyg on astro:page-load. It must not hydrate --
+// and Layout injects the script that fills it. It must not hydrate --
 // Preact's reconciliation would wipe out the iframe GetYourGuide injects into it.
 //
 // The min-heights reserve the iframe's height before it arrives, so nothing below the
