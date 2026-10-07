@@ -24,7 +24,7 @@ const { targetDate, eyebrow, title, dateLine, badge, bridge, holidayDates = [] }
       long weekend. From sm up they sit side by side and wrap. */
   }
   <div class="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-9 sm:gap-y-5">
-    <Countdown targetDate={targetDate} serverNow={Date.now()} client:load />
+    <Countdown targetDate={targetDate} serverNow={Date.now()} client:idle />
 
     <div class="min-w-0 sm:flex-1 sm:basis-56 border-t border-line pt-4 sm:border-0 sm:pt-0">
       <p class="text-sm font-semibold text-ink-soft">{eyebrow}</p>
