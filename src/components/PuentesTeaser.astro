@@ -7,49 +7,43 @@ const { today } = Astro.props;
 const top = getUpcomingLongWeekends(today)
   .filter((p) => p.daysOff)
   .slice(0, 3);
-const TONE: Record<string, string> = {
-  Puente: "bg-terracotta-soft text-terracotta-deep",
-  "Puente flexible": "bg-terracotta-soft text-terracotta-deep",
-  "Finde largo": "bg-ochre-soft text-ochre-deep",
-  "Cae en fin de semana": "bg-paper-deep text-ink-soft",
-};
+// Only a proper "Puente" takes the long-weekend tint; the other labels stay neutral.
+const pillTone = (label: string) =>
+  label === "Puente" ? "bg-accent-soft text-ink" : "bg-paper-deep text-ink-soft";
 ---
 
 {
   top.length > 0 && (
-    <section class="mt-16">
-      <div class="mb-4 flex items-baseline justify-between gap-3">
-        <h2 class="font-display text-xl font-semibold text-ink">Próximos puentes</h2>
+    <section class="mt-8">
+      <div class="mb-3 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+        <h2 class="text-lg font-extrabold text-ink">Próximos puentes</h2>
         <a
           href="/puentes/"
-          class="text-sm font-medium text-terracotta transition hover:text-terracotta-deep"
+          class="inline-flex min-h-11 items-center text-sm font-semibold text-accent underline-offset-4 transition-colors hover:text-accent-deep hover:underline sm:min-h-0"
         >
-          Ver todos →
+          Ver todos los puentes
         </a>
       </div>
       <div class="grid gap-3 sm:grid-cols-3">
         {top.map((p) => {
           const d = new Date(p.holiday.date + "T00:00:00");
           const day = d.getDate();
-          const month = d
-            .toLocaleDateString("es-ES", { month: "short" })
-            .replace(".", "")
-            .toUpperCase();
+          const month = d.toLocaleDateString("es-ES", { month: "short" }).replace(".", "");
           return (
             <a
               href="/puentes/"
-              class="rounded-xl border border-line bg-paper-card p-4 no-underline shadow-sm transition hover:border-terracotta/40 hover:shadow-md"
+              class="block min-w-0 rounded-xl border border-line bg-paper-card p-4 no-underline transition-colors hover:border-accent"
             >
-              <div class="flex items-center gap-2">
-                <span class="font-display text-lg font-semibold text-terracotta">
-                  {day} {month.toLowerCase()}
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="font-extrabold text-accent">
+                  {day} {month}
                 </span>
-                <span class={`rounded px-2 py-0.5 text-[0.65rem] font-medium ${TONE[p.label]}`}>
+                <span class={`rounded-md px-2 py-0.5 text-xs font-bold ${pillTone(p.label)}`}>
                   {p.label}
                 </span>
               </div>
-              <p class="mt-1 font-display text-base font-medium text-ink">{p.holiday.localName}</p>
-              {p.daysOff && <p class="mt-0.5 text-xs text-ink-soft">{p.daysOff} días libres</p>}
+              <p class="mt-1 font-semibold text-ink">{p.holiday.localName}</p>
+              {p.daysOff && <p class="text-sm text-ink-soft">{p.daysOff} días libres</p>}
             </a>
           );
         })}

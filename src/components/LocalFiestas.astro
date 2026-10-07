@@ -13,10 +13,8 @@ const localFiestas = ALL_HOLIDAYS.filter((h) => h.locality === cityName);
 
 {
   localFiestas.length > 0 && (
-    <section class="mt-12">
-      <h2 class="mb-4 font-display text-xl font-semibold text-ink">
-        Fiestas locales de {cityName}
-      </h2>
+    <section class="mt-8">
+      <h2 class="mb-3 text-lg font-extrabold text-ink">Fiestas locales de {cityName}</h2>
       <div class="grid gap-3 sm:grid-cols-2">
         {localFiestas.map((h) => {
           const info = getHolidayInfo(h);
@@ -27,15 +25,15 @@ const localFiestas = ALL_HOLIDAYS.filter((h) => h.locality === cityName);
           // same bullets above and seo.ts owns the #tradiciones list for it.
           const customs = holidayKey(h) === heroKey ? null : getCustoms(h);
           return (
-            <div class="rounded-xl border border-line bg-paper-card p-5">
-              <h3 class="font-display text-lg font-medium text-ink">{h.localName}</h3>
+            <div class="min-w-0 rounded-xl border border-line bg-paper-card p-4 sm:p-5">
+              <h3 class="font-bold text-ink">{h.localName}</h3>
               {info?.description && (
-                <p class="mt-1.5 text-sm leading-relaxed text-ink-soft">{info.description}</p>
+                <p class="mt-1 text-sm leading-relaxed text-ink-soft">{info.description}</p>
               )}
               {customs && (
-                <ul class="mt-3 flex flex-col gap-2">
+                <ul class="mt-2 list-disc pl-5 marker:text-accent">
                   {customs.map((c) => (
-                    <li class="text-sm leading-relaxed text-ink-soft">{c}</li>
+                    <li class="mt-1 text-sm leading-relaxed text-ink">{c}</li>
                   ))}
                 </ul>
               )}

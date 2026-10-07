@@ -1,32 +1,23 @@
 ---
 interface Props {
-  eyebrow: string;
   subheading?: string;
 }
-const { eyebrow, subheading } = Astro.props;
+const { subheading } = Astro.props;
 ---
 
 {
-  /* No animate-fade-up here on purpose: the animation starts the H1 at opacity 0 with
-     fill-mode both, so Chrome measured the tiny header logo as the LCP element instead of
-     the actual heading. The below-the-fold sections keep theirs. */
+  /* The page's H1, deliberately quiet: the countdown under it is what people came for. It
+     must stay an <h1 id="page-heading" tabindex="-1"> -- the layout moves focus to it after
+     each navigation -- and it never animates in: an entrance starting at opacity 0 once made
+     Chrome measure the header logo as the LCP element instead of the heading. */
 }
-<header class="pb-4 text-center sm:pb-6">
-  <div class="mb-4 flex items-center justify-center gap-3 text-ink-soft">
-    <span class="h-px w-10 bg-line"></span>
-    <span class="text-[0.7rem] font-semibold uppercase tracking-[0.28em]">{eyebrow}</span>
-    <span class="h-px w-10 bg-line"></span>
-  </div>
+<header class="pb-4">
   <h1
     id="page-heading"
     tabindex="-1"
-    class="font-display text-4xl font-semibold leading-tight tracking-tight text-ink sm:text-5xl"
+    class="text-2xl font-extrabold leading-tight tracking-tight text-ink sm:text-[1.65rem]"
   >
     <slot />
   </h1>
-  {
-    subheading && (
-      <p class="mx-auto mt-2 max-w-2xl text-base text-ink-soft sm:text-lg">{subheading}</p>
-    )
-  }
+  {subheading && <p class="mt-1 max-w-3xl text-[0.95rem] text-ink-soft">{subheading}</p>}
 </header>

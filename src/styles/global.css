@@ -1,74 +1,36 @@
 @import "tailwindcss";
 
+/* The "Sobrio" look: one family, a light grey page, white blocks with a hairline edge and a
+   single blue that means "holiday". The pale blue marks the days a long weekend frees up. */
 @theme {
-  --font-display: "Fraunces", Georgia, serif;
-  --font-sans: "Hanken Grotesk", system-ui, sans-serif;
+  --font-display: "Public Sans", "Segoe UI", system-ui, sans-serif;
+  --font-sans: "Public Sans", "Segoe UI", system-ui, sans-serif;
 
-  --color-paper: #f4e9d2;
-  --color-paper-deep: #ecdcbe;
-  --color-paper-card: #fbf5e8;
-  --color-cream: #faf3e2;
-  --color-ink: #2c2017;
-  --color-ink-soft: #6b5b48;
-  --color-ink-faint: #6e5e49;
-  --color-terracotta: #b03d1e;
-  --color-terracotta-deep: #8a2b18;
-  --color-terracotta-soft: #e7c3b2;
-  --color-ochre: #c0851f;
-  --color-ochre-deep: #78500c;
-  --color-ochre-soft: #eed9a6;
-  --color-olive: #6c7138;
-  --color-line: #e2d2b2;
-
-  --animate-fade-up: fade-up 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
-  --animate-fade-in: fade-in 0.9s ease both;
+  --color-paper: #f3f4f6;
+  --color-paper-deep: #eef1f6;
+  --color-paper-card: #ffffff;
+  --color-ink: #13161c;
+  --color-ink-soft: #555c69;
+  --color-ink-faint: #5e6573;
+  --color-accent: #1f4bd8;
+  --color-accent-deep: #1a3db0;
+  --color-accent-soft: #dce4fb;
+  --color-line: #e1e4ea;
 }
 
-@keyframes fade-up {
-  0% {
-    opacity: 0;
-    transform: translateY(18px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+/* Nothing animates in, not even the feedback panel: the countdown is the LCP element and
+   must paint at once, and a fade only delays what the visitor came for. The cookie banner's
+   own fade-in is switched off here too: it appears on first load. */
+html #cc-main {
+  --cc-modal-transition-duration: 0s;
 }
 
 @font-face {
-  font-family: "Fraunces";
+  font-family: "Public Sans";
   font-style: normal;
-  font-weight: 100 900;
+  font-weight: 400 800;
   font-display: swap;
-  src: url("/fonts/fraunces.woff2") format("woff2");
-  unicode-range:
-    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
-    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: "Fraunces";
-  font-style: italic;
-  font-weight: 100 900;
-  font-display: swap;
-  src: url("/fonts/fraunces-italic.woff2") format("woff2");
-  unicode-range:
-    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
-    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: "Hanken Grotesk";
-  font-style: normal;
-  font-weight: 100 900;
-  font-display: swap;
-  src: url("/fonts/hanken-grotesk.woff2") format("woff2");
+  src: url("/fonts/public-sans.woff2") format("woff2");
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
     U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
@@ -81,20 +43,14 @@ html {
   html {
     scroll-behavior: auto;
   }
-  /* The entrance animations too, not just the scrolling. They start at opacity 0 with
-     fill-mode both, so honouring the preference means switching them off outright rather
-     than shortening them -- otherwise the content they carry never appears. */
-  .animate-fade-up,
-  .animate-fade-in {
-    animation: none;
-  }
 }
 
 a:focus-visible,
 button:focus-visible,
 select:focus-visible,
+summary:focus-visible,
 [tabindex]:focus-visible {
-  outline: 2px solid #b03d1e;
+  outline: 2px solid #1f4bd8;
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -102,7 +58,7 @@ select:focus-visible,
   outline: none;
 }
 
-/* Tailwind v4 quita el cursor pointer de botones/selects; lo restauramos */
+/* Tailwind v4 drops the pointer cursor from buttons and selects; put it back. */
 button:not(:disabled),
 [role="button"],
 summary,
@@ -111,84 +67,49 @@ select:not(:disabled) {
 }
 
 body {
-  font-family:
-    "Hanken Grotesk",
-    system-ui,
-    -apple-system,
-    sans-serif;
-  background-color: #f4e9d2;
-  color: #2c2017;
+  font-family: "Public Sans", "Segoe UI", system-ui, sans-serif;
+  font-size: 15px;
+  background-color: #f3f4f6;
+  color: #13161c;
   min-height: 100vh;
-  position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Resplandor solar cálido detrás de todo */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(1100px 560px at 50% -10%, rgba(192, 133, 31, 0.3), transparent 60%),
-    radial-gradient(820px 460px at 90% 4%, rgba(196, 72, 42, 0.13), transparent 55%);
-}
-/* Grano sutil de papel */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.05;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-/* El contenido por encima de los fondos decorativos */
-body > * {
-  position: relative;
-  z-index: 1;
-}
-
-.font-display {
-  font-optical-sizing: auto;
-}
-
 ::selection {
-  background-color: #b03d1e;
-  color: #faf3e2;
+  background-color: #1f4bd8;
+  color: #ffffff;
 }
 
-/* Select con estética de almanaque (flecha custom separada del borde) */
+/* Select with its own arrow, set in from the edge. */
 .field {
   appearance: none;
   -webkit-appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='none' stroke='%237c6b57' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 5l4 4 4-4'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23555C69' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 4l4 4 4-4'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-position: right 0.9rem center;
+  background-position: right 0.8rem center;
 }
 .field:focus-visible {
   outline: none;
-  border-color: #b03d1e;
-  box-shadow: 0 0 0 3px rgba(176, 61, 30, 0.16);
+  border-color: #1f4bd8;
+  box-shadow: 0 0 0 3px rgba(31, 75, 216, 0.18);
 }
 
-/* Banner de cookies con la paleta del almanaque */
+/* Cookie banner in the site's colours. */
 #cc-main {
-  --cc-font-family: "Hanken Grotesk", system-ui, sans-serif;
-  --cc-bg: #fbf5e8;
-  --cc-primary-color: #2c2017;
-  --cc-secondary-color: #7c6b57;
-  --cc-btn-primary-bg: #b03d1e;
-  --cc-btn-primary-color: #faf3e2;
-  --cc-btn-primary-hover-bg: #9f3620;
-  --cc-btn-secondary-bg: #ecdcbe;
-  --cc-btn-secondary-color: #2c2017;
-  --cc-btn-secondary-hover-bg: #e2d2b2;
-  --cc-toggle-on-bg: #c4482a;
-  --cc-cookie-category-block-bg: #f4e9d2;
-  --cc-cookie-category-block-bg-hover: #ecdcbe;
-  --cc-separator-border-color: #e2d2b2;
-  --cc-btn-border-radius: 0.5rem;
+  --cc-font-family: "Public Sans", "Segoe UI", system-ui, sans-serif;
+  --cc-bg: #ffffff;
+  --cc-primary-color: #13161c;
+  --cc-secondary-color: #555c69;
+  --cc-btn-primary-bg: #1f4bd8;
+  --cc-btn-primary-color: #ffffff;
+  --cc-btn-primary-hover-bg: #1a3db0;
+  --cc-btn-secondary-bg: #eef1f6;
+  --cc-btn-secondary-color: #13161c;
+  --cc-btn-secondary-hover-bg: #e1e4ea;
+  --cc-toggle-on-bg: #1f4bd8;
+  --cc-cookie-category-block-bg: #f3f4f6;
+  --cc-cookie-category-block-bg-hover: #eef1f6;
+  --cc-separator-border-color: #e1e4ea;
+  --cc-btn-border-radius: 0.375rem;
 }

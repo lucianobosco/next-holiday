@@ -2,48 +2,39 @@
 import { getUpcomingLongWeekends } from "../lib/utils/longWeekends";
 const { today, year } = Astro.props as { today: string; year: number };
 const puentes = getUpcomingLongWeekends(today);
-const TONE: Record<string, string> = {
-  Puente: "bg-terracotta-soft text-terracotta-deep",
-  "Puente flexible": "bg-terracotta-soft text-terracotta-deep",
-  "Finde largo": "bg-ochre-soft text-ochre-deep",
-  "Cae en fin de semana": "bg-paper-deep text-ink-soft",
-};
+// Only a proper "Puente" takes the long-weekend tint; the other labels stay neutral.
+const pillTone = (label: string) =>
+  label === "Puente" ? "bg-accent-soft text-ink" : "bg-paper-deep text-ink-soft";
 ---
 
-<ul class="flex flex-col gap-3">
+<ul class="divide-y divide-line border-y border-line">
   {
     puentes.map((p) => {
       const d = new Date(p.holiday.date + "T00:00:00");
       const day = d.getDate();
-      const month = d
-        .toLocaleDateString("es-ES", { month: "short" })
-        .replace(".", "")
-        .toUpperCase();
+      const month = d.toLocaleDateString("es-ES", { month: "short" }).replace(".", "");
       const yr = d.getFullYear();
       return (
-        <li class="flex items-start gap-4 rounded-xl border border-line bg-paper-card px-4 py-4 shadow-sm">
-          <div class="flex h-14 w-14 shrink-0 flex-col items-center justify-center rounded-lg bg-paper-deep text-ink">
-            <span class="font-display text-2xl font-semibold leading-none">{day}</span>
-            <span class="mt-0.5 text-[0.6rem] font-semibold tracking-wider text-ink-soft">
-              {month}
-              {yr !== year ? ` '${String(yr).slice(2)}` : ""}
-            </span>
+        <li class="flex items-start gap-3 px-4 py-3 sm:gap-4 sm:px-5">
+          <div class="w-14 shrink-0 font-extrabold leading-tight text-accent">
+            {day} {month}
+            {yr !== year && <span class="block text-xs font-bold text-ink-soft">{yr}</span>}
           </div>
           <div class="min-w-0 flex-1">
-            <div class="flex flex-wrap items-center gap-2">
-              <h3 class="font-display text-lg font-medium text-ink">{p.holiday.localName}</h3>
-              <span class={`rounded px-2.5 py-0.5 text-[0.7rem] font-medium ${TONE[p.label]}`}>
+            <div class="flex flex-wrap items-center gap-x-2 gap-y-1">
+              <h3 class="font-bold text-ink">{p.holiday.localName}</h3>
+              <span class={`rounded-md px-2 py-0.5 text-xs font-bold ${pillTone(p.label)}`}>
                 {p.label}
               </span>
             </div>
-            <p class="mt-0.5 text-xs capitalize text-ink-faint">{p.weekdayName}</p>
-            <p class="mt-1.5 text-sm text-ink-soft">{p.advice}</p>
+            <p class="text-xs capitalize text-ink-soft">{p.weekdayName}</p>
+            <p class="mt-1 text-sm leading-relaxed text-ink-soft">{p.advice}</p>
           </div>
           {p.daysOff && (
-            <div class="shrink-0 text-right">
-              <span class="font-display text-2xl font-semibold text-terracotta">{p.daysOff}</span>
-              <p class="text-[0.65rem] uppercase tracking-wide text-ink-faint">días</p>
-            </div>
+            <p class="shrink-0 text-right text-sm text-ink-soft">
+              <span class="block text-lg font-extrabold leading-none text-ink">{p.daysOff}</span>
+              días
+            </p>
           )}
         </li>
       );

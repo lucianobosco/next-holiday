@@ -1,48 +1,35 @@
 ---
 import SiteSearch from "./SiteSearch.tsx";
+
+// Mobile first: on a narrow screen the brand and the search share the first row and the
+// links drop to a second one, so nothing hides behind a menu. From sm up it is one row.
+const linkClass =
+  "inline-flex min-h-11 items-center text-sm font-semibold text-ink no-underline underline-offset-4 transition-colors hover:text-accent hover:underline";
 ---
 
-<header class="sticky top-0 z-40 border-b border-line/70 bg-paper/90 backdrop-blur">
-  <div class="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3 sm:px-8">
+<header class="sticky top-0 z-40 border-b border-line bg-paper-card">
+  <div
+    class="mx-auto flex max-w-6xl flex-wrap items-center gap-x-3 gap-y-0 px-4 py-1.5 sm:flex-nowrap sm:px-6"
+  >
     <a
       href="/"
-      class="flex shrink-0 items-center gap-2 no-underline"
+      class="flex min-h-11 shrink-0 items-center gap-2 text-base font-extrabold sm:text-[17px] tracking-tight text-ink no-underline"
       aria-label="El Próximo Festivo — inicio"
     >
-      <svg
-        width="18"
-        height="18"
-        viewBox="0 0 24 24"
-        class="shrink-0 text-ochre"
-        aria-hidden="true"
-      >
-        <circle cx="12" cy="12" r="4.5" fill="currentColor"></circle>
-        <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
-          <line x1="12" y1="2" x2="12" y2="5"></line><line x1="12" y1="19" x2="12" y2="22"
-          ></line><line x1="2" y1="12" x2="5" y2="12"></line><line x1="19" y1="12" x2="22" y2="12"
-          ></line><line x1="4.9" y1="4.9" x2="7" y2="7"></line><line
-            x1="17"
-            y1="17"
-            x2="19.1"
-            y2="19.1"></line><line x1="19.1" y1="4.9" x2="17" y2="7"></line><line
-            x1="7"
-            y1="17"
-            x2="4.9"
-            y2="19.1"></line>
-        </g>
-      </svg>
-      <span class="font-display text-base font-semibold tracking-tight text-ink sm:text-lg"
-        >El Próximo <span class="italic text-terracotta">Festivo</span></span
-      >
+      <span class="inline-block size-3 shrink-0 rounded-[3px] bg-accent" aria-hidden="true"></span>
+      El Próximo Festivo
     </a>
-    <nav aria-label="Principal" class="flex min-w-0 flex-1 items-center justify-end gap-2 sm:gap-3">
-      <a
-        href="/puentes/"
-        class="shrink-0 rounded-full px-2.5 py-1.5 text-sm font-semibold text-ink no-underline transition hover:bg-terracotta-soft hover:text-terracotta-deep sm:px-3"
-        >Puentes</a
-      >
-      <span class="hidden h-5 w-px bg-line sm:block" aria-hidden="true"></span>
-      <SiteSearch client:idle />
+    <nav
+      aria-label="Principal"
+      class="order-3 flex w-full items-center gap-5 sm:order-2 sm:ml-auto sm:w-auto"
+    >
+      <a href="/puentes/" class={linkClass}>Puentes</a>
+      <a href="/toda-espana/" class={linkClass}>Toda España</a>
     </nav>
+    <div
+      class="order-2 ml-auto flex min-w-[7.5rem] max-w-[11rem] flex-1 justify-end sm:order-3 sm:ml-0 sm:max-w-[14rem]"
+    >
+      <SiteSearch client:idle />
+    </div>
   </div>
 </header>

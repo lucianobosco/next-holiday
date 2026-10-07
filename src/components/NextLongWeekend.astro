@@ -1,0 +1,41 @@
+---
+import BridgeWeek from "./BridgeWeek.astro";
+import { bridgeLength, bridgeSentence, type LongWeekend } from "../lib/utils/longWeekends";
+
+// "El siguiente da para más": the next national long weekend that frees more days than the
+// one in the hero band, and the way into /puentes/. When there is no longer one, only the
+// link remains.
+interface Props {
+  lw: LongWeekend | null;
+  holidayDates: string[];
+  year: number;
+}
+const { lw, holidayDates, year } = Astro.props;
+---
+
+<aside
+  class="rounded-xl border border-line bg-paper-card p-5"
+  aria-labelledby={lw ? "next-long-weekend" : undefined}
+  aria-label={lw ? undefined : "Puentes"}
+>
+  {
+    lw && (
+      <div class="mb-4">
+        <h2 id="next-long-weekend" class="text-[1.05rem] font-extrabold leading-snug text-ink">
+          El siguiente da para más: {bridgeLength(lw)}
+        </h2>
+        <p class="mt-1 text-sm text-ink-soft">{bridgeSentence(lw)}</p>
+        <BridgeWeek lw={lw} holidayDates={holidayDates} />
+        <p class="mt-3 text-xs text-ink-soft" aria-hidden="true">
+          Relleno, festivo. Marcado, días libres. Con borde, el día que pides.
+        </p>
+      </div>
+    )
+  }
+  <a
+    href="/puentes/"
+    class="inline-block rounded-md bg-ink px-4 py-2.5 text-sm font-bold text-white no-underline transition hover:bg-accent-deep"
+  >
+    Ver todos los puentes de {year}
+  </a>
+</aside>

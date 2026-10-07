@@ -80,29 +80,27 @@ export default function Feedback() {
   }
 
   return (
-    <div class="fixed bottom-4 right-4 z-40 print:hidden">
+    <div class="fixed bottom-4 right-4 z-40 flex flex-col items-end print:hidden">
       {open && (
         <div
           ref={panelRef}
           role="dialog"
           aria-label="Enviar opinión"
-          class="animate-fade-up mb-3 w-[min(20rem,calc(100vw-2rem))] rounded-2xl bg-paper-card p-4 text-ink shadow-xl ring-1 ring-line"
+          class="mb-2 w-[min(20rem,calc(100vw-2rem))] rounded-xl border border-line bg-paper-card p-4 text-ink"
         >
           {status === "done" ? (
-            <p class="py-4 text-center text-sm font-semibold text-olive">
+            <p class="py-4 text-center text-sm font-semibold text-ink-soft">
               ¡Gracias por tu opinión! 🙌
             </p>
           ) : (
             <>
               <div class="mb-3 flex items-start justify-between gap-2">
-                <p class="font-display text-base font-semibold leading-snug">
-                  ¿Qué te parece esta página?
-                </p>
+                <p class="text-base font-extrabold leading-snug">¿Qué te parece esta página?</p>
                 <button
                   type="button"
                   onClick={() => setOpen(false)}
                   aria-label="Cerrar"
-                  class="-mr-1 -mt-1 rounded-lg p-1 text-ink-soft hover:bg-paper-deep hover:text-ink"
+                  class="-mr-2 -mt-2 inline-flex size-11 shrink-0 items-center justify-center rounded-md text-ink-soft transition-colors hover:bg-paper-deep hover:text-ink"
                 >
                   <svg
                     width="18"
@@ -127,10 +125,10 @@ export default function Feedback() {
                     aria-label={f.label}
                     title={f.label}
                     onClick={() => setRating(f.value)}
-                    class={`flex-1 rounded-xl py-2 text-2xl transition ${
+                    class={`min-h-11 flex-1 rounded-md border py-1.5 text-2xl transition-colors ${
                       rating === f.value
-                        ? "bg-ochre-soft ring-2 ring-ochre scale-110"
-                        : "opacity-60 hover:opacity-100 hover:bg-paper-deep"
+                        ? "border-accent bg-accent-soft"
+                        : "border-transparent opacity-60 hover:bg-paper-deep hover:opacity-100"
                     }`}
                   >
                     {f.emoji}
@@ -139,7 +137,7 @@ export default function Feedback() {
               </div>
 
               {rating !== null && (
-                <div class="animate-fade-in mt-3">
+                <div class="mt-3">
                   <textarea
                     ref={commentRef}
                     value={comment}
@@ -147,12 +145,12 @@ export default function Feedback() {
                     rows={3}
                     maxLength={1000}
                     placeholder="¿Algo que añadir? (opcional)"
-                    class="w-full resize-none rounded-xl border border-line bg-cream px-3 py-2 text-sm text-ink placeholder:text-ink-soft/70 focus-visible:border-terracotta focus-visible:outline-none"
+                    class="w-full resize-none rounded-md border border-line bg-paper-card px-3 py-2 text-base text-ink placeholder:text-ink-faint focus-visible:border-accent focus-visible:outline-none sm:text-sm"
                   />
                   <button
                     type="button"
                     onClick={submit}
-                    class="mt-2 w-full rounded-xl bg-terracotta px-4 py-2.5 text-sm font-semibold text-cream transition hover:bg-terracotta-deep"
+                    class="mt-2 min-h-11 w-full rounded-md bg-ink px-4 py-2.5 text-sm font-bold text-white transition-colors hover:bg-accent-deep"
                   >
                     Enviar opinión
                   </button>
@@ -168,7 +166,7 @@ export default function Feedback() {
         ref={launcherRef}
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
-        class="flex items-center gap-2 rounded-full bg-paper-card px-4 py-2.5 text-sm font-semibold text-ink shadow-lg ring-1 ring-line transition hover:bg-cream"
+        class="flex min-h-11 items-center gap-2 rounded-md border border-line bg-paper-card px-4 py-2.5 text-sm font-bold text-ink transition-colors hover:border-accent hover:text-accent"
       >
         <svg
           width="16"

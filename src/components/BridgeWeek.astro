@@ -1,0 +1,71 @@
+---
+import type { LongWeekend } from "../lib/utils/longWeekends";
+
+interface Props {
+  lw: LongWeekend;
+  // Every holiday in the page's scope, so that one next door (6 December beside the 8th)
+  // is drawn as a holiday too.
+  holidayDates: string[];
+}
+const { lw, holidayDates } = Astro.props;
+
+const LETTER = ["D", "L", "M", "X", "J", "V", "S"];
+const shift = (date: string, days: number) => {
+  const d = new Date(date + "T12:00:00Z");
+  d.setUTCDate(d.getUTCDate() + days);
+  return d.toISOString().slice(0, 10);
+};
+
+// A seven-day window with the free run in the middle of it.
+const span = lw.span;
+const runLength = span
+  ? Math.round((Date.parse(span.to) - Date.parse(span.from)) / 86400000) + 1
+  : 1;
+const start = span
+  ? shift(span.from, -Math.floor((7 - runLength) / 2))
+  : shift(lw.holiday.date, -3);
+const holidays = new Set(holidayDates);
+const days = Array.from({ length: 7 }, (_, i) => {
+  const iso = shift(start, i);
+  const free = !!span && iso >= span.from && iso <= span.to;
+  return {
+    iso,
+    letter: LETTER[new Date(iso + "T12:00:00Z").getUTCDay()],
+    day: Number(iso.slice(8)),
+    free,
+    first: free && iso === span!.from,
+    last: free && iso === span!.to,
+    holiday: holidays.has(iso) || iso === lw.holiday.date,
+    ask: !!span && span.ask.includes(iso) && !holidays.has(iso),
+  };
+});
+---
+
+{/* Decorative: the sentence above it already says which days. */}
+<div class="mt-3 grid grid-cols-7" aria-hidden="true">
+  {
+    days.map((d) => (
+      <div class="flex flex-col items-stretch">
+        <span class="text-center text-xs font-bold text-ink-soft">{d.letter}</span>
+        <span
+          class:list={[
+            "mt-1 flex h-10 items-center justify-center",
+            d.free && "bg-accent-soft",
+            d.first && "rounded-l-lg",
+            d.last && "rounded-r-lg",
+          ]}
+        >
+          <span
+            class:list={[
+              "grid h-8 w-8 place-items-center rounded-md text-[0.95rem] font-bold tabular-nums",
+              d.holiday ? "bg-accent text-white" : "text-ink",
+              d.ask && "ring-2 ring-inset ring-ink",
+            ]}
+          >
+            {d.day}
+          </span>
+        </span>
+      </div>
+    ))
+  }
+</div>

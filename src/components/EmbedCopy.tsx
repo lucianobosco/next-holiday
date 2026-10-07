@@ -9,27 +9,25 @@ const CODE = `<iframe src="https://elproximofestivo.es/embed/" width="340" heigh
 export default function EmbedCopy() {
   const [copied, setCopied] = useState(false);
   return (
-    <div class="mt-4 overflow-hidden rounded-xl border border-line bg-paper-card">
-      <pre class="overflow-x-auto p-4 text-xs leading-relaxed text-ink-soft">
+    <div class="mt-3 flex flex-col gap-2 sm:flex-row sm:items-stretch">
+      <pre class="min-w-0 flex-1 overflow-x-auto rounded-md border border-line bg-paper px-3 py-2.5 font-mono text-xs leading-relaxed text-ink">
         <code>{CODE}</code>
       </pre>
-      <div class="flex justify-end border-t border-line px-4 py-2">
-        <button
-          type="button"
-          onClick={() => {
-            navigator.clipboard
-              ?.writeText(CODE)
-              .then(() => {
-                setCopied(true);
-                setTimeout(() => setCopied(false), 2000);
-              })
-              .catch(() => {});
-          }}
-          class="rounded-lg bg-terracotta px-4 py-1.5 text-xs font-semibold text-cream transition hover:brightness-110"
-        >
-          {copied ? "¡Copiado!" : "Copiar código"}
-        </button>
-      </div>
+      <button
+        type="button"
+        onClick={() => {
+          navigator.clipboard
+            ?.writeText(CODE)
+            .then(() => {
+              setCopied(true);
+              setTimeout(() => setCopied(false), 2000);
+            })
+            .catch(() => {});
+        }}
+        class="min-h-11 shrink-0 rounded-md bg-ink px-4 py-2.5 text-sm font-bold text-white transition-colors hover:bg-accent-deep"
+      >
+        {copied ? "¡Copiado!" : "Copiar código"}
+      </button>
     </div>
   );
 }
