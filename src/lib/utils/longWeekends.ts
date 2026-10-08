@@ -214,14 +214,13 @@ export function bridgeHeadline(lw: LongWeekend): string {
     : "Fin de semana largo, sin pedir nada";
 }
 
-// The detail under the verdict: which days you get, from when to when.
+// The detail under the verdict: how many days in a row, and what to ask for. It leaves the
+// from-to out on purpose: the week drawn next to it already marks it, and a sentence that
+// wraps on some holidays and not on others makes the card change height.
 export function bridgeSentence(lw: LongWeekend): string {
-  if (!lw.span) return "Este festivo no se puede encadenar con el fin de semana.";
-  const span = `del ${dayRef(lw.span.from)} al ${dayRef(lw.span.to)}`;
+  if (!lw.span) return "No se puede encadenar con el fin de semana.";
   const run = `${COUNT[lw.daysOff!]} días seguidos.`;
-  return lw.span.ask.length
-    ? `Pide ${asked(lw.span.ask)} y libras ${span}. ${run}`
-    : `Cae en ${lw.weekdayName}: libras ${span}. ${run}`;
+  return lw.span.ask.length ? `Pide ${asked(lw.span.ask)}: ${run.toLowerCase()}` : run;
 }
 
 // "4 días en diciembre", for the block that points at the next, longer one.
