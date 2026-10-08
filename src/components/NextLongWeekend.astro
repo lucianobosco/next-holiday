@@ -24,7 +24,7 @@ const { lw, holidayDates, year } = Astro.props;
         <h2 id="next-long-weekend" class="text-[1.05rem] font-extrabold leading-snug text-ink">
           El siguiente da para más: {bridgeLength(lw)}
         </h2>
-        <p class="mt-1 text-sm text-ink-soft">{bridgeSentence(lw)}</p>
+        <p class="mt-1 min-h-[2lh] text-sm text-ink-soft">{bridgeSentence(lw)}</p>
         <BridgeWeek lw={lw} holidayDates={holidayDates} />
         <p class="mt-3 text-xs text-ink-soft" aria-hidden="true">
           Relleno, festivo. Marcado, días libres. Con borde, el día que pides.

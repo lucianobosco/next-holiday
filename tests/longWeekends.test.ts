@@ -236,28 +236,22 @@ describe("bridge copy", () => {
   it("calls a Monday holiday a long weekend, not a puente", () => {
     const lw = longWeekendOf(on("2026-10-12"));
     expect(bridgeHeadline(lw)).toBe("Fin de semana largo, sin pedir nada");
-    expect(bridgeSentence(lw)).toBe(
-      "Cae en lunes: libras del sábado 10 al lunes 12. Tres días seguidos.",
-    );
+    expect(bridgeSentence(lw)).toBe("Tres días seguidos.");
   });
   it("names the day to ask for on a Tuesday", () => {
     const lw = longWeekendOf(on("2026-12-08"));
     expect(bridgeHeadline(lw)).toBe("Hay puente si pides el lunes 7");
-    expect(bridgeSentence(lw)).toBe(
-      "Pide el lunes 7 y libras del sábado 5 al martes 8. Cuatro días seguidos.",
-    );
+    expect(bridgeSentence(lw)).toBe("Pide el lunes 7: cuatro días seguidos.");
     expect(bridgeLength(lw)).toBe("4 días en diciembre");
   });
   it("names both days to ask for on a Wednesday", () => {
     const lw = longWeekendOf(on("2027-01-06"));
     expect(bridgeHeadline(lw)).toBe("Hay puente si pides el lunes 4 y el martes 5");
-    expect(bridgeSentence(lw)).toBe(
-      "Pide el lunes 4 y el martes 5 y libras del viernes 1 al miércoles 6. Seis días seguidos.",
-    );
+    expect(bridgeSentence(lw)).toBe("Pide el lunes 4 y el martes 5: seis días seguidos.");
   });
   it("says plainly when there is none", () => {
     const lw = longWeekendOf(on("2026-11-01"));
     expect(bridgeHeadline(lw)).toBe("No hay puente: cae en domingo");
-    expect(bridgeSentence(lw)).toBe("Este festivo no se puede encadenar con el fin de semana.");
+    expect(bridgeSentence(lw)).toBe("No se puede encadenar con el fin de semana.");
   });
 });
