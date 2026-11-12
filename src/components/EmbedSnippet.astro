@@ -8,5 +8,8 @@ import EmbedCopy from "./EmbedCopy.tsx";
     Copia este código y pégalo en tu página. Es gratis y siempre muestra el próximo festivo
     actualizado.
   </p>
-  <EmbedCopy client:visible />
+  {/* The snippet is HTML source: as a search result it would read as markup. */}
+  <div data-nosnippet>
+    <EmbedCopy client:visible />
+  </div>
 </section>

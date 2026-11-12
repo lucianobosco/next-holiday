@@ -23,7 +23,7 @@ const { activeCommunity, isPuentes, isAllSpain, isNational, year } = Astro.props
       class="inline-flex min-h-11 items-center rounded-md bg-accent px-4 py-2.5 text-sm font-bold text-white no-underline transition-colors hover:bg-accent-deep"
     >
       {isPuentes ? "Ver el próximo festivo" : `Puentes ${year} en España`}
-    </a>
+    </a>{" "}
     {
       /* This component is rendered by all six page templates, so one anchor here is the
          whole site linking to /toda-espana/. It had none: its only route in was a Preact
@@ -40,7 +40,7 @@ const { activeCommunity, isPuentes, isAllSpain, isNational, year } = Astro.props
           {`Todos los festivos de España ${year}`}
         </a>
       )
-    }
+    }{" "}
     {
       /* Like /toda-espana/ above: one anchor here is every template linking to the page
          that answers "festivos nacionales". */
@@ -59,12 +59,14 @@ const { activeCommunity, isPuentes, isAllSpain, isNational, year } = Astro.props
   <div class="mt-2 flex flex-wrap gap-1.5">
     {
       COMMUNITIES.map((c) => (
-        <a
-          href={`/comunidad/${communitySlug(c.code)}/`}
-          class={`inline-flex min-h-11 items-center rounded-md border px-2.5 py-1.5 text-[13px] font-semibold no-underline transition-colors hover:border-accent hover:text-accent sm:min-h-0 ${c.code === activeCommunity ? "border-accent bg-accent-soft text-ink" : "border-line bg-paper-card text-ink"}`}
-        >
-          {c.name}
-        </a>
+        <>
+          <a
+            href={`/comunidad/${communitySlug(c.code)}/`}
+            class={`inline-flex min-h-11 items-center rounded-md border px-2.5 py-1.5 text-[13px] font-semibold no-underline transition-colors hover:border-accent hover:text-accent sm:min-h-0 ${c.code === activeCommunity ? "border-accent bg-accent-soft text-ink" : "border-line bg-paper-card text-ink"}`}
+          >
+            {c.name}
+          </a>{" "}
+        </>
       ))
     }
   </div>
@@ -73,12 +75,14 @@ const { activeCommunity, isPuentes, isAllSpain, isNational, year } = Astro.props
   <div class="mt-2 columns-2 gap-x-6 sm:columns-3 lg:columns-4">
     {
       CAPITAL_CITIES.map((c) => (
-        <a
-          href={cityPath(c.name)}
-          class="block py-3 text-sm text-ink-soft no-underline transition-colors hover:text-accent hover:underline sm:py-1"
-        >
-          {c.name}
-        </a>
+        <>
+          <a
+            href={cityPath(c.name)}
+            class="block py-3 text-sm text-ink-soft no-underline transition-colors hover:text-accent hover:underline sm:py-1"
+          >
+            {c.name}
+          </a>{" "}
+        </>
       ))
     }
   </div>

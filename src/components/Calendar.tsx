@@ -76,7 +76,7 @@ export default function Calendar({ festivos, activeDate, activeKey, today }: Pro
     "flex h-11 w-11 items-center justify-center rounded-md border border-line bg-paper-card text-ink transition-colors hover:bg-paper-deep hover:text-accent-deep sm:h-10 sm:w-10";
 
   return (
-    <section>
+    <section data-nosnippet>
       <div>
         <div class="mb-3 flex items-center justify-between gap-3">
           <button

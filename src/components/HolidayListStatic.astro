@@ -27,7 +27,10 @@ const rest = all.slice(limit);
     <details class="group mt-3 open:mt-0" data-fold>
       {/* The summary opens the rest and then gets out of the way: "Ver menos" belongs where
           the list ends, not above the holidays it would hide. */}
-      <summary class="flex min-h-11 w-full cursor-pointer items-center justify-center rounded-md bg-paper-deep px-4 py-2.5 text-sm font-bold text-ink transition-colors hover:bg-accent-soft list-none group-open:hidden [&::-webkit-details-marker]:hidden">
+      <summary
+        data-nosnippet
+        class="flex min-h-11 w-full cursor-pointer items-center justify-center rounded-md bg-paper-deep px-4 py-2.5 text-sm font-bold text-ink transition-colors hover:bg-accent-soft list-none group-open:hidden [&::-webkit-details-marker]:hidden"
+      >
         Ver {rest.length} festivo{rest.length === 1 ? "" : "s"} más
       </summary>
       <ul>
@@ -38,6 +41,7 @@ const rest = all.slice(limit);
       <button
         type="button"
         data-fold-close
+        data-nosnippet
         class="mt-3 flex min-h-11 w-full cursor-pointer items-center justify-center rounded-md bg-paper-deep px-4 py-2.5 text-sm font-bold text-ink transition-colors hover:bg-accent-soft"
       >
         Ver menos

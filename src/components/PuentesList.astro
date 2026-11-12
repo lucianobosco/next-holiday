@@ -17,12 +17,12 @@ const pillTone = (label: string) =>
       return (
         <li class="flex items-start gap-3 px-4 py-3 sm:gap-4 sm:px-5">
           <div class="w-14 shrink-0 font-extrabold leading-tight text-accent">
-            {day} {month}
+            {day} {month}{" "}
             {yr !== year && <span class="block text-xs font-bold text-ink-soft">{yr}</span>}
           </div>
           <div class="min-w-0 flex-1">
             <div class="flex flex-wrap items-center gap-x-2 gap-y-1">
-              <h3 class="font-bold text-ink">{p.holiday.localName}</h3>
+              <h3 class="font-bold text-ink">{p.holiday.localName}</h3>{" "}
               <span class={`rounded-md px-2 py-0.5 text-xs font-bold ${pillTone(p.label)}`}>
                 {p.label}
               </span>
@@ -32,7 +32,7 @@ const pillTone = (label: string) =>
           </div>
           {p.daysOff && (
             <p class="shrink-0 text-right text-sm text-ink-soft">
-              <span class="block text-lg font-extrabold leading-none text-ink">{p.daysOff}</span>
+              <span class="block text-lg font-extrabold leading-none text-ink">{p.daysOff}</span>{" "}
               días
             </p>
           )}
