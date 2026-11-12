@@ -37,12 +37,12 @@ const pillTone = (label: string) =>
               <div class="flex flex-wrap items-center gap-2">
                 <span class="font-extrabold text-accent">
                   {day} {month}
-                </span>
+                </span>{" "}
                 <span class={`rounded-md px-2 py-0.5 text-xs font-bold ${pillTone(p.label)}`}>
                   {p.label}
                 </span>
-              </div>
-              <p class="mt-1 font-semibold text-ink">{p.holiday.localName}</p>
+              </div>{" "}
+              <p class="mt-1 font-semibold text-ink">{p.holiday.localName}</p>{" "}
               {p.daysOff && <p class="text-sm text-ink-soft">{p.daysOff} días libres</p>}
             </a>
           );

@@ -27,7 +27,7 @@ export default function Countdown({
 
   if (isToday) {
     return (
-      <div class="min-w-0">
+      <div class="min-w-0" data-nosnippet>
         <p class="text-[clamp(3rem,7vw,4.5rem)] font-extrabold leading-none tracking-tight text-accent">
           Hoy
         </p>
@@ -39,7 +39,7 @@ export default function Countdown({
   // unit and the hours sit beside the number rather than under it, so the whole answer is
   // one compact block on a phone.
   return (
-    <div class="min-w-0 sm:min-w-[15.5rem]">
+    <div class="min-w-0 sm:min-w-[15.5rem]" data-nosnippet>
       <p class="text-sm font-bold text-ink-soft">Faltan</p>
       <p class="mt-1 flex items-end gap-3">
         <span class="text-[clamp(4.25rem,9vw,6.5rem)] font-extrabold leading-[0.8] tracking-[-0.05em] text-accent tabular-nums">

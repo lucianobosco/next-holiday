@@ -109,7 +109,7 @@ const andList = (items: string[]) =>
                   <td class="w-[7.75rem] py-2.5 pr-3 sm:w-40">
                     <span class="block font-bold whitespace-nowrap tabular-nums">
                       {dayMonth(h.date)}
-                    </span>
+                    </span>{" "}
                     <span class="block text-xs text-ink-soft">{weekdayOf(h.date)}</span>
                   </td>
                   <td class="py-2.5 pr-3">
@@ -121,7 +121,7 @@ const andList = (items: string[]) =>
                       ]}
                     >
                       {h.localName}
-                    </a>
+                    </a>{" "}
                     <span class="mt-0.5 block text-xs text-ink-soft sm:hidden">
                       {bridgeHeadline(lw)}
                     </span>
@@ -158,7 +158,7 @@ const andList = (items: string[]) =>
             return (
               <li class="border-t border-line py-2.5 text-sm">
                 <span class="font-bold text-ink">{s.holiday.localName}</span>
-                <span class="text-ink-soft"> · {cap(formatDate(s.holiday.date))}</span>
+                <span class="text-ink-soft"> · {cap(formatDate(s.holiday.date))}</span>{" "}
                 <span class="mt-0.5 block text-ink-soft">{where}</span>
               </li>
             );

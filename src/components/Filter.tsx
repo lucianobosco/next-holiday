@@ -95,6 +95,7 @@ export default function Filter({
     // no box around it, so the countdown stays in the first screen. From sm up it is the
     // labelled bar.
     <div
+      data-nosnippet
       class={`grid items-center gap-2 sm:flex sm:flex-wrap sm:gap-x-3 sm:rounded-xl sm:border sm:border-line sm:bg-paper-card sm:p-3 ${
         home && !disabled
           ? "grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)_auto]"

@@ -55,18 +55,24 @@ const note = !lw.span
     aria-current={isActive ? "true" : undefined}
     class={`group/row grid grid-cols-[4.25rem_minmax(0,1fr)] items-center gap-x-3 gap-y-1.5 border-t border-line px-1.5 py-2.5 transition-colors hover:bg-paper sm:grid-cols-[4.75rem_minmax(0,1fr)_auto] sm:gap-x-4 ${isActive ? "bg-paper" : ""}`}
   >
+    {
+      /* compressHTML drops the whitespace between tags, and the gaps here are CSS, which a
+         search engine reading the text does not see: without the explicit {" "} Google
+         quotes this row as "23díasDía de la ConstituciónPróximoDomingo". Inside a grid or
+         flex container the space renders as nothing. */
+    }
     <span class="whitespace-nowrap tabular-nums" data-festdate={h.date}>
       <b
         class={`text-2xl font-extrabold leading-none tracking-tight ${isNext ? "text-accent" : "text-ink"}`}
         data-days-num>{count.num}</b
-      ><span class="ml-1 text-xs font-semibold text-ink-soft" data-days-unit>{count.unit}</span>
-    </span>
+      >{" "}<span class="text-xs font-semibold text-ink-soft" data-days-unit>{count.unit}</span>
+    </span>{" "}
     <span class="min-w-0">
       <span class="flex flex-wrap items-center gap-x-2 gap-y-0.5">
         <span
           class="font-bold text-ink group-hover/row:underline group-hover/row:underline-offset-3"
           >{h.localName}</span
-        >
+        >{" "}
         {
           isNext && (
             <span class="rounded-md bg-accent px-2 py-0.5 text-xs font-bold text-white">
@@ -75,13 +81,13 @@ const note = !lw.span
           )
         }
       </span>
-      <span class="block text-sm text-ink-soft">{dateLine}</span>
-      {desc && <span class="mt-0.5 line-clamp-1 text-sm text-ink-soft">{desc}</span>}
+      {" "}<span class="block text-sm text-ink-soft">{dateLine}</span>{" "}
+      {desc && <span class="mt-0.5 line-clamp-1 text-sm text-ink-soft">{desc}</span>}{" "}
       <span
         class="mt-1 inline-block max-w-full truncate rounded-md bg-paper-deep px-2 py-0.5 align-top text-xs font-bold text-ink-soft"
         >{scope}</span
       >
-    </span>
+    </span>{" "}
     <span class="col-start-2 sm:col-start-auto sm:text-right">
       <span
         class={`inline-block rounded-md px-2 py-0.5 text-xs font-bold ${lw.span ? "bg-accent-soft text-ink" : "bg-paper-deep text-ink-soft"}`}
